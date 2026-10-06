@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instant Booking & Checkout — RESUM Store</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #06b6d4;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --success: #10b981;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .badge-secure {
+      background: #ecfdf5;
+      color: var(--success);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid #a7f3d0;
+    }
+
+    /* --- Top Breadcrumb / Progress Bar --- */
+    .checkout-hero {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #311042 100%);
+      color: #fff;
+      padding: 45px 5% 55px;
+      text-align: center;
+    }
+
+    .checkout-hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .checkout-hero p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    /* --- Layout Container --- */
+    .container {
+      max-width: 1180px;
+      margin: -30px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+      width: 100%;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      gap: 28px;
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .booking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Form Panels */
+    .booking-panel {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 30px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    }
+
+    .section-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #f1f5f9;
+      padding-bottom: 10px;
+    }
+
+    .section-title i {
+      color: var(--primary);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: #f8fafc;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.25s ease;
+      color: var(--text-main);
+    }
+
+    .input-field:focus {
+      background: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+    }
+
+    /* Payment Methods Options */
+    .payment-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 550px) {
+      .payment-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .payment-card {
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 14px;
+      text-align: center;
+      cursor: pointer;
+      background: #f8fafc;
+      transition: all 0.25s ease;
+    }
+
+    .payment-card:hover, .payment-card.active {
+      border-color: var(--primary);
+      background: #ffffff;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.12);
+    }
+
+    .payment-card i {
+      font-size: 1.4rem;
+      color: var(--primary);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .payment-card span {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-main);
+      display: block;
+    }
+
+    /* Order Summary Column */
+    .summary-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 90px;
+    }
+
+    .selected-product-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: #f8fafc;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid var(--border-color);
+      margin-bottom: 20px;
+    }
+
+    .product-preview-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background: #e0e7ff;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .product-preview-details h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 2px;
+    }
+
+    .product-preview-details span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .price-row span:last-child {
+      color: var(--text-main);
+      font-weight: 600;
+    }
+
+    .price-divider {
+      height: 1px;
+      background: var(--border-color);
+      margin: 16px 0;
+    }
+
+    .price-total {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--dark);
+      margin-bottom: 22px;
+    }
+
+    .price-total .total-highlight {
+      color: var(--primary);
+    }
+
+    .btn-confirm-order {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-confirm-order:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+    }
+
+    .order-perks {
+      margin-top: 18px;
+      list-style: none;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+    }
+
+    .order-perks li {
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .order-perks li i {
+      color: var(--success);
+    }
+
+    /* Modal Popup */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .modal-box {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 35px 30px;
+      max-width: 440px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+      animation: modalScale 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    @keyframes modalScale {
+      from { transform: scale(0.9); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-icon {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: #ecfdf5;
+      color: var(--success);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .modal-box h2 {
+      font-size: 1.45rem;
+      font-weight: 800;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+
+    .modal-receipt {
+      background: #f8fafc;
+      border: 1px dashed var(--border-color);
+      border-radius: 12px;
+      padding: 14px;
+      margin: 18px 0;
+      text-align: left;
+      font-size: 0.84rem;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-modal {
+      flex: 1;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .btn-modal-primary {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .btn-modal-sec {
+      background: #f1f5f9;
+      color: var(--dark);
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 24px 5%;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+      border-top: 1px solid #1e293b;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="brand"><i class="fa-solid fa-gem"></i> RESUM</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Store</a></li>
+      <li><a href="saari.html">Sarees</a></li>
+      <li><a href="shirt.html">Shirts</a></li>
+      <li><a href="cart.html">Cart</a></li>
+      <li><span class="badge-secure"><i class="fa-solid fa-lock"></i> 256-Bit SSL Secured</span></li>
+    </ul>
+  </nav>
+
+  <!-- Banner -->
+  <section class="checkout-hero">
+    <h1>Instant Order Booking</h1>
+    <p>Apna address bhariye aur turant apna order book karein bina lambe intezar ke.</p>
+  </section>
+
+  <!-- Main Container -->
+  <main class="container">
+    <div class="booking-grid">
+
+      <!-- Form Column -->
+      <div class="booking-panel">
+        <form id="bookingForm" onsubmit="handleOrderBooking(event)">
+
+          <!-- Section 1: Customer Details -->
+          <div class="section-title">
+            <i class="fa-solid fa-user-circle"></i> 1. Contact Information
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="custName">Full Name</label>
+              <input type="text" id="custName" class="input-field" placeholder="Raj Gautam" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="custPhone">Phone Number</label>
+              <input type="tel" id="custPhone" class="input-field" placeholder="+91 9876543210" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custEmail">Email Address (Optional for Invoice)</label>
+            <input type="email" id="custEmail" class="input-field" placeholder="name@domain.com" />
+          </div>
+
+          <!-- Section 2: Delivery Address -->
+          <div class="section-title" style="margin-top: 25px;">
+            <i class="fa-solid fa-location-dot"></i> 2. Delivery Address
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="custAddress">Street Address / House No / Landmark</label>
+            <input type="text" id="custAddress" class="input-field" placeholder="Near Degree College, Main Road" required />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="custCity">City / Town</label>
+              <input type="text" id="custCity" class="input-field" placeholder="Jaunpur" required />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="custPincode">Pincode</label>
+              <input type="text" id="custPincode" class="input-field" placeholder="222001" maxlength="6" required />
+            </div>
+          </div>
+
+          <!-- Section 3: Product Choice (If arriving directly) -->
+          <div class="section-title" style="margin-top: 25px;">
+            <i class="fa-solid fa-box"></i> 3. Select Item To Book
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="selectedItem">Choose Product</label>
+              <select id="selectedItem" class="input-field" onchange="updateProductSelection()">
+                <option value="1199" data-name="Executive Classic Cotton Shirt" data-cat="Shirt">Executive Classic Cotton Shirt (₹ 1,199)</option>
+                <option value="3499" data-name="Selene Shimmer Evening Saree" data-cat="Saree">Selene Shimmer Evening Saree (₹ 3,499)</option>
+                <option value="450" data-name="Computer Science Handbook" data-cat="Book">Computer Science Study Handbook (₹ 450)</option>
+                <option value="899" data-name="Remote Control Race Car" data-cat="Toy">Remote Control Race Car (₹ 899)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="itemQty">Quantity</label>
+              <input type="number" id="itemQty" class="input-field" value="1" min="1" max="10" onchange="updateProductSelection()" />
+            </div>
+          </div>
+
+          <!-- Section 4: Payment Mode -->
+          <div class="section-title" style="margin-top: 25px;">
+            <i class="fa-solid fa-credit-card"></i> 4. Payment Method
+          </div>
+
+          <div class="payment-grid">
+            <div class="payment-card active" onclick="selectPayment(this, 'COD')">
+              <i class="fa-solid fa-hand-holding-dollar"></i>
+              <span>Cash on Delivery</span>
+            </div>
+            <div class="payment-card" onclick="selectPayment(this, 'UPI')">
+              <i class="fa-brands fa-google-pay"></i>
+              <span>UPI / QR Code</span>
+            </div>
+            <div class="payment-card" onclick="selectPayment(this, 'CARD')">
+              <i class="fa-regular fa-credit-card"></i>
+              <span>Debit / ATM Card</span>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-confirm-order">
+            <i class="fa-solid fa-circle-check"></i> Place & Book Order
+          </button>
+        </form>
+      </div>
+
+      <!-- Live Summary Column -->
+      <div class="summary-card">
+        <h3 style="font-size: 1.2rem; font-weight: 800; margin-bottom: 16px;">Booking Summary</h3>
+
+        <div class="selected-product-box">
+          <div class="product-preview-icon" id="previewIcon">
+            <i class="fa-solid fa-shirt"></i>
+          </div>
+          <div class="product-preview-details">
+            <h4 id="summaryItemTitle">Executive Classic Cotton Shirt</h4>
+            <span id="summaryItemMeta">Category: Shirt | Qty: 1</span>
+          </div>
+        </div>
+
+        <div class="price-row">
+          <span>Item Total</span>
+          <span id="sumSubtotal">₹ 1,199</span>
+        </div>
+
+        <div class="price-row">
+          <span>Delivery Fee</span>
+          <span style="color: var(--success); font-weight: 700;">FREE</span>
+        </div>
+
+        <div class="price-row">
+          <span>Payment Selected</span>
+          <span id="sumPaymentMode">Cash on Delivery</span>
+        </div>
+
+        <div class="price-divider"></div>
+
+        <div class="price-total">
+          <span>Total Payable</span>
+          <span class="total-highlight" id="sumGrandTotal">₹ 1,199</span>
+        </div>
+
+        <ul class="order-perks">
+          <li><i class="fa-solid fa-check"></i> 7-Day Replacement Guarantee</li>
+          <li><i class="fa-solid fa-check"></i> Verified Delivery Partner Tracking</li>
+          <li><i class="fa-solid fa-check"></i> Free Cancellation Before Dispatch</li>
+        </ul>
+
+        <div style="margin-top: 18px; text-align: center;">
+          <a href="product cancelation.html" style="font-size: 0.8rem; color: var(--text-muted); text-decoration: none;">
+            <i class="fa-solid fa-rotate-left"></i> Know Cancellation Policy
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Booking Confirmation Modal -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-box">
+      <div class="modal-icon">
+        <i class="fa-solid fa-check"></i>
+      </div>
+      <h2>Booking Confirmed!</h2>
+      <p style="color: var(--text-muted); font-size: 0.88rem;">Aapka order successfully register ho gaya hai.</p>
+
+      <div class="modal-receipt">
+        <div><strong>Order ID:</strong> <span id="modalOrderId">#RSM-78219</span></div>
+        <div style="margin-top: 4px;"><strong>Customer:</strong> <span id="modalCustName">Raj</span></div>
+        <div style="margin-top: 4px;"><strong>Deliver To:</strong> <span id="modalCustCity">Jaunpur</span></div>
+        <div style="margin-top: 4px;"><strong>Amount:</strong> <span id="modalAmount">₹ 1,199</span> (COD)</div>
+      </div>
+
+      <div class="modal-actions">
+        <a href="dashboard.html" class="btn-modal btn-modal-primary">Dashboard Track</a>
+        <a href="index.html" class="btn-modal btn-modal-sec">Back to Store</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Designed with clean UI.</p>
+    <div style="margin-top: 8px;">
+      <a href="index.html">Home</a> | 
+      <a href="dashboard.html">Dashboard</a> | 
+      <a href="cart.html">Cart</a> | 
+      <a href="contactme.html">Contact Us</a> | 
+      <a href="product cancelation.html">Cancellation</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let currentPayment = 'Cash on Delivery';
+
+    function selectPayment(el, mode) {
+      document.querySelectorAll('.payment-card').forEach(c => c.classList.remove('active'));
+      el.classList.add('active');
+      
+      if (mode === 'COD') currentPayment = 'Cash on Delivery';
+      else if (mode === 'UPI') currentPayment = 'UPI / Instant QR';
+      else currentPayment = 'Debit/Credit Card';
+
+      document.getElementById('sumPaymentMode').innerText = currentPayment;
+    }
+
+    function updateProductSelection() {
+      const select = document.getElementById('selectedItem');
+      const selectedOption = select.options[select.selectedIndex];
+      const price = parseInt(selectedOption.value, 10);
+      const name = selectedOption.getAttribute('data-name');
+      const cat = selectedOption.getAttribute('data-cat');
+      const qty = parseInt(document.getElementById('itemQty').value, 10) || 1;
+
+      const total = price * qty;
+
+      document.getElementById('summaryItemTitle').innerText = name;
+      document.getElementById('summaryItemMeta').innerText = `Category: ${cat} | Qty: ${qty}`;
+      document.getElementById('sumSubtotal').innerText = `₹ ${total.toLocaleString('en-IN')}`;
+      document.getElementById('sumGrandTotal').innerText = `₹ ${total.toLocaleString('en-IN')}`;
+
+      // Update Icon
+      const iconBox = document.getElementById('previewIcon');
+      if (cat === 'Saree') iconBox.innerHTML = '<i class="fa-solid fa-person-dress"></i>';
+      else if (cat === 'Book') iconBox.innerHTML = '<i class="fa-solid fa-book-open"></i>';
+      else if (cat === 'Toy') iconBox.innerHTML = '<i class="fa-solid fa-gamepad"></i>';
+      else iconBox.innerHTML = '<i class="fa-solid fa-shirt"></i>';
+    }
+
+    function handleOrderBooking(e) {
+      e.preventDefault();
+
+      const name = document.getElementById('custName').value;
+      const city = document.getElementById('custCity').value;
+      const grandTotal = document.getElementById('sumGrandTotal').innerText;
+      const randomOrderId = '#RSM-' + Math.floor(100000 + Math.random() * 900000);
+
+      document.getElementById('modalOrderId').innerText = randomOrderId;
+      document.getElementById('modalCustName').innerText = name;
+      document.getElementById('modalCustCity').innerText = city;
+      document.getElementById('modalAmount').innerText = `${grandTotal} (${currentPayment})`;
+
+      // Open Modal
+      document.getElementById('bookingModal').style.display = 'flex';
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Caps & Headwear Collection — RESUM Urban Gear</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cabinet+Grotesk:wght@800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #06b6d4;
+      --accent: #10b981;
+      --dark: #0f172a;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --hero-bg: linear-gradient(135deg, #090d16 0%, #151d3b 50%, #0c2333 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #06b6d4, #4f46e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--secondary);
+    }
+
+    .cart-indicator {
+      background: #ccfbf1;
+      color: #0f766e;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .cart-indicator:hover {
+      background: #0d9488;
+      color: #fff;
+    }
+
+    /* --- Hero Section with Custom Requested Images --- */
+    .hero-section {
+      background: var(--hero-bg);
+      color: #ffffff;
+      padding: 60px 5% 75px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #1e293b;
+    }
+
+    .hero-glow-1 {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%);
+      top: -120px;
+      left: 10%;
+      filter: blur(55px);
+      border-radius: 50%;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.25) 0%, transparent 70%);
+      bottom: -120px;
+      right: 10%;
+      filter: blur(55px);
+      border-radius: 50%;
+    }
+
+    .hero-container {
+      max-width: 1250px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 5;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-text h1 {
+      font-family: 'Cabinet Grotesk', sans-serif;
+      font-size: 3.1rem;
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 40%, #a5f3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.5px;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 28px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-badges {
+        justify-content: center;
+      }
+    }
+
+    .badge-pill {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      backdrop-filter: blur(8px);
+      color: #bae6fd;
+    }
+
+    /* Hero Images Showcase */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      position: relative;
+    }
+
+    .hero-card-1 {
+      width: 250px;
+      height: 330px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      transform: rotate(-4deg);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-card-1:hover {
+      transform: rotate(0deg) scale(1.04);
+    }
+
+    .hero-card-2 {
+      width: 230px;
+      height: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      transform: rotate(4deg) translateY(30px);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-card-2:hover {
+      transform: rotate(0deg) scale(1.04) translateY(10px);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Filter Strip */
+    .filter-wrapper {
+      max-width: 1250px;
+      margin: 40px auto 10px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #0284c7;
+      border-color: #0284c7;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }
+
+    /* Caps Grid */
+    .container {
+      max-width: 1250px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .cap-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .cap-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(2, 132, 199, 0.18);
+      border-color: rgba(2, 132, 199, 0.35);
+    }
+
+    .cap-image-wrap {
+      width: 100%;
+      height: 270px;
+      background: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px;
+    }
+
+    .cap-image-wrap img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      transition: transform 0.45s ease;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.1));
+    }
+
+    .cap-card:hover .cap-image-wrap img {
+      transform: scale(1.08);
+    }
+
+    .badge-discount {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #e0f2fe;
+      color: #0369a1;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid #bae6fd;
+    }
+
+    .card-info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .cap-category {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #0284c7;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .cap-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: auto;
+    }
+
+    .price-main {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .price-cut {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 8px;
+    }
+
+    .btn-add-cart {
+      background: #f0f9ff;
+      color: #0369a1;
+      border: 1px solid #bae6fd;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-add-cart:hover {
+      background: #e0f2fe;
+      color: #075985;
+    }
+
+    .btn-buy {
+      background: linear-gradient(135deg, #0284c7, #0369a1);
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25);
+    }
+
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(2, 132, 199, 0.4);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 30px 5% 20px;
+      border-top: 1px solid #1e293b;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="brand"><i class="fa-solid fa-gem"></i> RESUM</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="cap.html" class="active">Caps & Hats</a></li>
+      <li><a href="shirt.html">Shirts</a></li>
+      <li><a href="saari.html">Sarees</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li>
+        <a href="cart.html" class="cart-indicator">
+          <i class="fa-solid fa-bag-shopping"></i> Cart (<span id="cartCount">0</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Animated Hero Section with Requested Hero Images -->
+  <section class="hero-section">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="badge-pill" style="display:inline-block; margin-bottom: 14px;">🧢 Streetwear & Headwear Hub</div>
+        <h1>Elevate Your Style With Modern Headgear</h1>
+        <p>Premium baseball snapbacks, vintage engineer caps, sun-protective breathable sports visors, and urban streetwear essentials.</p>
+        
+        <div class="hero-badges">
+          <span class="badge-pill"><i class="fa-solid fa-feather"></i> Lightweight Cotton</span>
+          <span class="badge-pill"><i class="fa-solid fa-sun"></i> UV Sun Protection</span>
+          <span class="badge-pill"><i class="fa-solid fa-sliders"></i> Adjustable Straps</span>
+        </div>
+
+        <div>
+          <a href="book now.html" class="btn-buy" style="display: inline-flex; padding: 12px 26px; font-size: 0.95rem; border-radius: 999px;">
+            <i class="fa-solid fa-bolt"></i> Instant Booking
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Visuals from Provided URLs -->
+      <div class="hero-visual">
+        <div class="hero-card-1">
+          <img src="https://imgs.search.brave.com/lkN9lD-SNfK8s6hlQnWCmz09_DoHotkwi1GpELlbaUk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudW5zcGxhc2gu/Y29tL3Bob3RvLTE1/MzQyMTU3NTQ3MzQt/MThlNTVkMTNlMzQ2/P2ZtPWpwZyZxPTYw/Jnc9MzAwMCZhdXRv/PWZvcm1hdCZmaXQ9/Y3JvcCZpeGxpYj1y/Yi00LjEuMCZpeGlk/PU0zd3hNakEzZkRC/OE1IeHpaV0Z5WTJo/OE1UaDhmR05oY0h4/bGJud3dmSHd3Zkh4/OE1BPT0" alt="Urban Streetwear Cap Lifestyle" class="hero-img" />
+        </div>
+        <div class="hero-card-2">
+          <img src="https://imgs.search.brave.com/QjBB2N0ORpyxZCiBzMUgfCLUTl-q8Fvl6ibvqSZzlMU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvc2Ix/MDA2NTA0OGEtMDAx/L3Bob3RvL21hbi1m/bHlpbmctaW4tc2t5/LXdpdGgtYm94LWlu/LW9uZS1oYW5kLWxv/dy1hbmdsZS12aWV3/LmpwZz9zPTYxMng2/MTImdz0wJms9MjAm/Yz16OEd0NzBCZ0d2/elJvRG5Ub3RHZXJs/dUVxdHZISDdQWTYt/SVk3NlRmUzdFPQ" alt="Express Fast Delivery" class="hero-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Strip -->
+  <div class="filter-wrapper">
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterCaps('all')">All Headwear (9)</button>
+      <button class="filter-btn" onclick="filterCaps('snapback')">Snapback & Baseball</button>
+      <button class="filter-btn" onclick="filterCaps('vintage')">Vintage & Classic</button>
+      <button class="filter-btn" onclick="filterCaps('minimal')">White & Minimal</button>
+    </div>
+
+    <a href="search.html" style="font-size: 0.88rem; color: #0284c7; text-decoration: none; font-weight: 600;">
+      <i class="fa-solid fa-magnifying-glass"></i> Search Products
+    </a>
+  </div>
+
+  <!-- Caps Catalog Grid -->
+  <main class="container">
+    <div class="grid" id="capsGrid">
+
+      <!-- Cap 1: Urban Khaki Street Hat -->
+      <div class="cap-card" data-category="vintage">
+        <div class="cap-image-wrap">
+          <span class="badge-discount">35% OFF</span>
+          <img src="https://imgs.search.brave.com/3-IzJVWz8NyADJWxqUdtIM24t3FkltC8HyNNoYtcbhg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTQ3/MjYzMTA0MS9waG90/by9jcm9wcGVkLWhh/bmQtaG9sZGluZy1o/YXQtYWdhaW5zdC13/YWxsLW1hbGFuamUt/YW5nb2xhLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz0yN0xJ/cjhIN1JOVDdrSUQ1/SHltczN0WW9OUWlV/UnRhSlJiQ2ZtN0ZR/NUxjPQ" alt="Urban Streetwear Hat" />
+        </div>
+        <div class="card-info">
+          <span class="cap-category">Vintage Streetwear</span>
+          <h3 class="cap-title">Urban Explorer Khaki Sun Hat</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 499</span>
+            <span class="price-cut">₹ 799</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Urban Explorer Khaki Sun Hat')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cap 2: Green Botanical Baseball Cap -->
+      <div class="cap-card" data-category="snapback">
+        <div class="cap-image-wrap">
+          <span class="badge-discount">40% OFF</span>
+          <img src="https://imgs.search.brave.com/oVTAP5OOKeROsEVaAZaiF6LVfYVtRiqVsLv7du97VUY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMjYv/ODU4LzYyNi9zbWFs/bC9vZi1hLWJhc2Vi/YWxsLWNhcC1uZXh0/LXRvLWEtbWFyaWp1/YW5hLXBsYW50LXdp/dGgtY29weS1zcGFj/ZS13aXRoLWNvcHkt/c3BhY2UtZnJlZS1w/aG90by5qcGc" alt="Botanical Olive Green Cap" />
+        </div>
+        <div class="card-info">
+          <span class="cap-category">Baseball Cap</span>
+          <h3 class="cap-title">Olive Green Botanical Sports Cap</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 399</span>
+            <span class="price-cut">₹ 650</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Olive Green Botanical Sports Cap')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cap 3: Minimalist White & Black Contrast Cap -->
+      <div class="cap-card" data-category="minimal">
+        <div class="cap-image-wrap">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/YDy9Rpe6W5pP_RXJsKkc6-rv9B_bt92nkee_BdXhex0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/bWFnbmlmaWMuY29t/L2ZyZWUtcHNkL3Bz/ZC13aGl0ZS1ibGFj/ay1jYXAtaXNvbGF0/ZS1iYWNrZ3JvdW5k/XzE0MDktMzQyNy5q/cGc_c2VtdD1haXNf/aHlicmlkJnc9NzQw/JnE9ODA" alt="White Black Contrast Cap" />
+        </div>
+        <div class="card-info">
+          <span class="cap-category">Minimalist Series</span>
+          <h3 class="cap-title">Dual Contrast Monochrome Cap</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 449</span>
+            <span class="price-cut">₹ 649</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Dual Contrast Monochrome Cap')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cap 4: NY Athletic Embroidered Cap -->
+      <div class="cap-card" data-category="snapback">
+        <div class="cap-image-wrap">
+          <span class="badge-discount">45% OFF</span>
+          <img src="https://imgs.search.brave.com/dn_oelgQt3-k_izT9YsWvhIiIpPnKPOsAjKaBk8xN7o/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFvWEgwLWlLa0wu/anBn" alt="NY Athletic Cap" />
+        </div>
+        <div class="card-info">
+          <span class="cap-category">Athletic Wear</span>
+          <h3 class="cap-title">New York Varsity Embroidered Cap</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 520</span>
+            <span class="price-cut">₹ 950</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('New York Varsity Embroidered Cap')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cap 5: Vintage Train Engineer Striped Hat -->
+      <div class="cap-card" data-category="vintage">
+        <div class="cap-image-wrap">
+          <span class="badge-discount">25% OFF</span>
+          <img src="https://imgs.search.brave.com/C5A5XFHzkltcwYeh75WIYCbTp9TDUXQ-1sMbucet9hs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/Yi53aWtpbWVkaWEu/b3JnL3dpa2lwZWRp/YS9jb21tb25zL3Ro/dW1iLzQvNDcvVHJh/aW5fZW5naW5lZXJf/aGF0LTIucG5nLzI1/MHB4LVRyYWluX2Vu/Z2luZWVyX2hhdC0y/LnBuZz91dG1fc291/cmNlPWVuLndpa2lw/ZWRpYS5vcmcmdXRt/X2NhbXBhaWduPXBh/cnNlciZ1dG1fY29u/dGVudD10aHVtYm5h/aWw" alt="Vintage Engineer Cap" />
+        </div>
+        <div class="card-info">
+          <span class="cap-category">Heritage Collector</span>
+          <h3 class="cap-title">Classic Railroad Engineer Striped Cap</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 599</span>
+            <span class="price-cut">₹ 800</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Classic Railroad Engineer Striped Cap')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cap 6: Crisp White Curved Visor Cap -->
+      <div class="cap-card" data-category="minimal">
+        <div class="cap-image-wrap">
+          <span class="badge-discount">35% OFF</span>
+          <img src="https://imgs.search.brave.com/OIHAcpAjvFlXttLgiKSfX2Alju0nlMFb1lZBbT430n0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTM4/OTQzODI4MS92ZWN0/b3IvcmVhbGlzdGlj/LXdoaXRlLWJhc2Vi/YWxsLWNhcC1tb2Nr/dXAtM2Qtc3BvcnRz/LWhlYWRnZWFyLXdp/dGgtc3VuLXByb3Rl/Y3Rpb24tdmlzb3It/YmxhbmsuanBnP3M9/NjEyeDYxMiZ3PTAm/az0yMCZjPUNPWFBZ/VzdENW41MkNxMnpy/bmVpR3dOZHhqYUIt/cXU5bEN0WFoyWHFU/MVU9" alt="Pure White Baseball Cap" />
+        </div>
+        <div class="card-info">
+          <span class="cap-category">UV Sun Protection</span>
+          <h3 class="cap-title">Crisp White Curved Visor Sports Cap</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 350</span>
+            <span class="price-cut">₹ 550</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Crisp White Curved Visor Sports Cap')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cap 7: Florida Summer Trucker Cap -->
+      <div class="cap-card" data-category="snapback">
+        <div class="cap-image-wrap">
+          <span class="badge-discount">50% OFF</span>
+          <img src="https://imgs.search.brave.com/sP6CGHzhZJQebT918QSqwRfyvq0BhKK5fMyI6ZWBKN0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzUzMC83MTAva3pu/MTc2ODAvY2FwLzMv/dS96L2ZyZWUtY2Fw/LWZsb3JpZGEtb3Jp/Z2luYWwtaW1hZ2Jt/eW51NmZmZ2NwYi5q/cGVnP3E9OTA" alt="Florida Trucker Cap" />
+        </div>
+        <div class="card-info">
+          <span class="cap-category">Trucker & Mesh</span>
+          <h3 class="cap-title">Florida Beach Lightweight Breathable Cap</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 299</span>
+            <span class="price-cut">₹ 599</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Florida Beach Breathable Cap')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cap 8: Modern Indigo Blue Textured Cap -->
+      <div class="cap-card" data-category="snapback">
+        <div class="cap-image-wrap">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/w-BCdrNvLOXU_tP96-oog9kiGt5YWGilL3mODh6yjHg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wMjUv/NDg4LzQ5MC9zbWFs/bC9tb2Rlcm4tYmFz/ZWJhbGwtY2FwLWRl/c2lnbi1vbi1ibGFj/ay1iYWNrZ3JvdW5k/LXdpdGgtYmx1ZS10/ZXh0aWxlLWdlbmVy/YXRlZC1ieS1haS1w/aG90by5qcGc" alt="Indigo Textured Cap" />
+        </div>
+        <div class="card-info">
+          <span class="cap-category">Textured Textile</span>
+          <h3 class="cap-title">Indigo Woven Modern Baseball Cap</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 479</span>
+            <span class="price-cut">₹ 699</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Indigo Woven Modern Baseball Cap')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Cap 9: Solid Black Flat-Brim Snapback -->
+      <div class="cap-card" data-category="snapback">
+        <div class="cap-image-wrap">
+          <span class="badge-discount">40% OFF</span>
+          <img src="https://imgs.search.brave.com/yCBsuUcCrtcM4WDcFkeD7jmdHwqrrBlchZmfGtyRtzM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9ibGFj/ay1zbmFwYmFjay1j/YXAtZmxhdC13aGl0/ZS1iYWNrZ3JvdW5k/LTM3OTI2MTE5My5q/cGc" alt="Black Flat Brim Snapback" />
+        </div>
+        <div class="card-info">
+          <span class="cap-category">Snapback Flat Brim</span>
+          <h3 class="cap-title">Midnight Black Hip-Hop Snapback Cap</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 499</span>
+            <span class="price-cut">₹ 849</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Midnight Black Hip-Hop Snapback Cap')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Floating Cart Alert -->
+  <div id="cartToast" class="toast">
+    <i class="fa-solid fa-circle-check" style="color: #06b6d4; font-size: 1.15rem;"></i>
+    <span id="toastMsg">Cap added to your cart!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Designed with clean UI.</p>
+    <div style="margin-top: 8px;">
+      <a href="index.html">Home</a> | 
+      <a href="shirt.html">Shirts</a> | 
+      <a href="saari.html">Sarees</a> | 
+      <a href="cart.html">Cart</a> | 
+      <a href="dashboard.html">Dashboard</a> | 
+      <a href="product cancelation.html">Cancellation</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let cartCount = 0;
+
+    function addToCart(title) {
+      cartCount++;
+      document.getElementById('cartCount').innerText = cartCount;
+
+      const toast = document.getElementById('cartToast');
+      document.getElementById('toastMsg').innerText = `"${title}" added to your cart!`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function filterCaps(category) {
+      const cards = document.querySelectorAll('.cap-card');
+      const btns = document.querySelectorAll('.filter-btn');
+
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

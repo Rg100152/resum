@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Literature & Philosophy Books — RESUM Library</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Cinzel:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #06b6d4;
+      --amber: #d97706;
+      --dark: #0f172a;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --hero-bg: linear-gradient(135deg, #090d16 0%, #171126 50%, #201311 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #f59e0b, #4f46e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--amber);
+    }
+
+    .cart-indicator {
+      background: #fef3c7;
+      color: #b45309;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .cart-indicator:hover {
+      background: #f59e0b;
+      color: #fff;
+    }
+
+    /* --- Animated Heritage Hero Section --- */
+    .hero-section {
+      background: var(--hero-bg);
+      color: #ffffff;
+      padding: 60px 5% 75px;
+      position: relative;
+      overflow: hidden;
+      border-bottom: 1px solid #2d2438;
+    }
+
+    .hero-glow-1 {
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(245, 158, 11, 0.18) 0%, transparent 70%);
+      top: -100px;
+      left: 10%;
+      filter: blur(50px);
+      border-radius: 50%;
+    }
+
+    .hero-glow-2 {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(79, 70, 229, 0.22) 0%, transparent 70%);
+      bottom: -100px;
+      right: 10%;
+      filter: blur(50px);
+      border-radius: 50%;
+    }
+
+    .hero-wrapper {
+      max-width: 1250px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+    }
+
+    .hero-heading-block {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 40px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fcd34d;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-heading-block h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 30%, #fef3c7 70%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-heading-block p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+    }
+
+    /* Animated Tributes Grid in Hero */
+    .inspirational-tributes {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 860px) {
+      .inspirational-tributes {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .tribute-card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 20px;
+      padding: 18px;
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .tribute-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(245, 158, 11, 0.45);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .tribute-img-wrap {
+      width: 72px;
+      height: 72px;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.25);
+      flex-shrink: 0;
+    }
+
+    .tribute-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .tribute-card:hover .tribute-img-wrap img {
+      transform: scale(1.1);
+    }
+
+    .tribute-info h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 3px;
+    }
+
+    .tribute-info span {
+      font-size: 0.78rem;
+      color: #fcd34d;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .tribute-info p {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      line-height: 1.35;
+    }
+
+    /* Filter Strip */
+    .filter-wrapper {
+      max-width: 1250px;
+      margin: 40px auto 10px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: #d97706;
+      border-color: #d97706;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    }
+
+    /* Books Grid */
+    .container {
+      max-width: 1250px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    .book-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .book-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(217, 119, 6, 0.15);
+      border-color: rgba(217, 119, 6, 0.35);
+    }
+
+    .book-cover {
+      width: 100%;
+      height: 310px;
+      background: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+
+    .book-cover img {
+      max-height: 100%;
+      max-width: 100%;
+      object-fit: contain;
+      transition: transform 0.4s ease;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.12));
+    }
+
+    .book-card:hover .book-cover img {
+      transform: scale(1.05);
+    }
+
+    .badge-discount {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid #fde68a;
+    }
+
+    .card-info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .book-author {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #d97706;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .book-title {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: auto;
+    }
+
+    .price-main {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .price-cut {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 8px;
+    }
+
+    .btn-add-cart {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1px solid #fde68a;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-add-cart:hover {
+      background: #fde68a;
+      color: #78350f;
+    }
+
+    .btn-buy {
+      background: linear-gradient(135deg, #d97706, #b45309);
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(217, 119, 6, 0.25);
+    }
+
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(217, 119, 6, 0.4);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 30px 5% 20px;
+      border-top: 1px solid #1e293b;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a href="index.html" class="brand"><i class="fa-solid fa-gem"></i> RESUM</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="books.html" class="active">Books & Philosophy</a></li>
+      <li><a href="shirt.html">Shirts</a></li>
+      <li><a href="saari.html">Sarees</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li>
+        <a href="cart.html" class="cart-indicator">
+          <i class="fa-solid fa-bag-shopping"></i> Cart (<span id="cartCount">0</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Animated Heritage Hero Section -->
+  <section class="hero-section">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+
+    <div class="hero-wrapper">
+      <div class="hero-heading-block">
+        <span class="hero-badge">📖 The Library of Eternal Wisdom</span>
+        <h1>Ideas That Shaped Civilizations & Minds</h1>
+        <p>Explore immortal literature, social transformation writings, Hindi timeless classics, and deep spiritual discourses.</p>
+      </div>
+
+      <!-- Tributes to The Great Thinkers & Leaders -->
+      <div class="inspirational-tributes">
+        <!-- 1. Dr. BR Ambedkar -->
+        <div class="tribute-card">
+          <div class="tribute-img-wrap">
+            <img src="https://imgs.search.brave.com/ZUNrSOIZK7bpngaophmmZlCQocUYepKbgxAfrY6Zqjk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjFxWGIrMmVsdUwu/anBn" alt="Babasaheb Dr. B.R. Ambedkar" />
+          </div>
+          <div class="tribute-info">
+            <span>Architect of Equality</span>
+            <h3>Dr. B. R. Ambedkar</h3>
+            <p>Knowledge, social justice, and constitutional awakening.</p>
+          </div>
+        </div>
+
+        <!-- 2. Lord Gautam Buddha -->
+        <div class="tribute-card">
+          <div class="tribute-img-wrap">
+            <img src="https://imgs.search.brave.com/OIZVyVkdF9hTSKMjexsR0odkn2NFQNopBr8FhzWPxXg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/dGhlc3RvbmVzdHVk/aW8uaW4vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjEvMDIvQXZ0/YXItT2YtVmlzaG51/LUppLUxvcmQtR2F1/dGFtLUJ1ZGRoYS1K/aS5qcGc" alt="Bhagwan Gautam Buddha" />
+          </div>
+          <div class="tribute-info">
+            <span>Enlightened One</span>
+            <h3>Gautam Buddha</h3>
+            <p>Dhamma, compassion, and eternal path of inner peace.</p>
+          </div>
+        </div>
+
+        <!-- 3. Emperor Ashoka -->
+        <div class="tribute-card">
+          <div class="tribute-img-wrap">
+            <img src="https://imgs.search.brave.com/heoR0lowcegdvPy6ohp_gHacJmKGRt58ugooHBAQ8Cg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/dHNlbXJpbnBvY2hl/LmNvbS93cC1jb250/ZW50L3VwbG9hZHMv/MjAxNi8wNi9FbXBl/cm9yQXNob2thMDI0/LmpwZw" alt="Chakravarti Samrat Ashoka" />
+          </div>
+          <div class="tribute-info">
+            <span>Dhamma Vijaya</span>
+            <h3>Samrat Ashoka</h3>
+            <p>Moral governance and peaceful imperial legacy.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Strip -->
+  <div class="filter-wrapper">
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterBooks('all')">All Books</button>
+      <button class="filter-btn" onclick="filterBooks('bharati')">Dharmveer Bharati</button>
+      <button class="filter-btn" onclick="filterBooks('ambedkar')">Dr. B. R. Ambedkar</button>
+      <button class="filter-btn" onclick="filterBooks('premchand')">Munshi Premchand</button>
+      <button class="filter-btn" onclick="filterBooks('osho')">Osho Rajneesh</button>
+    </div>
+
+    <a href="search.html" style="font-size: 0.88rem; color: #d97706; text-decoration: none; font-weight: 600;">
+      <i class="fa-solid fa-magnifying-glass"></i> Search Titles
+    </a>
+  </div>
+
+  <!-- Book Products Grid -->
+  <main class="container">
+    <div class="grid" id="booksGrid">
+
+      <!-- SECTION 1: DHARMVEER BHARATI & SPECIAL LITERARY WORKS -->
+      
+      <!-- Book 1: Castes In India / Autobiography -->
+      <div class="book-card" data-category="ambedkar">
+        <div class="book-cover">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/VnjodVHL_Fe0dB-uV9-TomFZbcczkWOgFsGQDaO_5KE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzYxMi82MTIveGlm/MHEvYm9vay9pLzEv/aC9teS1hdXRvYmlv/Z3JhcGh5LWNhc3Rl/cy1pbi1pbmRpYS1k/ci1ici1hbWJlZGth/ci1ib29rcy1lbmds/aXNoLW9yaWdpbmFs/LWltYWg5YTNmd3Zj/YndoYjUuanBlZz9x/PTcw" alt="My Autobiography Castes In India" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dr. B. R. Ambedkar</span>
+          <h3 class="book-title">My Autobiography & Castes In India</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 299</span>
+            <span class="price-cut">₹ 450</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('My Autobiography & Castes In India')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 2: Gunahon Ka Devta & Ret Ki Machhli Combo -->
+      <div class="book-card" data-category="bharati">
+        <div class="book-cover">
+          <span class="badge-discount">35% OFF</span>
+          <img src="https://imgs.search.brave.com/KsM3tvnmVZGy3dmKOzysjmDgHB-BRg-eAUEcoMUavpg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzYxMi82MTIveGlm/MHEvcmVnaW9uYWxi/b29rcy9zL20vNS9n/dW5haG9uLWthLWRl/dnRhLXJldC1raS1t/YWNoaGxpLWNvbWJv/LXNldC1kaGFybXZl/ZXItYmhhcnRpLWhp/bmRpLW9yaWdpbmFs/LWltYWhuYTk5eG1q/Z21mdWMuanBlZz9x/PTcw" alt="Gunahon Ka Devta Ret Ki Machhli Combo" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dharmveer Bharati</span>
+          <h3 class="book-title">गुनाहों का देवता और रेत की मछली (Combo Set)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 380</span>
+            <span class="price-cut">₹ 590</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Gunahon Ka Devta Combo')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 3: Suraj Ka Saatwan Ghoda -->
+      <div class="book-card" data-category="bharati">
+        <div class="book-cover">
+          <span class="badge-discount">25% OFF</span>
+          <img src="https://imgs.search.brave.com/8nyUY57wKzXWeMuQFaR2XB_4QvqzLRBevWj_zruSb5c/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL00v/TVY1Qk9EQTJNMlV3/WmpJdFlUVmhNQzAw/WXpNeExXRXpOemN0/WmpCbU16UTROR1E1/TXpneFhrRXlYa0Zx/Y0djQC5qcGc" alt="Suraj Ka Saatwan Ghoda" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dharmveer Bharati</span>
+          <h3 class="book-title">सूरज का सातवां घोड़ा (Suraj Ka Saatwan Ghoda)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 190</span>
+            <span class="price-cut">₹ 260</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Suraj Ka Saatwan Ghoda')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 4: Andha Yug -->
+      <div class="book-card" data-category="bharati">
+        <div class="book-cover">
+          <span class="badge-discount">20% OFF</span>
+          <img src="https://imgs.search.brave.com/RHkuFh86AOjJQUUZ4w_jT2bPSZ57yq3nGeyesuZbCzo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzQxNi80MTYveGlm/MHEvcmVnaW9uYWxi/b29rcy9uLzYvNS9h/bmRoYS15dWctaGlu/ZGktb3JpZ2luYWwt/aW1hZ25jeWp2YXZy/emhhei5qcGVnP3E9/NzAmY3JvcD1mYWxz/ZQ" alt="Andha Yug" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dharmveer Bharati</span>
+          <h3 class="book-title">अंधा युग (Andha Yug — Classic Verse Play)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 175</span>
+            <span class="price-cut">₹ 220</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Andha Yug')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 5: Thanda Loha -->
+      <div class="book-card" data-category="bharati">
+        <div class="book-cover">
+          <span class="badge-discount">25% OFF</span>
+          <img src="https://imgs.search.brave.com/mRLMQJdceSQHwyyqLhwLQE5vOa1jbGYaOkf3VSKRTf4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9yZWto/dGFib29rcy5jb20v/Y2RuL3Nob3AvcHJv/ZHVjdHMvMXNIMDJI/b1pVeG56b25GZnJF/QmdDWkNIU0NSZGJk/QWJnXzc3OTA5ZDkz/LTQ1YjUtNDhkOC1i/NDY2LWU3MmVkMGI0/ODQ0NC5qcGc_dj0x/NjgwMDIxMjUwJndp/ZHRoPTM2MA" alt="Thanda Loha" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dharmveer Bharati</span>
+          <h3 class="book-title">ठंडा लोहा (Thanda Loha Poetry Collection)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 210</span>
+            <span class="price-cut">₹ 280</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Thanda Loha')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: DR. B. R. AMBEDKAR BOOKS -->
+
+      <!-- Book 6: Annihilation of Caste -->
+      <div class="book-card" data-category="ambedkar">
+        <div class="book-cover">
+          <span class="badge-discount">40% OFF</span>
+          <img src="https://imgs.search.brave.com/hB9rmCoEC3IS2WtiKCSC-Yr1jzGjQRCJjM2g0lPLCkY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDFXeVg0cEJGZEwu/anBn" alt="Annihilation of Caste" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dr. B. R. Ambedkar</span>
+          <h3 class="book-title">Annihilation of Caste (Original Treatise)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 180</span>
+            <span class="price-cut">₹ 300</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Annihilation of Caste')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 7: The Buddha and His Dhamma -->
+      <div class="book-card" data-category="ambedkar">
+        <div class="book-cover">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/4RzULQHmUWIzc87CQivcXTQ1ToIAEGUmJMEgcyQE7u8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDFmM0ZKNEdKS0wu/anBn" alt="The Buddha and His Dhamma" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dr. B. R. Ambedkar</span>
+          <h3 class="book-title">The Buddha and His Dhamma</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 350</span>
+            <span class="price-cut">₹ 500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('The Buddha and His Dhamma')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 8: Who Were The Shudras? -->
+      <div class="book-card" data-category="ambedkar">
+        <div class="book-cover">
+          <span class="badge-discount">25% OFF</span>
+          <img src="https://imgs.search.brave.com/IWMEFHBcs0Ma22K3hKMznd6vokkFgnAo09YcnctzMSg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NDF6dUorTHpqMkwu/anBn" alt="Who Were The Shudras" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dr. B. R. Ambedkar</span>
+          <h3 class="book-title">Who Were The Shudras? (Historical Inquiry)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 220</span>
+            <span class="price-cut">₹ 295</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Who Were The Shudras')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 9: The Untouchables -->
+      <div class="book-card" data-category="ambedkar">
+        <div class="book-cover">
+          <span class="badge-discount">35% OFF</span>
+          <img src="https://imgs.search.brave.com/h_-yGX3Bm9WJc9oLMrSxWEJivjiPMsxBFa0D4Qn4Yb0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/ODF4RU9jdnM1MUwu/anBn" alt="The Untouchables" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dr. B. R. Ambedkar</span>
+          <h3 class="book-title">The Untouchables: Who Were They?</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 275</span>
+            <span class="price-cut">₹ 420</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('The Untouchables')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 10: Pakistan or Partition of India -->
+      <div class="book-card" data-category="ambedkar">
+        <div class="book-cover">
+          <span class="badge-discount">28% OFF</span>
+          <img src="https://imgs.search.brave.com/UAdlkjybZ4d-gAJtVUxaEUVUWDojV_81i6OXEyZUitI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzYxMi82MTIveGlm/MHEvc2hvcHN5LXJl/Z2lvbmFsYm9va3Mv/bC9vL2wvMjAyMy0x/c3QtYXJ1c2hpLWJv/b2stZW50ZXJwcmlz/ZXMtcGFwZXJiYWNr/LWVuZ2xpc2gtcGFr/aXN0YW4tb3Itb3Jp/Z2luYWwtaW1haGgy/a2pkYmhycTV6Zy5q/cGVnP3E9NzA" alt="Pakistan or The Partition of India" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dr. B. R. Ambedkar</span>
+          <h3 class="book-title">Pakistan or The Partition of India</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 340</span>
+            <span class="price-cut">₹ 475</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Pakistan or Partition of India')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 11: Philosophy of Hinduism & Riddles -->
+      <div class="book-card" data-category="ambedkar">
+        <div class="book-cover">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/otKDMqAllTgCudJgcY2TMKPIS4clPIMMNTQ_GGLSWts/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9qYWli/aGltb25saW5lc3Rv/cmUuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDE5LzAyLzc3/My0zMDB4NDUwLmpw/Zw" alt="Riddles in Hinduism" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Dr. B. R. Ambedkar</span>
+          <h3 class="book-title">Riddles in Hinduism & Critical Writings</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 290</span>
+            <span class="price-cut">₹ 420</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Riddles in Hinduism')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: MUNSHI PREMCHAND CLASSICS -->
+
+      <!-- Book 12: Godan (गोदान) -->
+      <div class="book-card" data-category="premchand">
+        <div class="book-cover">
+          <span class="badge-discount">45% OFF</span>
+          <img src="https://imgs.search.brave.com/945M7oovz3pFSR_ywsm8mUqYtXM6adWXdqYxfd14jY4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NTFHREdQRUY0MlMu/anBn" alt="Godan Munshi Premchand" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Munshi Premchand</span>
+          <h3 class="book-title">गोदान (Godan — Epic Hindi Novel)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 165</span>
+            <span class="price-cut">₹ 299</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Godan')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 13: Gaban (गबन) -->
+      <div class="book-card" data-category="premchand">
+        <div class="book-cover">
+          <span class="badge-discount">35% OFF</span>
+          <img src="https://imgs.search.brave.com/Nx3GDk74r0qh3ZNp6ztfgqWBpk8ieiyEI2MktceeBgE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzEtVCtjNHYyQkwu/anBn" alt="Gaban Munshi Premchand" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Munshi Premchand</span>
+          <h3 class="book-title">गबन (Gaban — Masterpiece of Realistic Fiction)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 150</span>
+            <span class="price-cut">₹ 230</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Gaban')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 14: Seva Sadan (सेवासदन) -->
+      <div class="book-card" data-category="premchand">
+        <div class="book-cover">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/tSF1wr3ByejnkUKLyngUQEk4eoAfyqKnITXdlkqM0-U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzYxMi82MTIveGlm/MHEvYm9vay9wL2Ev/di9zZXZhLXNhZGFu/LWJvb2stYnktbXVu/c2hpLXByZW1jaGFu/ZC1vcmlnaW5hbC1p/bWFoejh4cnNncm5k/eDhhLmpwZWc_cT03/MA" alt="Seva Sadan" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Munshi Premchand</span>
+          <h3 class="book-title">सेवासदन (Seva Sadan)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 140</span>
+            <span class="price-cut">₹ 200</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Seva Sadan')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 15: Premchand & Manto Ki Anmol Kahaniya (Combo) -->
+      <div class="book-card" data-category="premchand">
+        <div class="book-cover">
+          <span class="badge-discount">40% OFF</span>
+          <img src="https://imgs.search.brave.com/67wFsgFL5r2lNkMKpRXA4tRhxo9jp7iLfRO2z8NeIzs/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzYxMi82MTIveGlm/MHEvcmVnaW9uYWxi/b29rcy9iL3YvbC9z/ZXQtb2YtMi1ib29r/LXByZW1jaGFuZC1r/aS1hbm1vbC1rYWhh/bml5YS1tYW50by1r/aS1hbm1vbC1vcmln/aW5hbC1pbWFoanUz/M2hqeXV4dGpyLmpw/ZWc_cT03MA" alt="Premchand Manto Kahaniya Set" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Premchand & Manto</span>
+          <h3 class="book-title">प्रेमचंद और मंटो की अनमोल कहानियाँ (Set of 2)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 280</span>
+            <span class="price-cut">₹ 470</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Premchand Manto Stories Combo')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 4: OSHO RAJNEESH DISCOURSES -->
+
+      <!-- Book 16: Kahai Kabir Diwana -->
+      <div class="book-card" data-category="osho">
+        <div class="book-cover">
+          <span class="badge-discount">25% OFF</span>
+          <img src="https://imgs.search.brave.com/E-2b_h3lTWlC7FYeivGO6aMS0q-QLvGC6z9TW4qfUSQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/YmVzdGhpbmRpYm9v/a3MuY29tL3dwLWNv/bnRlbnQvdXBsb2Fk/cy8yMDI0LzAyL0th/aGFpLUthYmlyLURp/d2FuYS1ieS1vc2hv/LWluLWhpbmRpLTEu/anBnLndlYnA" alt="Kahai Kabir Diwana Osho" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Osho Rajneesh</span>
+          <h3 class="book-title">कहै कबीर दीवाना (Kahai Kabir Diwana)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 320</span>
+            <span class="price-cut">₹ 425</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Kahai Kabir Diwana')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 17: Christianity: Deadly Poison & Zen -->
+      <div class="book-card" data-category="osho">
+        <div class="book-cover">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/k_oj6j4tfvHK1kk0SNpY69aT8KAC4_Occ2pfC7cCJtk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9vc2hv/Ym9va3Npbm11bWJh/aS5jb20vd3AtY29u/dGVudC91cGxvYWRz/LzIwMjMvMDEvT3No/by1SYWpuZWVzaC1D/aHJpc3RpYW5pdHkt/VGhlLURlYWRsaWVz/dC1Qb2lzb24tWmVu/LTMwMHgzMDAuanBn" alt="Christianity Deadly Poison Zen" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Osho Rajneesh</span>
+          <h3 class="book-title">Christianity: The Deadliest Poison & Zen</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 350</span>
+            <span class="price-cut">₹ 500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Christianity Poison Zen')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 18: Main Mrityu Sikhata Hoon -->
+      <div class="book-card" data-category="osho">
+        <div class="book-cover">
+          <span class="badge-discount">35% OFF</span>
+          <img src="https://imgs.search.brave.com/G2yThfg4hntx1ttdFGG8w0fq0Wqt7D798WbWc2ogYP0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzYxMi82MTIveGlm/MHEvcmVnaW9uYWxi/b29rcy9pL2ovdy9v/c2hvLW1haW4tbXJp/dHl1LXNpa2hhdGEt/aG9vbi1ib29rLWhp/bmRpLWRlYXRoLWxp/ZmUtdHJ1dGgtb3Jp/Z2luYWwtaW1haHo2/d3l4cHp6NnBrcC5q/cGVnP3E9NzA" alt="Main Mrityu Sikhata Hoon" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Osho Rajneesh</span>
+          <h3 class="book-title">मैं मृत्यु सिखाता हूँ (Life & Death Truth)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 260</span>
+            <span class="price-cut">₹ 400</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Main Mrityu Sikhata Hoon')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 19: Sambhog Se Samadhi Ki Aur -->
+      <div class="book-card" data-category="osho">
+        <div class="book-cover">
+          <span class="badge-discount">40% OFF</span>
+          <img src="https://imgs.search.brave.com/G0v64oroSBYAtPVomdGFUQYDs1IeQnET53fKT-RVIr8/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzYxMi82MTIveGlm/MHEvcmVnaW9uYWxi/b29rcy82L2svcy9z/YW1iaG9nLXNlLXNh/bWFkaGkta2ktYXVy/LW9yaWdpbmFsLWlt/YWhocHU2ZzZkYTdw/YzUuanBlZz9xPTcw" alt="Sambhog Se Samadhi Ki Aur" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Osho Rajneesh</span>
+          <h3 class="book-title">संभोग से समाधि की ओर (Celebrated Discourse)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 299</span>
+            <span class="price-cut">₹ 499</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Sambhog Se Samadhi Ki Aur')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 20: Dhyan Sutra / Meditation -->
+      <div class="book-card" data-category="osho">
+        <div class="book-cover">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/jToZJLUh6Bhqgd2ewakW5aqvVpiCwtqq4Lmosq9MY6I/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/ZXhvdGljaW5kaWEu/Y29tL2ltYWdlcy9w/cm9kdWN0cy90aHVt/Ym5haWxzL3Q0MDB4/MzAwL2Jvb2tzLTIw/MTktMDE0L25hdzM4/OC5qcGc" alt="Dhyan Sutra" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Osho Rajneesh</span>
+          <h3 class="book-title">ध्यान सूत्र (Dhyan Sutra — Steps to Awareness)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 210</span>
+            <span class="price-cut">₹ 300</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Dhyan Sutra')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 21: Gita Darshan -->
+      <div class="book-card" data-category="osho">
+        <div class="book-cover">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/I5itomRZs_n5p0320Sx-M-RIQfgVJv3l_A_0IIcX_CA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9vc2hv/Ym9va3Npbm11bWJh/aS5jb20vd3AtY29u/dGVudC91cGxvYWRz/L2VsZW1lbnRvci90/aHVtYnMvT3Noby1H/aXRhLURhcnNoYW4t/cTBkYzhhand6NGUy/ZHpoMmZ4cmY2ZDR4/bmF2dmRkdTBjdHV4/a3hxcDk0LmpwZw" alt="Osho Gita Darshan" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Osho Rajneesh</span>
+          <h3 class="book-title">गीता दर्शन (Gita Darshan — Multi-Volume Insight)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 420</span>
+            <span class="price-cut">₹ 600</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Gita Darshan')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Book 22: Kranti Beej / Awakening -->
+      <div class="book-card" data-category="osho">
+        <div class="book-cover">
+          <span class="badge-discount">20% OFF</span>
+          <img src="https://imgs.search.brave.com/BGEVQZlJuOlkJSNiKDmRW7stzWVT-OUg00DffeTSlXo/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ib29r/a2lzaC5jb20vY2Ru/L3Nob3AvZmlsZXMv/S0FCOTIyMC5qcGc_/dj0xNzg2MzU5MDg5/JndpZHRoPTUzMw" alt="Kranti Beej Osho" />
+        </div>
+        <div class="card-info">
+          <span class="book-author">Osho Rajneesh</span>
+          <h3 class="book-title">क्रांति बीज (Kranti Beej — Seeds of Revolution)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 195</span>
+            <span class="price-cut">₹ 245</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Kranti Beej')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Floating Cart Alert -->
+  <div id="cartToast" class="toast">
+    <i class="fa-solid fa-circle-check" style="color: #f59e0b; font-size: 1.15rem;"></i>
+    <span id="toastMsg">Book added to your cart!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Designed with clean UI.</p>
+    <div style="margin-top: 8px;">
+      <a href="index.html">Home</a> |
+      <a href="cart.html">View Cart</a> |
+      <a href="dashboard.html">Admin Dashboard</a> |
+      <a href="product cancelation.html">Cancellation Policy</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let cartCount = 0;
+
+    function addToCart(title) {
+      cartCount++;
+      document.getElementById('cartCount').innerText = cartCount;
+
+      const toast = document.getElementById('cartToast');
+      document.getElementById('toastMsg').innerText = `"${title}" added to your cart!`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function filterBooks(category) {
+      const cards = document.querySelectorAll('.book-card');
+      const btns = document.querySelectorAll('.filter-btn');
+
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

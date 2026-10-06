@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saree Collection — RESUM Ethnic & Designer Wear</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #ec4899;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --badge-bg: #fdf2f8;
+      --badge-text: #db2777;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #fcfaf8;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #e11d48, #4f46e5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #e11d48;
+    }
+
+    .cart-indicator {
+      background: #ffe4e6;
+      color: #e11d48;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .cart-indicator:hover {
+      background: #e11d48;
+      color: #fff;
+    }
+
+    /* --- Hero Section with Custom Requested Images --- */
+    .hero-section {
+      background: linear-gradient(135deg, #180517 0%, #2e0828 50%, #170d2b 100%);
+      color: #ffffff;
+      padding: 60px 5% 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-container {
+      max-width: 1250px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.1rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff, #fbcfe8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-badges {
+        justify-content: center;
+      }
+    }
+
+    .badge-pill {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      backdrop-filter: blur(8px);
+    }
+
+    /* Hero Images Showcase */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      position: relative;
+    }
+
+    .hero-main-card {
+      width: 250px;
+      height: 340px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      transform: rotate(-3deg);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-main-card:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+
+    .hero-sec-card {
+      width: 230px;
+      height: 310px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      transform: rotate(4deg) translateY(30px);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-sec-card:hover {
+      transform: rotate(0deg) scale(1.03) translateY(10px);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Filter Strip */
+    .filter-wrapper {
+      max-width: 1250px;
+      margin: 40px auto 10px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .category-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .tab-btn:hover, .tab-btn.active {
+      background: #e11d48;
+      border-color: #e11d48;
+      color: #ffffff;
+    }
+
+    /* Products Grid */
+    .container {
+      max-width: 1250px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 25px;
+    }
+
+    .saree-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .saree-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(225, 29, 72, 0.15);
+      border-color: rgba(225, 29, 72, 0.35);
+    }
+
+    .img-box {
+      width: 100%;
+      height: 330px;
+      background: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.45s ease;
+    }
+
+    .saree-card:hover .img-box img {
+      transform: scale(1.05);
+    }
+
+    .discount-tag {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid #fbcfe8;
+    }
+
+    .card-content {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .fabric-tag {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #db2777;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .saree-title {
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: auto;
+    }
+
+    .price-main {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .price-cut {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 8px;
+    }
+
+    .btn-cart {
+      background: #fdf2f8;
+      color: #be185d;
+      border: 1px solid #fbcfe8;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-cart:hover {
+      background: #fce7f3;
+      color: #9d174d;
+    }
+
+    .btn-order-now {
+      background: linear-gradient(135deg, #e11d48, #be185d);
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(225, 29, 72, 0.25);
+    }
+
+    .btn-order-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(225, 29, 72, 0.4);
+    }
+
+    /* Floating Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 30px 5% 20px;
+      border-top: 1px solid #1e293b;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav>
+    <a href="index.html" class="brand"><i class="fa-solid fa-gem"></i> RESUM</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="saari.html" class="active">Sarees</a></li>
+      <li><a href="shirt.html">Shirts</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li>
+        <a href="cart.html" class="cart-indicator">
+          <i class="fa-solid fa-bag-shopping"></i> Cart (<span id="cartCount">0</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="badge-pill" style="display:inline-block; margin-bottom: 12px; color: #fbcfe8;">✨ Royal Heritage Collection</div>
+        <h1>Timeless Elegance & Handcrafted Sarees</h1>
+        <p>Pure Banarasi silk, Ombre party wear georgette, and modern organza drapes designed for celebratory grace.</p>
+        
+        <div class="hero-badges">
+          <span class="badge-pill"><i class="fa-solid fa-certificate"></i> 100% Authentic Silk</span>
+          <span class="badge-pill"><i class="fa-solid fa-truck-fast"></i> Express Delivery</span>
+          <span class="badge-pill"><i class="fa-solid fa-hand-holding-heart"></i> Handwoven Artisans</span>
+        </div>
+
+        <div>
+          <a href="book now.html" class="btn-order-now" style="display: inline-flex; padding: 12px 26px; font-size: 0.95rem; border-radius: 999px;">
+            <i class="fa-solid fa-bolt"></i> Instant Saree Booking
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Featured Visuals -->
+      <div class="hero-visual">
+        <div class="hero-main-card">
+          <img src="https://imgs.search.brave.com/1-j4pk6K5SDS1yfePTuD7cBimg7Y-zbiwCKx3Z01VOc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTE4/OTE5MTUzOC9waG90/by9wcmV0dHktaW5k/aWFuLXlvdW5nLXdv/bWFuLWdyZWV0aW5n/LWluLXRyYWRpdGlv/bmFsLXNhcmVlLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1w/SXRYZkxLMmxlNjVF/YWNuN3N1cHhLTUk5/bDViejVwMEh1QWsz/S1F4c21jPQ" alt="Traditional Indian Namaste Saree" class="hero-img" />
+        </div>
+        <div class="hero-sec-card">
+          <img src="https://imgs.search.brave.com/nbabMwg_z07VLSQTjxJaAgUD8snrMKgr08mrMcFNF2I/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/YWFyaWdpcmwuY29t/L2Nkbi9zaG9wL2Zp/bGVzLzgyMzQ0QThC/LUVERjQtNDgxRi04/Q0VFLTc3RTYxQkYx/ODhEQy5qcGc_dj0x/NzI1OTExMjY3Jndp/ZHRoPTEyODQ" alt="Designer Saree Draping" class="hero-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Strip -->
+  <div class="filter-wrapper">
+    <div class="category-tabs">
+      <button class="tab-btn active" onclick="filterSarees('all')">All Sarees</button>
+      <button class="tab-btn" onclick="filterSarees('silk')">Pure Silk & Banarasi</button>
+      <button class="tab-btn" onclick="filterSarees('party')">Party & Contemporary</button>
+      <button class="tab-btn" onclick="filterSarees('casual')">Everyday Drapes</button>
+    </div>
+
+    <a href="search.html" style="font-size: 0.88rem; color: #e11d48; text-decoration: none; font-weight: 600;">
+      <i class="fa-solid fa-magnifying-glass"></i> Search More
+    </a>
+  </div>
+
+  <!-- Saree Showcase Grid -->
+  <main class="container">
+    <div class="grid" id="sareeGrid">
+
+      <!-- Item 1 -->
+      <div class="saree-card" data-category="party">
+        <div class="img-box">
+          <span class="discount-tag">35% OFF</span>
+          <img src="https://imgs.search.brave.com/xtMb8mEiGsEMHq6p0q4zRgf9d6V3b9qSaKe_6nlw7j4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/YWFyaWdpcmwuY29t/L2Nkbi9zaG9wL2Zp/bGVzL3NlbGVuZV9z/YWFyaV8yLmpwZz92/PTE3ODQ2MjI1NTAm/d2lkdGg9NjQ5" alt="Selene Metallic Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Organza Metallic</span>
+          <h3 class="saree-title">Selene Shimmer Evening Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 3,499</span>
+            <span class="price-cut">₹ 5,399</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Selene Shimmer Evening Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2 -->
+      <div class="saree-card" data-category="party">
+        <div class="img-box">
+          <span class="discount-tag">30% OFF</span>
+          <img src="https://imgs.search.brave.com/XDE8gKU-d7BuAcxMNgT1Z-4NWkd9gGqkScQ8PeYtb5U/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/YWFyaWdpcmwuY29t/L2Nkbi9zaG9wL2Zp/bGVzL3Jvc2VsdW5l/X3NhYXJpLmpwZz92/PTE3ODQyMDYxNjAm/d2lkdGg9OTQx" alt="Roselune Designer Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Soft Georgette</span>
+          <h3 class="saree-title">Roselune Delicate Pastel Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,899</span>
+            <span class="price-cut">₹ 4,149</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Roselune Delicate Pastel Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3 -->
+      <div class="saree-card" data-category="casual">
+        <div class="img-box">
+          <span class="discount-tag">45% OFF</span>
+          <img src="https://imgs.search.brave.com/8crzsHKaumWlDUJMiIMllHNHHLu68B2bM20ql3ZgLFY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMubWVlc2hvLmNv/bS9pbWFnZXMvcHJv/ZHVjdHMvMjA1MzQ4/Nzc1L3B4bmxxXzUx/Mi53ZWJw" alt="Ethnic Floral Printed Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Poly Chiffon</span>
+          <h3 class="saree-title">Ethnic Floral Print Daily Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 799</span>
+            <span class="price-cut">₹ 1,450</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Ethnic Floral Print Daily Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4 -->
+      <div class="saree-card" data-category="silk">
+        <div class="img-box">
+          <span class="discount-tag">40% OFF</span>
+          <img src="https://imgs.search.brave.com/vf9iVAYosNgieulWTuZPxNNsoYsWU79_NawaMLRFC08/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/YWFyaWdpcmwuY29t/L2Nkbi9zaG9wL2Zp/bGVzL09tYnJfU2ls/a19TYXJlZV9GaWVy/eV9SZWQuanBnP3Y9/MTc1MTQwNTc1MCZ3/aWR0aD01NTA" alt="Fiery Red Ombre Silk Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Ombre Tussar Silk</span>
+          <h3 class="saree-title">Fiery Crimson Ombre Silk Draping</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 4,199</span>
+            <span class="price-cut">₹ 6,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Fiery Crimson Ombre Silk Draping')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5 -->
+      <div class="saree-card" data-category="silk">
+        <div class="img-box">
+          <span class="discount-tag">25% OFF</span>
+          <img src="https://imgs.search.brave.com/NgPMc8zoauJEEyUWtkXuzGQ1x4Ka_EMVWlU-b9wB_xc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzRlL2Ex/LzM1LzRlYTEzNWQz/OWE3ZGE5YWI1YThl/NWFhYTFlYzQ4OWRj/LmpwZw" alt="Traditional Kanjivaram Silk Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Heritage Kanjivaram</span>
+          <h3 class="saree-title">Grand Zari Border Traditional Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 5,890</span>
+            <span class="price-cut">₹ 7,890</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Grand Zari Border Traditional Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6 -->
+      <div class="saree-card" data-category="party">
+        <div class="img-box">
+          <span class="discount-tag">30% OFF</span>
+          <img src="https://imgs.search.brave.com/dQH5xTVYaCzQ7umQ9LvEHXLZbbJjjF7kt1xehf8AhIk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/YWFyaWdpcmwuY29t/L2Nkbi9zaG9wL2Zp/bGVzL1NpeWFoc2Fy/ZWU1LndlYnA_dj0x/Nzg3MzE5NzM0Jndp/ZHRoPTEzOTQ" alt="Siyah Midnight Black Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Satin Silk</span>
+          <h3 class="saree-title">Siyah Royal Midnight Black Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 3,750</span>
+            <span class="price-cut">₹ 5,200</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Siyah Royal Midnight Black Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 7 -->
+      <div class="saree-card" data-category="casual">
+        <div class="img-box">
+          <span class="discount-tag">35% OFF</span>
+          <img src="https://imgs.search.brave.com/Y_kOJtoPpPKIuQjceI-rAMjTTUv7TCRPw2asab0UTiY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/YWFyaWdpcmwuY29t/L2Nkbi9zaG9wL2Zp/bGVzL0V2ZXJ5ZGF5/X2Nhc3VhbC5qcGc_/dj0xNzg0MjgzMzkz/JndpZHRoPTU0MA" alt="Everyday Linen Cotton Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Linen Cotton</span>
+          <h3 class="saree-title">Everyday Soft Mulmul Cotton Drape</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,299</span>
+            <span class="price-cut">₹ 1,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Everyday Soft Mulmul Cotton Drape')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 8 -->
+      <div class="saree-card" data-category="silk">
+        <div class="img-box">
+          <span class="discount-tag">28% OFF</span>
+          <img src="https://imgs.search.brave.com/lD0o_nyC2SPcitqsu5o2YQsPl2fDYzFHjFWpEaKxmBQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzliLzYw/L2UzLzliNjBlMzVk/ZWU2MDI0NWZhYzgz/OTc5N2NmNzM0NzIx/LmpwZw" alt="Golden Thread Banarasi Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Pure Banarasi Brocade</span>
+          <h3 class="saree-title">Golden Woven Banarasi Brocade</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 4,899</span>
+            <span class="price-cut">₹ 6,800</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Golden Woven Banarasi Brocade')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 9 -->
+      <div class="saree-card" data-category="party">
+        <div class="img-box">
+          <span class="discount-tag">32% OFF</span>
+          <img src="https://imgs.search.brave.com/SZE6RHBYjZXBGK-82U-lOPrmlO2NRZHvcQLEqEr97GQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzIyL2U1/L2IzLzIyZTViM2E4/NzU0YzJmZGQ3N2Yz/NGZlNDg5OTNmN2Zj/LmpwZw" alt="Ruby Wedding Silk Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Bridal Ruby</span>
+          <h3 class="saree-title">Ruby Embroidered Wedding Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 6,499</span>
+            <span class="price-cut">₹ 9,500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Ruby Embroidered Wedding Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 10 -->
+      <div class="saree-card" data-category="party">
+        <div class="img-box">
+          <span class="discount-tag">40% OFF</span>
+          <img src="https://imgs.search.brave.com/nKfdbnieuWYw1KG6U2N0ej-f7l6Fjcvv6KidH3P1UIw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/YWFyaWdpcmwuY29t/L2Nkbi9zaG9wL2Zp/bGVzL3BhcnR5d2Vh/cl9mYWlyeWRldy53/ZWJwP3Y9MTc4NTMx/OTgwMSZ3aWR0aD0x/MDIy" alt="Fairydew Party Wear Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Fairydew Chiffon</span>
+          <h3 class="saree-title">Fairydew Designer Cocktail Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 3,199</span>
+            <span class="price-cut">₹ 5,300</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Fairydew Designer Cocktail Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 11 -->
+      <div class="saree-card" data-category="party">
+        <div class="img-box">
+          <span class="discount-tag">30% OFF</span>
+          <img src="https://imgs.search.brave.com/3th0uLs4A9Z82d23cVYlIWNkNEsoNMR4as3qcXFr0cc/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/YWFyaWdpcmwuY29t/L2Nkbi9zaG9wL2Zp/bGVzL1Ntb2t5X0Js/YWNrX3NhcmVlXzIu/anBnP3Y9MTc3NTcz/MDYwNyZ3aWR0aD02/NDk" alt="Smoky Black Velvet Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Smoky Velvet Satin</span>
+          <h3 class="saree-title">Smoky Charcoal Velvet Party Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 3,999</span>
+            <span class="price-cut">₹ 5,700</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Smoky Charcoal Velvet Party Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 12 -->
+      <div class="saree-card" data-category="silk">
+        <div class="img-box">
+          <span class="discount-tag">50% OFF</span>
+          <img src="https://imgs.search.brave.com/-fhRjJFWqnG8dDEYTvUmq71RNh5spLEOH2SOPGRT6jE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90NC5m/dGNkbi5uZXQvanBn/LzA4LzE3Lzk3LzAx/LzM2MF9GXzgxNzk3/MDEwNl9kYWtmU1Jy/ekVITVc4UGhnbm1L/WlZCWTAwU0Zud1V0/Si5qcGc" alt="Regal Silk Border Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Regal Art Silk</span>
+          <h3 class="saree-title">Regal Maroon Festival Art Silk</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,799</span>
+            <span class="price-cut">₹ 3,599</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Regal Maroon Festival Art Silk')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 13 -->
+      <div class="saree-card" data-category="casual">
+        <div class="img-box">
+          <span class="discount-tag">38% OFF</span>
+          <img src="https://imgs.search.brave.com/z2U5gfo2aDOnxqAiDiM98yIYwbnN9zI3jtBZrVSiYUI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NjE3d3JWNFhVVkwu/anBn" alt="Daily Georgette Printed Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Printed Georgette</span>
+          <h3 class="saree-title">Summer Floral Lightweight Drape</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 899</span>
+            <span class="price-cut">₹ 1,449</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Summer Floral Lightweight Drape')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 14 -->
+      <div class="saree-card" data-category="silk">
+        <div class="img-box">
+          <span class="discount-tag">35% OFF</span>
+          <img src="https://imgs.search.brave.com/exuzZliHbgkhowQNGKQXmorQwHLFuYFPJsa-Zc0mzkQ/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/OTFydVBySi16Z0wu/anBn" alt="Royal Wedding Zari Saree" />
+        </div>
+        <div class="card-content">
+          <span class="fabric-tag">Heavy Bridal Silk</span>
+          <h3 class="saree-title">Royal Golden Pallu Festive Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 4,499</span>
+            <span class="price-cut">₹ 6,899</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Royal Golden Pallu Festive Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-order-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Floating Cart Alert -->
+  <div id="cartToast" class="toast">
+    <i class="fa-solid fa-circle-check" style="color: #ec4899; font-size: 1.15rem;"></i>
+    <span id="toastMsg">Saree added to your cart!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Designed with clean UI.</p>
+    <div style="margin-top: 8px;">
+      <a href="index.html">Home</a> |
+      <a href="shirt.html">Shirts</a> |
+      <a href="cart.html">View Cart</a> |
+      <a href="dashboard.html">Admin Dashboard</a> |
+      <a href="product cancelation.html">Cancellations</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let cartCount = 0;
+
+    function addToCart(title) {
+      cartCount++;
+      document.getElementById('cartCount').innerText = cartCount;
+
+      const toast = document.getElementById('cartToast');
+      document.getElementById('toastMsg').innerText = `"${title}" added to your cart!`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function filterSarees(category) {
+      const cards = document.querySelectorAll('.saree-card');
+      const tabs = document.querySelectorAll('.tab-btn');
+
+      tabs.forEach(t => t.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

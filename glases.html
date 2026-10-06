@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vision & Eyewear Studio — RESUM Optics</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --cyan: #06b6d4;
+      --cyan-glow: rgba(6, 182, 212, 0.4);
+      --violet-glow: rgba(99, 102, 241, 0.35);
+      --dark: #090d16;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --border-color: rgba(226, 232, 240, 0.9);
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --accent: #10b981;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- Glowing Navigation --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(9, 13, 22, 0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .brand {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #38bdf8, #818cf8, #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #cbd5e1;
+      font-weight: 600;
+      font-size: 0.92rem;
+      transition: all 0.25s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #38bdf8;
+      text-shadow: 0 0 12px rgba(56, 189, 248, 0.6);
+    }
+
+    .cart-pill {
+      background: linear-gradient(135deg, rgba(6, 182, 212, 0.2), rgba(99, 102, 241, 0.2));
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      color: #38bdf8;
+      padding: 7px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(6, 182, 212, 0.2);
+    }
+
+    .cart-pill:hover {
+      background: #38bdf8;
+      color: #090d16;
+      box-shadow: 0 0 25px rgba(56, 189, 248, 0.6);
+      transform: translateY(-2px);
+    }
+
+    /* --- 100x Enhanced Hero Section --- */
+    .hero-optics {
+      background: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #090d16 70%, #020617 100%);
+      color: #fff;
+      padding: 70px 5% 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Cyber Ambient Orbs */
+    .orb-1 {
+      position: absolute;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, var(--cyan-glow) 0%, transparent 70%);
+      top: -150px;
+      left: 5%;
+      filter: blur(70px);
+      border-radius: 50%;
+      animation: pulse 8s ease-in-out infinite alternate;
+    }
+
+    .orb-2 {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, var(--violet-glow) 0%, transparent 70%);
+      bottom: -150px;
+      right: 5%;
+      filter: blur(80px);
+      border-radius: 50%;
+      animation: pulse 10s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.15) translate(30px, -20px); }
+    }
+
+    .hero-layout {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 45px;
+      position: relative;
+      z-index: 10;
+    }
+
+    @media (max-width: 960px) {
+      .hero-layout {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-badge-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(56, 189, 248, 0.4);
+      padding: 6px 18px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+    }
+
+    .hero-layout h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 3.4rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      background: linear-gradient(135deg, #ffffff 40%, #93c5fd 80%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -1px;
+    }
+
+    .hero-layout p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      line-height: 1.65;
+      margin-bottom: 30px;
+      max-width: 620px;
+    }
+
+    .specs-chips {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 35px;
+    }
+
+    @media (max-width: 960px) {
+      .specs-chips {
+        justify-content: center;
+      }
+    }
+
+    .spec-pill {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      padding: 8px 16px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .spec-pill i {
+      color: #38bdf8;
+    }
+
+    /* 3D Multi-Perspective Hero Images Collage */
+    .hero-visual-3d {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      perspective: 1000px;
+    }
+
+    .hero-img-card {
+      border-radius: 20px;
+      overflow: hidden;
+      border: 1.5px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .hero-img-card:hover {
+      transform: translateY(-8px) scale(1.03);
+      border-color: #38bdf8;
+      box-shadow: 0 25px 50px rgba(56, 189, 248, 0.35);
+    }
+
+    .hero-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-tall {
+      height: 330px;
+    }
+
+    .card-shift {
+      transform: translateY(25px);
+    }
+
+    /* Glass Tag on Image */
+    .floating-glass-tag {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      right: 12px;
+      background: rgba(9, 13, 22, 0.75);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* --- Interactive Filter Bar --- */
+    .filter-wrapper {
+      max-width: 1280px;
+      margin: 40px auto 10px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-filter {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-main);
+      padding: 10px 20px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-filter:hover, .btn-filter.active {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.2);
+    }
+
+    /* --- Optical Products Grid --- */
+    .container {
+      max-width: 1280px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 28px;
+    }
+
+    /* 100x Glass Card */
+    .glass-card {
+      background: var(--card-bg);
+      border: 1.5px solid var(--border-color);
+      border-radius: 24px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px -5px rgba(99, 102, 241, 0.16);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+
+    .img-canvas {
+      width: 100%;
+      height: 270px;
+      background: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+    }
+
+    .img-canvas img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+      filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.12));
+    }
+
+    .glass-card:hover .img-canvas img {
+      transform: scale(1.08) rotate(-1deg);
+    }
+
+    .tag-ribbon {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      color: #38bdf8;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 5px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      letter-spacing: 0.04em;
+    }
+
+    .card-meta {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .eyewear-brand {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .eyewear-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 20px;
+      margin-top: auto;
+    }
+
+    .current-val {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .cut-val {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.15fr;
+      gap: 10px;
+    }
+
+    .btn-add-cart {
+      background: #f1f5f9;
+      color: var(--dark);
+      border: 1px solid var(--border-color);
+      padding: 11px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+    }
+
+    .btn-add-cart:hover {
+      background: #e2e8f0;
+      color: var(--primary);
+    }
+
+    .btn-buy {
+      background: linear-gradient(135deg, var(--primary), var(--cyan));
+      color: #ffffff;
+      padding: 11px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+    }
+
+    .btn-buy:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 18px rgba(99, 102, 241, 0.4);
+    }
+
+    /* Toast Alert */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.1);
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #090d16;
+      color: #94a3b8;
+      padding: 35px 5% 25px;
+      border-top: 1px solid #1e293b;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #38bdf8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html" class="brand">
+      <i class="fa-solid fa-glasses" style="color: #38bdf8;"></i> RESUM OPTICS
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="glases.html" class="active">Eyewear Studio</a></li>
+      <li><a href="cap.html">Caps & Hats</a></li>
+      <li><a href="shirt.html">Shirts</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li>
+        <a href="cart.html" class="cart-pill">
+          <i class="fa-solid fa-bag-shopping"></i> Optical Cart (<span id="cartCount">0</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- 100x Enhanced Hero Section with Requested Hero Images -->
+  <section class="hero-optics">
+    <div class="orb-1"></div>
+    <div class="orb-2"></div>
+
+    <div class="hero-layout">
+      <div>
+        <div class="hero-badge-tag">
+          <i class="fa-solid fa-microchip"></i> Next-Gen Visual Engineering
+        </div>
+        <h1>Precision Optics Meets High-Street Fashion</h1>
+        <p>Experience blue-block anti-fatigue lenses, titanium ultra-light frames, smart AR vision prototypes, and feather-soft flexible kids eyeglasses.</p>
+
+        <div class="specs-chips">
+          <div class="spec-pill"><i class="fa-solid fa-shield-halved"></i> 99.8% Blue Light Cut</div>
+          <div class="spec-pill"><i class="fa-solid fa-feather"></i> TR90 Memory Material</div>
+          <div class="spec-pill"><i class="fa-solid fa-eye"></i> Anti-Glare Hydrophobic</div>
+        </div>
+
+        <div>
+          <a href="book now.html" class="btn-buy" style="display: inline-flex; padding: 14px 32px; font-size: 1rem; border-radius: 999px;">
+            <i class="fa-solid fa-bolt"></i> Book Eye-Test & Frames Now
+          </a>
+        </div>
+      </div>
+
+      <!-- 3D Collage of Provided Hero Images -->
+      <div class="hero-visual-3d">
+        <!-- Hero Image 1: Futuristic AI Smart Glass Concept -->
+        <div class="hero-img-card card-tall">
+          <img src="https://imgs.search.brave.com/OR2GF_PhG_MZF94jxjYe4mlBAnbk9YMRMMymfD1CuY0/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMjI2/NDMwNDkxOC9waG90/by9haS1lbmhhbmNl/ZC1zbWFydC1nbGFz/c2VzLWNvbmNlcHQt/d2l0aC1mdXR1cmlz/dGljLWRpZ2l0YWwt/aW50ZXJmYWNlLXJl/ZmxlY3Rpb24tYXVn/bWVudGVkLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz04Nm1D/MjBHZlFkcGQtaWI3/c00ycVNzaEFTaEp3/N05QUXBhMm9fRW5U/RkdjPQ" alt="AI Smart Glass Vision" />
+          <div class="floating-glass-tag">
+            <span>AI Augmented HUD</span>
+            <i class="fa-solid fa-circle" style="color: #10b981; font-size: 0.6rem;"></i>
+          </div>
+        </div>
+
+        <!-- Hero Image 2: Studio Model Portrait -->
+        <div class="hero-img-card card-tall card-shift">
+          <img src="https://imgs.search.brave.com/CVkqgAN3m_NkLAtpHONRNBkJA1ZUQ2Twsw2hotKO_rA/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvNTc1/MjI0Ny9wZXhlbHMt/cGhvdG8tNTc1MjI0/Ny5qcGVnP2NzPXRp/bnlzcmdiJmRwcj0x/Jnc9NTAw" alt="Designer Editorial Eyewear" />
+          <div class="floating-glass-tag">
+            <span>Editorial Studio Fit</span>
+            <i class="fa-solid fa-sparkles" style="color: #f59e0b;"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Filter Bar -->
+  <div class="filter-wrapper">
+    <div class="filter-pills">
+      <button class="btn-filter active" onclick="filterEyewear('all')">All Eyewear</button>
+      <button class="btn-filter" onclick="filterEyewear('smart')">Smart & Blue Light</button>
+      <button class="btn-filter" onclick="filterEyewear('designer')">Designer Frames</button>
+      <button class="btn-filter" onclick="filterEyewear('kids')">Kids & Flexible</button>
+    </div>
+
+    <a href="search.html" style="font-size: 0.88rem; color: #6366f1; text-decoration: none; font-weight: 700;">
+      <i class="fa-solid fa-magnifying-glass"></i> Search Frame Models
+    </a>
+  </div>
+
+  <!-- Eyewear Catalog Grid -->
+  <main class="container">
+    <div class="grid" id="eyewearGrid">
+
+      <!-- Item 1: Multi-Frames Portrait -->
+      <div class="glass-card" data-category="designer">
+        <div class="img-canvas">
+          <span class="tag-ribbon">TRENDING</span>
+          <img src="https://imgs.search.brave.com/VsyXGwf0FnR3SpAAQ44zRbEdxptoHw1dgwPfiRNvXCw/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTQ0/NTM5NDE2OC9waG90/by93b21hbi13aXRo/LWRpZmZlcmVudC1n/bGFzc2VzLW9uLWxp/Z2h0LWJhY2tncm91/bmQtY2xvc2V1cC5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/NWdmR0xBT1VXSFF1/d0J1QWF5YXR6ZnU4/MUdudXQ3dlhfTGRp/RTdRY2tsRT0" alt="Prism Contemporary Glasses" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">Studio Optics</span>
+          <h3 class="eyewear-title">Prism Multi-Look Contemporary Frames</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 1,799</span>
+            <span class="cut-val">₹ 2,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Prism Multi-Look Frames')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: Plastic Mockup Frame -->
+      <div class="glass-card" data-category="kids">
+        <div class="img-canvas">
+          <span class="tag-ribbon">ERGONOMIC</span>
+          <img src="https://imgs.search.brave.com/yiCHSN7ucXl72ev_3OYqiqBl6ME936HccCRtBUg-iTM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9zdGF0/aWMudmVjdGVlenku/Y29tL3N5c3RlbS9y/ZXNvdXJjZXMvdGh1/bWJuYWlscy8wNDAv/MzI3LzgyNy9zbWFs/bC9jaGlsZC1zLXBs/YXN0aWMtZnJhbWUt/Zm9yLWdsYXNzZXMt/bW9jay11cC1mb3It/dGhlLWRlc2lnbi1v/Zi1vcHRpY3Mtc3Rv/cmUtYW5kLXNob3At/ZXllLWNsaW5pYy1n/bGFzc2VzLWZvci1y/ZWFkaW5nLWFuZC1k/aXN0YW5jZS1jb3Jy/ZWN0aW9uLW9mLXNp/Z2h0LWJlYXV0aWZ1/bC1leWVnbGFzc2Vz/LXJpbS1waG90by5q/cGc" alt="Lightweight Reading Rim" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">SightCare Pro</span>
+          <h3 class="eyewear-title">Featherlight Flexible Correction Rim</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 899</span>
+            <span class="cut-val">₹ 1,450</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Featherlight Flexible Correction Rim')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Aesthetic Vintage Wire Frame -->
+      <div class="glass-card" data-category="designer">
+        <div class="img-canvas">
+          <span class="tag-ribbon">CLASSIC GOLD</span>
+          <img src="https://imgs.search.brave.com/svfrEpkAMvDiy1w9LRqa4zYzOEkmAIqte-X1RcB6qjM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzVkLzE4/LzNjLzVkMTgzY2Y2/OTJkMzU4MWI4YjI3/NDdjYzllYWVlMGI0/LmpwZw" alt="Vintage Round Wire Glasses" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">Heritage Line</span>
+          <h3 class="eyewear-title">Aesthetic Vintage Round Wire Rim</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 1,499</span>
+            <span class="cut-val">₹ 2,299</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Aesthetic Vintage Round Wire Rim')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4: Blue Vision Screen Glasses -->
+      <div class="glass-card" data-category="smart">
+        <div class="img-canvas">
+          <span class="tag-ribbon">BLUE CUT 99%</span>
+          <img src="https://imgs.search.brave.com/odZI6wvDKj850X5V-ulr6UtXfoqTzxV0CXylD3MULqk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM1/OTUwODgwMS9waG90/by9ibHVlLXZpc2lv/bi1nbGFzc2VzLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1X/Rnd5YjNuMHh6UnNj/Yll4YUtMRHJJeGk5/YjRqTE1NejR5X1Bk/d0I4RzVjPQ" alt="Blue Vision Anti Fatigue Glasses" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">ScreenShield</span>
+          <h3 class="eyewear-title">Cyber Blue Vision Anti-Fatigue Spectacles</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 1,199</span>
+            <span class="cut-val">₹ 1,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Cyber Blue Vision Spectacles')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5: Unsplash Premium Acetate Frame -->
+      <div class="glass-card" data-category="designer">
+        <div class="img-canvas">
+          <span class="tag-ribbon">PREMIUM ACETATE</span>
+          <img src="https://imgs.search.brave.com/yJz-8Th3tCe1BPG8Z_U8EZcn5-LMtr9ZNUck8Jm2mXU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9wbHVz/LnVuc3BsYXNoLmNv/bS9wcmVtaXVtX3Bo/b3RvLTE2OTI4MDk3/NTIzNDEtYWU5MWJl/NDMwMjQ2P2ZtPWpw/ZyZxPTYwJnc9MzAw/MCZhdXRvPWZvcm1h/dCZmaXQ9Y3JvcCZp/eGxpYj1yYi00LjEu/MCZpeGlkPU0zd3hN/akEzZkRCOE1IeHpa/V0Z5WTJoOE1UTjhm/R2RzWVhOelpYTWxN/akJtY21GdFpYeGxi/bnd3Zkh3d2ZIeDhN/QT09" alt="Executive Dark Acetate Eyewear" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">Milano Design</span>
+          <h3 class="eyewear-title">Executive Obsidian Acetate Spectacles</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 2,199</span>
+            <span class="cut-val">₹ 3,499</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Executive Obsidian Acetate')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6: LensCrafters Iconic Frame -->
+      <div class="glass-card" data-category="smart">
+        <div class="img-canvas">
+          <span class="tag-ribbon">ICONIC SHAPE</span>
+          <img src="https://imgs.search.brave.com/uX86-RKhMVIHWAHxyQMHw26QMaCzaOfyD-1wNoCkXeM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9hc3Nl/dHMyLmxlbnNjcmFm/dGVycy5jb20vY2Ru/LXJlY29yZC1maWxl/cy1waS8yZGFkYTBk/Yy1kOThlLTQ3YmUt/OTUyNS1iMmRjMDEx/MjM1YzIvY2NjMDBl/OGUtMjk5Ni00N2Uy/LTkyY2ItYjJkYzAx/MTI0MGYzLzBPVzgw/MDJfXzgwMDIwMl9f/UDIxX19zaGFkX19m/ci5wbmc" alt="Matte Black Smart Fit Frame" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">LensCraft Elite</span>
+          <h3 class="eyewear-title">Matte Shadow Ultra-Thin Wayfarer</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 2,490</span>
+            <span class="cut-val">₹ 3,800</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Matte Shadow Ultra-Thin Wayfarer')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 7: Close-Up Metal Eyewear -->
+      <div class="glass-card" data-category="designer">
+        <div class="img-canvas">
+          <span class="tag-ribbon">TITANIUM POLISH</span>
+          <img src="https://imgs.search.brave.com/r4mBk_CGczvC1Y1yxWiJKXk39Js7kFUqsWVYMlAfIfU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aHVt/YnMuZHJlYW1zdGlt/ZS5jb20vYi9nbGFz/c2VzLWV5ZXdlYXIt/Y2xvc2V1cC0yNDY0/ODE1OS5qcGc" alt="Polished Titanium Eyewear" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">Zenith Precision</span>
+          <h3 class="eyewear-title">Polished Titanium Rimless Profile</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 1,899</span>
+            <span class="cut-val">₹ 2,750</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Polished Titanium Rimless Profile')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 8: High Fashion Editorial Portrait -->
+      <div class="glass-card" data-category="designer">
+        <div class="img-canvas">
+          <span class="tag-ribbon">RUNWAY EDITION</span>
+          <img src="https://imgs.search.brave.com/1FbNLgB6e7nSyT9Lc2Kr9I7uPSn-0YtEcH8ix1MgiJE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2EwL2I3/L2VmL2EwYjdlZjIw/MDdmMzMwYTg5Mzgz/NWQ2NzE2OTc2N2Q1/LmpwZw" alt="High Fashion Sculpted Eyewear" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">Vogue Silhouette</span>
+          <h3 class="eyewear-title">Sculpted Geometric High-Fashion Frame</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 2,799</span>
+            <span class="cut-val">₹ 4,200</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Sculpted Geometric High-Fashion Frame')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 9: Vintage Etsy Handcrafted 1 -->
+      <div class="glass-card" data-category="designer">
+        <div class="img-canvas">
+          <span class="tag-ribbon">ARTISAN CRAFT</span>
+          <img src="https://imgs.search.brave.com/bEuh5g06SDY2BvqYx8baxT1unx5DmFv7s10WHkcRjFU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzY2Mzk1NDY1L3Iv/aWwvYzAwM2I4Lzgx/ODYxNDcxMjUvaWxf/MzAweDMwMC44MTg2/MTQ3MTI1X2hoOWsu/anBn" alt="Artisan Handcrafted Frame" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">Atelier Craft</span>
+          <h3 class="eyewear-title">Retro Artisan Tortoise Shell Reading Glasses</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 1,350</span>
+            <span class="cut-val">₹ 1,950</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Retro Artisan Tortoise Shell')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 10: Vintage Etsy Handcrafted 2 -->
+      <div class="glass-card" data-category="designer">
+        <div class="img-canvas">
+          <span class="tag-ribbon">BOHEMIAN CHIC</span>
+          <img src="https://imgs.search.brave.com/gLE5KjPiN7cfaXyTOlFbrWcHNY45ieNPSqQiXjoud2Y/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pLmV0/c3lzdGF0aWMuY29t/LzY2Mzk1NDY1L3Iv/aWwvNmNiMTAyLzgy/MTI3Mjg2NDEvaWxf/MzAweDMwMC44MjEy/NzI4NjQxXzZtd3Mu/anBn" alt="Bohemian Vintage Frame" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">Atelier Craft</span>
+          <h3 class="eyewear-title">Amber Warmth Handcrafted Everyday Glasses</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 1,420</span>
+            <span class="cut-val">₹ 2,100</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Amber Warmth Everyday Glasses')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 11: Indian Child Eyeglass Model -->
+      <div class="glass-card" data-category="kids">
+        <div class="img-canvas">
+          <span class="tag-ribbon">KIDS SAFE</span>
+          <img src="https://imgs.search.brave.com/LkALKuRf8aIB_URtZ0YD7QMwJ0g-K3GeTHEEcuP5M00/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNjc3/MTc5MzAwL3Bob3Rv/L2luZGlhbi1jaGls/ZC13ZWFyLWV5ZWds/YXNzLmpwZz9zPTYx/Mng2MTImdz0wJms9/MjAmYz1IX3BoWUxj/TG45TktIOE5wOXRT/WkJtMUx4T2tkV19W/bUVPNU83VEpvakdr/PQ" alt="Kids Smart Flexible Frame" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">Junior Optix</span>
+          <h3 class="eyewear-title">Child Comfort Shockproof Study Eyeglasses</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 799</span>
+            <span class="cut-val">₹ 1,299</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Child Comfort Shockproof Glasses')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 12: Flexible Kids Glasses S304 -->
+      <div class="glass-card" data-category="kids">
+        <div class="img-canvas">
+          <span class="tag-ribbon">BENDABLE TR90</span>
+          <img src="https://imgs.search.brave.com/r5WGfX4s3Ehczvb_YTK4eT8m988k-A3chi8HhWr6f6w/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/Z2xhc3Nlc2luZGlh/LmNvbS9jZG4vc2hv/cC9maWxlcy9GbGV4/aWJsZS1LaWRzLUds/YXNzZXMtUzMwNC1N/b2RlbF9pbWFnZS00/LmpwZz92PTE3ODUw/NjAxODYmd2lkdGg9/NTMz" alt="Flexible Kids Glasses S304" />
+        </div>
+        <div class="card-meta">
+          <span class="eyewear-brand">GlassesIndia</span>
+          <h3 class="eyewear-title">Flexible Kids Unbreakable Glasses S-304</h3>
+          <div class="price-strip">
+            <span class="current-val">₹ 949</span>
+            <span class="cut-val">₹ 1,599</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Flexible Kids Unbreakable Glasses S-304')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Floating Cart Alert -->
+  <div id="cartToast" class="toast">
+    <i class="fa-solid fa-circle-check" style="color: #38bdf8; font-size: 1.25rem;"></i>
+    <span id="toastMsg">Eyewear added to your cart!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Designed with precision optics UI.</p>
+    <div style="margin-top: 10px;">
+      <a href="index.html">Home</a> | 
+      <a href="cart.html">View Cart</a> | 
+      <a href="cap.html">Caps</a> | 
+      <a href="shirt.html">Shirts</a> | 
+      <a href="saari.html">Sarees</a> | 
+      <a href="dashboard.html">Dashboard</a> | 
+      <a href="product cancelation.html">Cancellation</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let cartTotal = 0;
+
+    function addToCart(title) {
+      cartTotal++;
+      document.getElementById('cartCount').innerText = cartTotal;
+
+      const toast = document.getElementById('cartToast');
+      document.getElementById('toastMsg').innerText = `"${title}" added to optical cart!`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function filterEyewear(category) {
+      const cards = document.querySelectorAll('.glass-card');
+      const buttons = document.querySelectorAll('.btn-filter');
+
+      buttons.forEach(btn => btn.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

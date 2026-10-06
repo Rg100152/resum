@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Authentic Patiala Suits & Dhoti Salwar — RESUM Ethnic</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #d97706;
+      --primary-hover: #b45309;
+      --pink: #db2777;
+      --pink-light: #fdf2f8;
+      --dark: #0f172a;
+      --card-bg: #ffffff;
+      --border-color: rgba(226, 232, 240, 0.85);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-punjabi: radial-gradient(circle at 50% 20%, #351a08 0%, #170d05 60%, #080301 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #fdfbf7;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #d97706, #db2777);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .cart-indicator {
+      background: #fef3c7;
+      color: #b45309;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1px solid #fde68a;
+    }
+
+    .cart-indicator:hover {
+      background: #d97706;
+      color: #fff;
+    }
+
+    /* --- Heritage Punjabi Hero Section --- */
+    .hero-patiyala {
+      background: var(--bg-punjabi);
+      color: #ffffff;
+      padding: 65px 5% 85px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-amber {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(217, 119, 6, 0.25) 0%, transparent 70%);
+      top: -100px;
+      left: 10%;
+      filter: blur(65px);
+      border-radius: 50%;
+    }
+
+    .glow-pink {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(219, 39, 119, 0.22) 0%, transparent 70%);
+      bottom: -100px;
+      right: 10%;
+      filter: blur(65px);
+      border-radius: 50%;
+    }
+
+    .hero-container {
+      max-width: 1250px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 5;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #fef08a;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 40%, #fef08a 80%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .hero-badges-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-badges-row {
+        justify-content: center;
+      }
+    }
+
+    .pill-info {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 7px 15px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-info i {
+      color: #f59e0b;
+    }
+
+    /* 3-Card Hero Visual Showcase */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    .hero-card {
+      width: 140px;
+      height: 260px;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 2.5px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 16px 35px rgba(0, 0, 0, 0.45);
+      transition: all 0.4s ease;
+      background: #111;
+    }
+
+    .hero-card:hover {
+      transform: translateY(-8px) scale(1.04);
+      border-color: #f59e0b;
+    }
+
+    .hero-card.center-card {
+      width: 160px;
+      height: 300px;
+      transform: translateY(-12px);
+      border-color: rgba(245, 158, 11, 0.6);
+    }
+
+    .hero-card.center-card:hover {
+      transform: translateY(-20px) scale(1.05);
+    }
+
+    .hero-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- Filter Bar --- */
+    .filter-wrapper {
+      max-width: 1250px;
+      margin: 40px auto 10px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-main);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
+    }
+
+    /* --- Products Grid --- */
+    .container {
+      max-width: 1250px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 25px;
+    }
+
+    .patiyala-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .patiyala-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(217, 119, 6, 0.18);
+      border-color: rgba(217, 119, 6, 0.35);
+    }
+
+    .img-box {
+      width: 100%;
+      height: 330px;
+      background: #f8fafc;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.45s ease;
+    }
+
+    .patiyala-card:hover .img-box img {
+      transform: scale(1.06);
+    }
+
+    .tag-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #fef3c7;
+      color: #b45309;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid #fde68a;
+    }
+
+    .card-info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .patiyala-cat {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .patiyala-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: auto;
+    }
+
+    .price-main {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .price-cut {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 8px;
+    }
+
+    .btn-cart {
+      background: #fef3c7;
+      color: #b45309;
+      border: 1px solid #fde68a;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-cart:hover {
+      background: #fde68a;
+      color: #78350f;
+    }
+
+    .btn-buy-now {
+      background: linear-gradient(135deg, var(--primary), var(--pink));
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(217, 119, 6, 0.25);
+    }
+
+    .btn-buy-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(217, 119, 6, 0.4);
+    }
+
+    /* Floating Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 30px 5% 20px;
+      border-top: 1px solid #1e293b;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html" class="brand">
+      <i class="fa-solid fa-vest"></i> RESUM PATIYALA
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">होम</a></li>
+      <li><a href="patiyala.html" class="active">पटियाला</a></li>
+      <li><a href="saari.html">साड़ी</a></li>
+      <li><a href="lehnga.html">लहंगा</a></li>
+      <li><a href="shirt.html">शर्ट्स</a></li>
+      <li><a href="dashboard.html">डैशबोर्ड</a></li>
+      <li>
+        <a href="cart.html" class="cart-indicator">
+          <i class="fa-solid fa-bag-shopping"></i> कार्ट (<span id="cartCount">0</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-patiyala">
+    <div class="glow-amber"></div>
+    <div class="glow-pink"></div>
+
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <i class="fa-solid fa-crown"></i> ऑथेंटिक पंजाबी पटियाला व धोती सलवार
+        </div>
+        <h1>रॉयल पंजाबी पटियाला और धोती सलवार कलेक्शन</h1>
+        <p>शाही घेरदार पटियाला सलवार, हैवी सीक्वेंस वर्क कुर्ती, फुलकारी दुपट्टा और आधुनिक धोती स्टाइल सूट—पारंपरिक अंदाज़ में आधुनिक शान।</p>
+        
+        <div class="hero-badges-row">
+          <div class="pill-info"><i class="fa-solid fa-sparkles"></i> 100% ओरिजिनल पंजाबी ड्रेप</div>
+          <div class="pill-info"><i class="fa-solid fa-feather"></i> सॉफ्ट कॉटन और जॉर्जेट फैब्रिक</div>
+          <div class="pill-info"><i class="fa-solid fa-truck-fast"></i> फास्ट व सुरक्षित होम डिलीवरी</div>
+        </div>
+
+        <div>
+          <a href="book now.html" class="btn-buy-now" style="display: inline-flex; padding: 12px 28px; font-size: 0.95rem; border-radius: 999px;">
+            <i class="fa-solid fa-bolt"></i> तुरंत पटियाला सूट बुक करें
+          </a>
+        </div>
+      </div>
+
+      <!-- 3-Image Hero Showcase -->
+      <div class="hero-visual">
+        <div class="hero-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-z_1KTqJJdkLWl8AVO69F56Rrz_Vd9_E6AXc958-dFQ&s=10" alt="Royal Punjabi Patiala Suit 1" />
+        </div>
+        <div class="hero-card center-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKfiH96o531lijYIkkK-p4c8mv-BJH32lgRNmXe5jEsg&s=10" alt="Authentic Embroidered Patiala Suit 2" />
+        </div>
+        <div class="hero-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhsnqUtyBdJHZWMPWj4N1BxNqNYqm-EKPiOt20ASoazg&s=10" alt="Festive Designer Patiala Suit 3" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Strip -->
+  <div class="filter-wrapper">
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterSuits('all')">सभी सूट (13)</button>
+      <button class="filter-btn" onclick="filterSuits('heavy')">हैवी एम्ब्रॉयडरी</button>
+      <button class="filter-btn" onclick="filterSuits('dhoti')">धोती सलवार</button>
+      <button class="filter-btn" onclick="filterSuits('daily')">डेली फेस्टिव</button>
+    </div>
+
+    <a href="search.html" style="font-size: 0.88rem; color: var(--primary); text-decoration: none; font-weight: 700;">
+      <i class="fa-solid fa-magnifying-glass"></i> और सूट खोजें
+    </a>
+  </div>
+
+  <!-- Patiala Products Grid -->
+  <main class="container">
+    <div class="grid" id="patiyalaGrid">
+
+      <!-- Item 1: KlothTrend Pink & Yellow -->
+      <div class="patiyala-card" data-category="dhoti">
+        <div class="img-box">
+          <span class="tag-badge">बेस्टसेलर</span>
+          <img src="https://cdn.klothtrend.com/imgbook/product/wc/20240824/17245045641445350142.webp" alt="Pink & Yellow Dhoti Sequence Suit" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">धोती सलवार सेट</span>
+          <h3 class="patiyala-title">पिंक एंड येलो धोती पटियाला सूट विथ सीक्वेंस वर्क</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,499</span>
+            <span class="price-cut">₹ 3,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('पिंक एंड येलो धोती पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: Ethnic Blue Patiala -->
+      <div class="patiyala-card" data-category="heavy">
+        <div class="img-box">
+          <span class="tag-badge">रॉयल लुक</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXHCv712gXaqH59OmCWVtVSc14PKmIrXgW2yV5UAOhpg&s=10" alt="Royal Blue Patiala Suit" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">शाही पटियाला</span>
+          <h3 class="patiyala-title">रॉयल ब्लू ज़री एम्ब्रॉयडर्ड फुल घेर पटियाला सूट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,199</span>
+            <span class="price-cut">₹ 3,499</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('रॉयल ब्लू ज़री पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Golden Yellow Punjabi Suit -->
+      <div class="patiyala-card" data-category="daily">
+        <div class="img-box">
+          <span class="tag-badge">फेस्टिव येलो</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLuLopEAtZJfxNa1CqJRis1njUJmcMxgBBvJTa_7h3Rg&s" alt="Golden Yellow Patiala Suit" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">पंजाबी कुर्ती सेट</span>
+          <h3 class="patiyala-title">सनशाइन येलो कॉटन पटियाला सूट व फ्लोरल दुपट्टा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,799</span>
+            <span class="price-cut">₹ 2,699</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('सनशाइन येलो कॉटन पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4: Maroon Heavy Thread Work -->
+      <div class="patiyala-card" data-category="heavy">
+        <div class="img-box">
+          <span class="tag-badge">वेडिंग स्पेशल</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlN1Hl2L9-vOkv6odVPrZKxtYax8SK1TC6dsEDg5DKIw&s=10" alt="Maroon Threadwork Patiala Suit" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">हैवी पार्टी वेयर</span>
+          <h3 class="patiyala-title">डीप मैरून ट्रेडिशनल थ्रेडवर्क पार्टी पटियाला सूट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,899</span>
+            <span class="price-cut">₹ 4,200</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('डीप मैरून पार्टी पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5: Emerald Green Punjabi Look -->
+      <div class="patiyala-card" data-category="heavy">
+        <div class="img-box">
+          <span class="tag-badge">ट्रेंडिंग</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8m-oTN9osNo0qbwIWgPMYyykCVR6MjCCgjall9qrRzQ&s=10" alt="Emerald Green Punjabi Suit" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">शाही ग्रीन</span>
+          <h3 class="patiyala-title">एमराल्ड ग्रीन गोटा पट्टी वर्क पंजाबी पटियाला सूट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,350</span>
+            <span class="price-cut">₹ 3,500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('एमराल्ड ग्रीन गोटा पट्टी पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6: Soft Pastel Peach Patiala -->
+      <div class="patiyala-card" data-category="daily">
+        <div class="img-box">
+          <span class="tag-badge">पेस्टल डिलाइट</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkYgdlgqttS3D07ytdsrdhzLMqZHuTBq1vMbtetGRdUQ&s=10" alt="Pastel Peach Patiala" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">डेली वेयर</span>
+          <h3 class="patiyala-title">सॉफ्ट पीच जॉर्जेट घेरदार पटियाला सूट सेट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,650</span>
+            <span class="price-cut">₹ 2,450</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('सॉफ्ट पीच जॉर्जेट पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 7: Vootbuy Designer Dhoti Salwar MF-300 -->
+      <div class="patiyala-card" data-category="dhoti">
+        <div class="img-box">
+          <span class="tag-badge">डिज़ाइनर MF-300</span>
+          <img src="http://vootbuy.in/cdn/shop/files/1_8ccd7afd-9448-4f55-abb3-2d32b106c0d1.png?v=1690444289&width=1024" alt="Vootbuy Dhoti Salwar Suit MF-300" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">धोती स्टाइल</span>
+          <h3 class="patiyala-title">वूटबॉय पार्टी वेयर टॉप धोती सलवार व दुपट्टा सेट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,699</span>
+            <span class="price-cut">₹ 4,199</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('वूटबॉय पार्टी वेयर धोती सलवार सेट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 8: Floral Print Punjabi Suit -->
+      <div class="patiyala-card" data-category="daily">
+        <div class="img-box">
+          <span class="tag-badge">समर स्पेशल</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_zlG8JI6O-EnKfGqGftuWm6nivCDsrOI3rHZJLkNckg&s" alt="Floral Print Patiala" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">फ्लोरल कॉटन</span>
+          <h3 class="patiyala-title">फ्लोरल प्रिंटेड समर कॉटन पटियाला सूट व दुपट्टा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,499</span>
+            <span class="price-cut">₹ 2,199</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('फ्लोरल प्रिंटेड कॉटन पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 9: Black Gold Embroidered Patiala -->
+      <div class="patiyala-card" data-category="heavy">
+        <div class="img-box">
+          <span class="tag-badge">पार्टी वेयर</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRr_SvKGaUKSH4lpdin1ioen_7ws85jdUTpdUw6HG0VVw&s=10" alt="Black Gold Patiala Suit" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">क्लासिक ब्लैक</span>
+          <h3 class="patiyala-title">जेट ब्लैक गोल्डन जरी वर्क पटियाला सूट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,599</span>
+            <span class="price-cut">₹ 3,899</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('जेट ब्लैक गोल्डन जरी पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 10: Bright Red Festive Patiala -->
+      <div class="patiyala-card" data-category="heavy">
+        <div class="img-box">
+          <span class="tag-badge">करवा चौथ स्पेशल</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTKkcYwg_XuTChD5q571CxufKM6oWNgliT3D5cLK_4Klg&s=10" alt="Bright Red Festive Patiala" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">ब्राइडल रेड</span>
+          <h3 class="patiyala-title">क्रिमसन रेड मिरर वर्क पंजाबी पटियाला सूट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,750</span>
+            <span class="price-cut">₹ 4,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('क्रिमसन रेड मिरर वर्क पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 11: Mirror Work Dhoti Salwar -->
+      <div class="patiyala-card" data-category="dhoti">
+        <div class="img-box">
+          <span class="tag-badge">धोती स्टाइल</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQmO86L-O26QI9-HPUT26dRvQH14lzjhDby0CrFZMFbNQ&s=10" alt="Mirror Work Dhoti Salwar" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">मॉडर्न फ्यूज़न</span>
+          <h3 class="patiyala-title">मिरर वर्क शॉर्ट कुर्ती व प्लीटेड धोती सलवार</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,299</span>
+            <span class="price-cut">₹ 3,450</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('मिरर वर्क प्लीटेड धोती सलवार')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 12: Sky Blue Georgette Patiala -->
+      <div class="patiyala-card" data-category="daily">
+        <div class="img-box">
+          <span class="tag-badge">सॉफ्ट टच</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqwquu2tooeqoltQEKlTRBIUS8-QxW2jtHH1OSbLZe7Q&s=10" alt="Sky Blue Patiala Suit" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">पेस्टल ब्लू</span>
+          <h3 class="patiyala-title">स्काई ब्लू थ्रेड एम्ब्रॉयडर्ड जॉर्जेट पटियाला सूट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,899</span>
+            <span class="price-cut">₹ 2,799</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('स्काई ब्लू जॉर्जेट पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 13: Royal Silk Heavy Party Patiala -->
+      <div class="patiyala-card" data-category="heavy">
+        <div class="img-box">
+          <span class="tag-badge">लग्ज़री सिल्क</span>
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvvTsTQdKavUK-lLiOL03w0hej7-AcTwNUVt3E4yE15Q&s=10" alt="Silk Heavy Party Patiala" />
+        </div>
+        <div class="card-info">
+          <span class="patiyala-cat">प्रीमियम सिल्क</span>
+          <h3 class="patiyala-title">रॉयल चंदेरी सिल्क हैवी ज़री पटियाला सूट सेट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 3,199</span>
+            <span class="price-cut">₹ 4,800</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('रॉयल चंदेरी सिल्क पटियाला सूट')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Floating Cart Alert -->
+  <div id="cartToast" class="toast">
+    <i class="fa-solid fa-circle-check" style="color: #d97706; font-size: 1.15rem;"></i>
+    <span id="toastMsg">पटियाला सूट आपके कार्ट में जोड़ दिया गया है!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Designed with Authentic Punjabi Elegance.</p>
+    <div style="margin-top: 8px;">
+      <a href="index.html">होम</a> | 
+      <a href="saari.html">साड़ी</a> | 
+      <a href="lehnga.html">लहंगा</a> | 
+      <a href="shirt.html">शर्ट्स</a> | 
+      <a href="cart.html">कार्ट</a> | 
+      <a href="dashboard.html">डैशबोर्ड</a> | 
+      <a href="product cancelation.html">कैंसिलेशन</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let cartTotal = 0;
+
+    function addToCart(title) {
+      cartTotal++;
+      document.getElementById('cartCount').innerText = cartTotal;
+
+      const toast = document.getElementById('cartToast');
+      document.getElementById('toastMsg').innerText = `"${title}" कार्ट में जुड़ गया!`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function filterSuits(category) {
+      const cards = document.querySelectorAll('.patiyala-card');
+      const btns = document.querySelectorAll('.filter-btn');
+
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

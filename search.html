@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Search Catalog — RESUM Store</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #06b6d4;
+      --dark: #0f172a;
+      --card-bg: #ffffff;
+      --border-color: rgba(226, 232, 240, 0.9);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-hero: radial-gradient(circle at 50% 20%, #1e1b4b 0%, #0f172a 70%, #020617 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .cart-indicator {
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .cart-indicator:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* --- Search Hero Section --- */
+    .search-hero {
+      background: var(--bg-hero);
+      color: #ffffff;
+      padding: 60px 5% 75px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .search-hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 5;
+    }
+
+    .search-hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.8rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, #ffffff 40%, #a5f3fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .search-hero p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      margin-bottom: 30px;
+    }
+
+    /* Massive Interactive Search Input */
+    .search-input-wrapper {
+      position: relative;
+      max-width: 650px;
+      margin: 0 auto;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+      border-radius: 999px;
+    }
+
+    .search-input-wrapper input {
+      width: 100%;
+      padding: 18px 60px 18px 56px;
+      border-radius: 999px;
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.96);
+      font-size: 1.05rem;
+      outline: none;
+      color: var(--dark);
+      transition: all 0.3s ease;
+    }
+
+    .search-input-wrapper input:focus {
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 6px rgba(6, 182, 212, 0.25);
+    }
+
+    .search-input-wrapper i.search-icon {
+      position: absolute;
+      left: 22px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 1.2rem;
+      color: var(--text-muted);
+    }
+
+    .search-input-wrapper .clear-btn {
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: #e2e8f0;
+      border: none;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      transition: all 0.2s;
+    }
+
+    .search-input-wrapper .clear-btn:hover {
+      background: #cbd5e1;
+      color: var(--dark);
+    }
+
+    /* --- Category Filter Chips Bar --- */
+    .filter-wrapper {
+      max-width: 1250px;
+      margin: 35px auto 10px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-chips {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .chip-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .chip-btn:hover, .chip-btn.active {
+      background: var(--dark);
+      border-color: var(--dark);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.18);
+    }
+
+    .search-stats {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    /* --- Results Grid --- */
+    .container {
+      max-width: 1250px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+      width: 100%;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 25px;
+    }
+
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(79, 70, 229, 0.15);
+      border-color: rgba(99, 102, 241, 0.35);
+    }
+
+    .img-box {
+      width: 100%;
+      height: 280px;
+      background: #f8fafc;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.45s ease;
+    }
+
+    .product-card:hover .img-box img {
+      transform: scale(1.06);
+    }
+
+    .tag-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(15, 23, 42, 0.85);
+      color: #a5f3fc;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      backdrop-filter: blur(6px);
+      letter-spacing: 0.04em;
+    }
+
+    .card-info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-cat-link {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .card-cat-link:hover {
+      text-decoration: underline;
+    }
+
+    .product-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: auto;
+    }
+
+    .price-main {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .price-cut {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 8px;
+    }
+
+    .btn-cart {
+      background: #f1f5f9;
+      color: var(--dark);
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-cart:hover {
+      background: #e2e8f0;
+      color: var(--primary);
+    }
+
+    .btn-buy-now {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.25);
+    }
+
+    .btn-buy-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(79, 70, 229, 0.4);
+    }
+
+    /* --- No Results Empty State --- */
+    .no-results {
+      display: none;
+      text-align: center;
+      padding: 70px 20px;
+      grid-column: 1 / -1;
+    }
+
+    .no-results i {
+      font-size: 3.5rem;
+      color: #cbd5e1;
+      margin-bottom: 16px;
+    }
+
+    .no-results h3 {
+      font-size: 1.4rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+      font-weight: 800;
+    }
+
+    .no-results p {
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }
+
+    .btn-reset-search {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--dark);
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+    }
+
+    /* Floating Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 30px 5% 20px;
+      border-top: 1px solid #1e293b;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html" class="brand">
+      <i class="fa-solid fa-gem"></i> RESUM
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="search.html" class="active">Search</a></li>
+      <li><a href="shirt.html">Shirts</a></li>
+      <li><a href="saari.html">Sarees</a></li>
+      <li><a href="pant.html">Pants</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li>
+        <a href="cart.html" class="cart-indicator">
+          <i class="fa-solid fa-bag-shopping"></i> Cart (<span id="cartCount">0</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Search Hero Header -->
+  <section class="search-hero">
+    <div class="search-hero-content">
+      <h1>Search Catalog & Products</h1>
+      <p>Instant real-time search across shirts, sarees, lehengas, pants, stationery, and opticals.</p>
+
+      <!-- Search Input Box -->
+      <div class="search-input-wrapper">
+        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search by name, category, or style (e.g., Banarasi, Cotton, Osho, Cap)..." oninput="performSearch()" autocomplete="off" autofocus />
+        <button class="clear-btn" id="clearBtn" onclick="clearSearchInput()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Category Filter Chips Bar -->
+  <div class="filter-wrapper">
+    <div class="filter-chips">
+      <button class="chip-btn active" onclick="filterByChip('all')"><i class="fa-solid fa-border-all"></i> All</button>
+      <button class="chip-btn" onclick="filterByChip('shirt')"><i class="fa-solid fa-shirt"></i> Shirts</button>
+      <button class="chip-btn" onclick="filterByChip('saari')"><i class="fa-solid fa-person-dress"></i> Sarees</button>
+      <button class="chip-btn" onclick="filterByChip('lehnga')"><i class="fa-solid fa-wand-magic-sparkles"></i> Lehengas</button>
+      <button class="chip-btn" onclick="filterByChip('patiyala')"><i class="fa-solid fa-vest"></i> Patiala</button>
+      <button class="chip-btn" onclick="filterByChip('pant')"><i class="fa-solid fa-person-walking"></i> Pants</button>
+      <button class="chip-btn" onclick="filterByChip('book')"><i class="fa-solid fa-book"></i> Books</button>
+      <button class="chip-btn" onclick="filterByChip('pen')"><i class="fa-solid fa-pen-nib"></i> Pens</button>
+      <button class="chip-btn" onclick="filterByChip('cap')"><i class="fa-solid fa-hat-cowboy"></i> Caps</button>
+      <button class="chip-btn" onclick="filterByChip('glass')"><i class="fa-solid fa-glasses"></i> Glasses</button>
+    </div>
+
+    <div class="search-stats" id="searchStats">Showing all products</div>
+  </div>
+
+  <!-- Search Results Container -->
+  <main class="container">
+    <div class="grid" id="productGrid">
+
+      <!-- 1. Shirt Item -->
+      <div class="product-card" data-category="shirt" data-keywords="executive classic cotton shirt formal men white">
+        <div class="img-box">
+          <span class="tag-badge">SHIRT</span>
+          <img src="https://imgs.search.brave.com/fLXxNwyH-ghDjNTGbR6V31A5jbW_aHyAO7flfDmERpM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/b3R0b3N0b3JlLmNv/bS9jZG4vc2hvcC9m/aWxlcy80XzFhZjNj/NWIwLTA5MjgtNGM2/OC1hZjEzLTA1OTk4/NDNmYzUwMl81MDB4/LmpwZz92PTE3ODQw/OTk3ODk" alt="Executive Classic Cotton Shirt" />
+        </div>
+        <div class="card-info">
+          <a href="shirt.html" class="card-cat-link">Shirts & Apparel</a>
+          <h3 class="product-title">Executive Classic Cotton Shirt</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,199</span>
+            <span class="price-cut">₹ 1,849</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Executive Classic Cotton Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. Saree Item -->
+      <div class="product-card" data-category="saari" data-keywords="selene shimmer evening saree banarasi silk ethnic organza">
+        <div class="img-box">
+          <span class="tag-badge">SAREE</span>
+          <img src="https://imgs.search.brave.com/xtMb8mEiGsEMHq6p0q4zRgf9d6V3b9qSaKe_6nlw7j4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly90aGVz/YWFyaWdpcmwuY29t/L2Nkbi9zaG9wL2Zp/bGVzL3NlbGVuZV9z/YWFyaV8yLmpwZz92/PTE3ODQ2MjI1NTAm/d2lkdGg9NjQ5" alt="Selene Shimmer Evening Saree" />
+        </div>
+        <div class="card-info">
+          <a href="saari.html" class="card-cat-link">Ethnic Sarees</a>
+          <h3 class="product-title">Selene Shimmer Evening Organza Saree</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 3,499</span>
+            <span class="price-cut">₹ 5,399</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Selene Shimmer Organza Saree')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. Lehenga Item -->
+      <div class="product-card" data-category="lehnga" data-keywords="anita dongre yellow lehenga bridal wedding silk festive">
+        <div class="img-box">
+          <span class="tag-badge">LEHENGA</span>
+          <img src="https://us.anitadongre.com/dw/image/v2/BGCX_PRD/on/demandware.static/-/Sites-masterCatalog_AD_India/default/dw9b1c1c66/images/hires/FS26/F26A8_Yellow_3.jpg?sw=850&sh=1275&sm=fit&strip=false" alt="Anita Dongre Yellow Silk Lehenga" />
+        </div>
+        <div class="card-info">
+          <a href="lehnga.html" class="card-cat-link">Bridal Lehengas</a>
+          <h3 class="product-title">Anita Dongre Sunshine Yellow Silk Lehenga</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 14,999</span>
+            <span class="price-cut">₹ 22,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Anita Dongre Yellow Silk Lehenga')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. Patiala Suit Item -->
+      <div class="product-card" data-category="patiyala" data-keywords="pink yellow dhoti patiyala suit sequence embroidery punjabi">
+        <div class="img-box">
+          <span class="tag-badge">PATIALA</span>
+          <img src="https://cdn.klothtrend.com/imgbook/product/wc/20240824/17245045641445350142.webp" alt="Pink & Yellow Dhoti Sequence Suit" />
+        </div>
+        <div class="card-info">
+          <a href="patiyala.html" class="card-cat-link">Patiala & Dhoti</a>
+          <h3 class="product-title">Pink & Yellow Dhoti Sequence Patiala Suit</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,499</span>
+            <span class="price-cut">₹ 3,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Pink & Yellow Dhoti Patiala')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. Men's Pants Item -->
+      <div class="product-card" data-category="pant" data-keywords="beyours black classic pant formal trousers chinos men slacks">
+        <div class="img-box">
+          <span class="tag-badge">PANTS</span>
+          <img src="https://www.beyours.in/cdn/shop/files/Black-Classic-pant-3.jpg?v=1731600530&width=1200" alt="Beyours Black Classic Pant" />
+        </div>
+        <div class="card-info">
+          <a href="pant.html" class="card-cat-link">Men's Trousers</a>
+          <h3 class="product-title">Signature Black Classic Everyday Trouser</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,799</span>
+            <span class="price-cut">₹ 2,499</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Signature Black Classic Trouser')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. Books Item: Gunahon Ka Devta -->
+      <div class="product-card" data-category="book" data-keywords="gunahon ka devta ret ki machhli dharmveer bharati hindi novel literature">
+        <div class="img-box">
+          <span class="tag-badge">BOOK</span>
+          <img src="https://imgs.search.brave.com/KsM3tvnmVZGy3dmKOzysjmDgHB-BRg-eAUEcoMUavpg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzYxMi82MTIveGlm/MHEvcmVnaW9uYWxi/b29rcy9zL20vNS9n/dW5haG9uLWthLWRl/dnRhLXJldC1raS1t/YWNoaGxpLWNvbWJv/LXNldC1kaGFybXZl/ZXItYmhhcnRpLWhp/bmRpLW9yaWdpbmFs/LWltYWhuYTk5eG1q/Z21mdWMuanBlZz9x/PTcw" alt="Gunahon Ka Devta Combo" />
+        </div>
+        <div class="card-info">
+          <a href="books.html" class="card-cat-link">Literature Books</a>
+          <h3 class="product-title">गुनाहों का देवता और रेत की मछली (Combo Set)</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 380</span>
+            <span class="price-cut">₹ 590</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Gunahon Ka Devta Combo')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. Books Item: Dr Ambedkar -->
+      <div class="product-card" data-category="book" data-keywords="my autobiography castes in india dr br ambedkar constitution literature">
+        <div class="img-box">
+          <span class="tag-badge">BOOK</span>
+          <img src="https://imgs.search.brave.com/VnjodVHL_Fe0dB-uV9-TomFZbcczkWOgFsGQDaO_5KE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9ydWtt/aW5pbTIuZmxpeGNh/cnQuY29tL2ltYWdl/LzYxMi82MTIveGlm/MHEvYm9vay9pLzEv/aC9teS1hdXRvYmlv/Z3JhcGh5LWNhc3Rl/cy1pbi1pbmRpYS1k/ci1ici1hbWJlZGth/ci1ib29rcy1lbmds/aXNoLW9yaWdpbmFs/LWltYWg5YTNmd3Zj/YndoYjUuanBlZz9x/PTcw" alt="My Autobiography Castes In India" />
+        </div>
+        <div class="card-info">
+          <a href="books.html" class="card-cat-link">Literature Books</a>
+          <h3 class="product-title">My Autobiography & Castes In India</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 299</span>
+            <span class="price-cut">₹ 450</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('My Autobiography & Castes In India')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. Pen Item -->
+      <div class="product-card" data-category="pen" data-keywords="regal obsidian gold fountain pen luxury metal writing stationery">
+        <div class="img-box">
+          <span class="tag-badge">PEN</span>
+          <img src="https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?w=500&auto=format&fit=crop&q=80" alt="Regal Obsidian Fountain Pen" />
+        </div>
+        <div class="card-info">
+          <a href="pen.html" class="card-cat-link">Fine Pens</a>
+          <h3 class="product-title">Regal Obsidian Gold Fountain Pen</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,499</span>
+            <span class="price-cut">₹ 2,499</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Regal Obsidian Fountain Pen')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. Cap Item -->
+      <div class="product-card" data-category="cap" data-keywords="urban khaki explorer sun hat baseball cap snapback streetwear">
+        <div class="img-box">
+          <span class="tag-badge">CAP</span>
+          <img src="https://imgs.search.brave.com/3-IzJVWz8NyADJWxqUdtIM24t3FkltC8HyNNoYtcbhg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTQ3/MjYzMTA0MS9waG90/by9jcm9wcGVkLWhh/bmQtaG9sZGluZy1o/YXQtYWdhaW5zdC13/YWxsLW1hbGFuamUt/YW5nb2xhLmpwZz9z/PTYxMng2MTImdz0w/Jms9MjAmYz0yN0xJ/cjhIN1JOVDdrSUQ1/SHltczN0WW9OUWlV/UnRhSlJiQ2ZtN0ZR/NUxjPQ" alt="Urban Explorer Khaki Sun Hat" />
+        </div>
+        <div class="card-info">
+          <a href="cap.html" class="card-cat-link">Caps & Headwear</a>
+          <h3 class="product-title">Urban Explorer Khaki Sun Hat</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 499</span>
+            <span class="price-cut">₹ 799</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Urban Explorer Khaki Sun Hat')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. Eyewear Item -->
+      <div class="product-card" data-category="glass" data-keywords="blue vision anti fatigue spectacles glasses eyewear screen protection">
+        <div class="img-box">
+          <span class="tag-badge">GLASSES</span>
+          <img src="https://imgs.search.brave.com/odZI6wvDKj850X5V-ulr6UtXfoqTzxV0CXylD3MULqk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTM1/OTUwODgwMS9waG90/by9ibHVlLXZpc2lv/bi1nbGFzc2VzLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1X/Rnd5YjNuMHh6UnNj/Yll4YUtMRHJJeGk5/YjRqTE1NejR5X1Bk/d0I4RzVjPQ" alt="Cyber Blue Vision Spectacles" />
+        </div>
+        <div class="card-info">
+          <a href="glases.html" class="card-cat-link">Eyewear Studio</a>
+          <h3 class="product-title">Cyber Blue Vision Anti-Fatigue Spectacles</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,199</span>
+            <span class="price-cut">₹ 1,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Cyber Blue Vision Spectacles')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. Notebook Item -->
+      <div class="product-card" data-category="book" data-keywords="obsidian vegan leather executive journal notebook stationery diary register">
+        <div class="img-box">
+          <span class="tag-badge">NOTEBOOK</span>
+          <img src="https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?w=500&auto=format&fit=crop&q=80" alt="Obsidian Vegan Leather Journal" />
+        </div>
+        <div class="card-info">
+          <a href="notbook.html" class="card-cat-link">Notebooks & Journals</a>
+          <h3 class="product-title">Obsidian Vegan Leather Executive Journal</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 599</span>
+            <span class="price-cut">₹ 999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Obsidian Vegan Leather Journal')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. Korean Pants Item -->
+      <div class="product-card" data-category="pant" data-keywords="veirdo tailored high waist wide leg pant korean trousers chinos black">
+        <div class="img-box">
+          <span class="tag-badge">PANTS</span>
+          <img src="http://veirdo.in/cdn/shop/files/Artboard10-2026-04-13T182415.324.jpg?v=1776084946" alt="Veirdo Tailored Wide-Leg Pant" />
+        </div>
+        <div class="card-info">
+          <a href="pant.html" class="card-cat-link">Men's Trousers</a>
+          <h3 class="product-title">Veirdo Tailored High-Waist Wide-Leg Pant</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,299</span>
+            <span class="price-cut">₹ 1,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Veirdo Tailored Wide-Leg Pant')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- No Results State -->
+      <div class="no-results" id="noResultsBox">
+        <i class="fa-solid fa-face-frown-open"></i>
+        <h3>No matching products found</h3>
+        <p>Aapke search query se koi product match nahi hua. Kuch aur search karke dekhein ya categories filter reset karein.</p>
+        <button class="btn-reset-search" onclick="resetAllFilters()"><i class="fa-solid fa-rotate-left"></i> Reset Search</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Floating Cart Alert -->
+  <div id="cartToast" class="toast">
+    <i class="fa-solid fa-circle-check" style="color: #06b6d4; font-size: 1.15rem;"></i>
+    <span id="toastMsg">Product added to your cart!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Instant Search Engine Catalog.</p>
+    <div style="margin-top: 8px;">
+      <a href="index.html">Home</a> | 
+      <a href="dashboard.html">Dashboard</a> | 
+      <a href="cart.html">Cart</a> | 
+      <a href="add product.html">Add Product</a> | 
+      <a href="product cancelation.html">Cancellation</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let currentSelectedCategory = 'all';
+    let cartTotal = 0;
+
+    // Check if query string exists (e.g. search.html?q=shirt)
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const query = urlParams.get('q');
+      if (query) {
+        document.getElementById('searchInput').value = query;
+      }
+      performSearch();
+    });
+
+    function performSearch() {
+      const query = document.getElementById('searchInput').value.trim().toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      const noResults = document.getElementById('noResultsBox');
+      const stats = document.getElementById('searchStats');
+      let visibleCount = 0;
+
+      cards.forEach(card => {
+        const title = card.querySelector('.product-title').innerText.toLowerCase();
+        const keywords = card.getAttribute('data-keywords') ? card.getAttribute('data-keywords').toLowerCase() : '';
+        const category = card.getAttribute('data-category');
+
+        const matchesQuery = query === '' || title.includes(query) || keywords.includes(query);
+        const matchesCategory = currentSelectedCategory === 'all' || category === currentSelectedCategory;
+
+        if (matchesQuery && matchesCategory) {
+          card.style.display = 'flex';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (visibleCount === 0) {
+        noResults.style.display = 'block';
+        stats.innerText = `0 results found`;
+      } else {
+        noResults.style.display = 'none';
+        stats.innerText = `Showing ${visibleCount} product${visibleCount > 1 ? 's' : ''}`;
+      }
+    }
+
+    function filterByChip(category) {
+      currentSelectedCategory = category;
+      const chips = document.querySelectorAll('.chip-btn');
+
+      chips.forEach(btn => btn.classList.remove('active'));
+      event.currentTarget.classList.add('active');
+
+      performSearch();
+    }
+
+    function clearSearchInput() {
+      document.getElementById('searchInput').value = '';
+      performSearch();
+      document.getElementById('searchInput').focus();
+    }
+
+    function resetAllFilters() {
+      document.getElementById('searchInput').value = '';
+      currentSelectedCategory = 'all';
+      document.querySelectorAll('.chip-btn').forEach(b => b.classList.remove('active'));
+      document.querySelector('.chip-btn').classList.add('active');
+      performSearch();
+    }
+
+    function addToCart(title) {
+      cartTotal++;
+      document.getElementById('cartCount').innerText = cartTotal;
+
+      const toast = document.getElementById('cartToast');
+      document.getElementById('toastMsg').innerText = `"${title}" added to your cart!`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+  </script>
+</body>
+</html>

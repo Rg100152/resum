@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RESUM Store — Modern Shopping Experience</title>
+  
+  <!-- FontAwesome Icons & Google Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #06b6d4;
+      --dark: #0f172a;
+      --card-bg: rgba(255, 255, 255, 0.85);
+      --border-color: rgba(226, 232, 240, 0.8);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background: #f8fafc;
+      color: var(--text-main);
+      overflow-x: hidden;
+    }
+
+    /* --- Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+    }
+
+    .brand {
+      font-size: 1.6rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #4f46e5, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .search-bar {
+      position: relative;
+      width: 320px;
+    }
+
+    .search-bar input {
+      width: 100%;
+      padding: 10px 16px 10px 40px;
+      border-radius: 999px;
+      border: 1px solid #cbd5e1;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.3s ease;
+      background: #f1f5f9;
+    }
+
+    .search-bar input:focus {
+      background: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.15);
+    }
+
+    .search-bar i {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-btn {
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-login {
+      background: #f1f5f9;
+      color: var(--dark);
+    }
+
+    .btn-login:hover {
+      background: #e2e8f0;
+    }
+
+    .btn-signup {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #fff !important;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
+    }
+
+    .btn-signup:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.35);
+    }
+
+    /* --- Hero Section with Animations --- */
+    .hero {
+      background: var(--bg-gradient);
+      color: #fff;
+      padding: 90px 5% 100px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.25) 0%, transparent 70%);
+      top: -100px;
+      left: 10%;
+      border-radius: 50%;
+      filter: blur(40px);
+      animation: pulse 8s infinite alternate;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.2) 0%, transparent 70%);
+      bottom: -150px;
+      right: 10%;
+      border-radius: 50%;
+      filter: blur(50px);
+      animation: pulse 10s infinite alternate-reverse;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1) translate(0, 0); }
+      100% { transform: scale(1.2) translate(20px, -20px); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 6px 16px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      font-size: 0.85rem;
+      margin-bottom: 20px;
+      font-weight: 500;
+      color: #a5f3fc;
+      animation: fadeInDown 0.8s ease;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
+      animation: fadeInUp 0.8s ease;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #cbd5e1;
+      margin-bottom: 30px;
+      line-height: 1.6;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      flex-wrap: wrap;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .btn-hero {
+      padding: 12px 28px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-hero-primary {
+      background: #ffffff;
+      color: var(--dark);
+    }
+
+    .btn-hero-primary:hover {
+      background: #f1f5f9;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn-hero-secondary {
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(5px);
+    }
+
+    .btn-hero-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
+
+    /* --- Category Section --- */
+    .container {
+      max-width: 1200px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .section-title p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    /* Card Styling */
+    .card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 24px;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 15px 30px -5px rgba(79, 70, 229, 0.12);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-icon {
+      transform: scale(1.1) rotate(5deg);
+    }
+
+    .card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+      color: var(--dark);
+    }
+
+    .card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .card-link {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: auto;
+    }
+
+    .card:hover .card-link i {
+      transform: translateX(4px);
+    }
+
+    .card-link i {
+      transition: transform 0.2s ease;
+    }
+
+    /* Colors for card icons */
+    .icon-apparel { background: #e0e7ff; color: #4338ca; }
+    .icon-study { background: #fef3c7; color: #d97706; }
+    .icon-art { background: #fce7f3; color: #db2777; }
+    .icon-toy { background: #dcfce7; color: #16a34a; }
+    .icon-sys { background: #e0f2fe; color: #0284c7; }
+
+    /* Quick Shortcuts Bar */
+    .shortcut-strip {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .shortcut-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .shortcut-item:hover {
+      color: var(--primary);
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 40px 5% 20px;
+      border-top: 1px solid #1e293b;
+      margin-top: 80px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 30px;
+    }
+
+    .footer-col h4 {
+      color: #fff;
+      font-size: 1rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      color: #94a3b8;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: #fff;
+    }
+
+    .copy {
+      text-align: center;
+      font-size: 0.8rem;
+      padding-top: 20px;
+      border-top: 1px solid #1e293b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <nav>
+    <a href="index.html" class="brand"><i class="fa-solid fa-gem"></i> RESUM</a>
+
+    <!-- Direct link to search.html -->
+    <div class="search-bar">
+      <form action="search.html" method="GET">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" name="q" placeholder="Search clothes, books, pens..." />
+      </form>
+    </div>
+
+    <ul class="nav-links">
+      <li><a href="dashboard.html"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+      <li><a href="cart.html"><i class="fa-solid fa-bag-shopping"></i> Cart</a></li>
+      <li><a href="contactme.html">Contact</a></li>
+      <li><a href="login.html" class="nav-btn btn-login">Login</a></li>
+      <li><a href="singnup.html" class="nav-btn btn-signup">Sign Up</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">✨ Explore Our Exclusive Collection</div>
+      <h1>Quality Products, Smart Deals & Fast Checkout.</h1>
+      <p>Fashion trends se lekar study essentials aur creative accessories tak—RESUM Store par har zarurat ka saman ek jagah available hai.</p>
+      
+      <div class="hero-actions">
+        <a href="book now.html" class="btn-hero btn-hero-primary"><i class="fa-solid fa-bolt"></i> Book Now</a>
+        <a href="add product.html" class="btn-hero btn-hero-secondary"><i class="fa-solid fa-circle-plus"></i> Add Product</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Container -->
+  <main class="container">
+
+    <!-- Quick Shortcuts Bar -->
+    <div class="shortcut-strip">
+      <a href="dashboard.html" class="shortcut-item"><i class="fa-solid fa-gauge"></i> Admin Dashboard</a>
+      <a href="creat account.html" class="shortcut-item"><i class="fa-solid fa-user-plus"></i> Create Account</a>
+      <a href="singn in.html" class="shortcut-item"><i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In</a>
+      <a href="product cancelation.html" class="shortcut-item"><i class="fa-solid fa-arrow-rotate-left"></i> Product Cancellation</a>
+    </div>
+
+    <!-- Category 1: Traditional & Fashion Wear -->
+    <div class="section-title">
+      <div>
+        <h2>Apparel & Fashion</h2>
+        <p>Traditional Indian outfits aur stylish daily wear collection</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Saari -->
+      <a href="saari.html" class="card">
+        <div class="card-icon icon-apparel"><i class="fa-solid fa-person-dress"></i></div>
+        <h3>Designer Saari</h3>
+        <p>Elegant silks, banarasi and trendy party wear sarees.</p>
+        <span class="card-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Lehnga -->
+      <a href="lehnga.html" class="card">
+        <div class="card-icon icon-apparel"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+        <h3>Bridal Lehnga</h3>
+        <p>Premium handcrafted bridal & festival lehengas.</p>
+        <span class="card-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Patiyala -->
+      <a href="patiyala.html" class="card">
+        <div class="card-icon icon-apparel"><i class="fa-solid fa-vest"></i></div>
+        <h3>Patiyala Suits</h3>
+        <p>Authentic Punjabi style comfortable patiyala suits.</p>
+        <span class="card-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Shirt -->
+      <a href="shirt.html" class="card">
+        <div class="card-icon icon-apparel"><i class="fa-solid fa-shirt"></i></div>
+        <h3>Casual & Formal Shirts</h3>
+        <p>Cotton slim-fit, executive and oversized modern shirts.</p>
+        <span class="card-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Cap -->
+      <a href="cap.html" class="card">
+        <div class="card-icon icon-apparel"><i class="fa-solid fa-hat-cowboy"></i></div>
+        <h3>Caps & Headwear</h3>
+        <p>Sports baseball caps, snapbacks, and beanies.</p>
+        <span class="card-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Glasses -->
+      <a href="glases.html" class="card">
+        <div class="card-icon icon-apparel"><i class="fa-solid fa-glasses"></i></div>
+        <h3>Eyewear & Glasses</h3>
+        <p>UV protection sunglasses and trendy optical frames.</p>
+        <span class="card-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Innerwear/Panty -->
+      <a href="panty.html" class="card">
+        <div class="card-icon icon-apparel"><i class="fa-solid fa-tag"></i></div>
+        <h3>Comfort Wear</h3>
+        <p>Soft cotton breathable daily essentials.</p>
+        <span class="card-link">Explore Collection <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+    </div>
+
+    <!-- Category 2: Stationery & Hobbies -->
+    <div class="section-title" style="margin-top: 60px;">
+      <div>
+        <h2>Books, Stationery & Arts</h2>
+        <p>Knowledge, office tools aur creative supplies</p>
+      </div>
+    </div>
+
+    <div class="grid">
+      <!-- Books -->
+      <a href="books.html" class="card">
+        <div class="card-icon icon-study"><i class="fa-solid fa-book-open"></i></div>
+        <h3>Books Library</h3>
+        <p>Novels, competitive exam materials, and academic books.</p>
+        <span class="card-link">Browse Books <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Notebook -->
+      <a href="notbook.html" class="card">
+        <div class="card-icon icon-study"><i class="fa-solid fa-book-bookmark"></i></div>
+        <h3>Notebooks & Diaries</h3>
+        <p>Spiral ruled registers, daily journals, and blank note pads.</p>
+        <span class="card-link">Browse Notebooks <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Pens -->
+      <a href="pen.html" class="card">
+        <div class="card-icon icon-study"><i class="fa-solid fa-pen-nib"></i></div>
+        <h3>Pens & Writing</h3>
+        <p>Smooth gel pens, fountain pens, markers, and refills.</p>
+        <span class="card-link">Browse Pens <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Color Brush -->
+      <a href="color brush.html" class="card">
+        <div class="card-icon icon-art"><i class="fa-solid fa-palette"></i></div>
+        <h3>Color Brushes & Art</h3>
+        <p>Acrylic painting brushes, watercolor sets, and canvas kits.</p>
+        <span class="card-link">Explore Art Supplies <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+
+      <!-- Toys -->
+      <a href="toy.html" class="card">
+        <div class="card-icon icon-toy"><i class="fa-solid fa-gamepad"></i></div>
+        <h3>Toys & Fun Games</h3>
+        <p>Learning puzzles, action figures, and remote control toys.</p>
+        <span class="card-link">Shop Toys <i class="fa-solid fa-arrow-right"></i></span>
+      </a>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>RESUM Portal</h4>
+        <p style="font-size: 0.85rem; line-height: 1.6;">A modern one-stop web store built with clean code and interactive components.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Categories</h4>
+        <ul>
+          <li><a href="shirt.html">Shirts & Apparel</a></li>
+          <li><a href="saari.html">Sarees & Ethnic</a></li>
+          <li><a href="books.html">Books & Education</a></li>
+          <li><a href="toy.html">Kids & Toys</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Customer Account</h4>
+        <ul>
+          <li><a href="login.html">Login</a> / <a href="singn in.html">Sign In</a></li>
+          <li><a href="singnup.html">Sign Up</a> / <a href="creat account.html">Create Account</a></li>
+          <li><a href="cart.html">View Cart</a></li>
+          <li><a href="product cancelation.html">Order Cancellation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Manage & Contact</h4>
+        <ul>
+          <li><a href="dashboard.html">Admin Dashboard</a></li>
+          <li><a href="add product.html">Add New Product</a></li>
+          <li><a href="book now.html">Instant Book Now</a></li>
+          <li><a href="contactme.html">Contact Us</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="copy">
+      &copy; 2026 RESUM Web Project. Designed with pure HTML & CSS.
+    </div>
+  </footer>
+
+</body>
+</html>

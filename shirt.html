@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shirts Collection — RESUM Men's & Casual Wear</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #06b6d4;
+      --dark: #0f172a;
+      --card-bg: #ffffff;
+      --border-color: #e2e8f0;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --badge-bg: #ecfdf5;
+      --badge-text: #059669;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #f8fafc;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* --- Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .cart-btn {
+      background: #e0e7ff;
+      color: var(--primary);
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+
+    .cart-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    /* --- Category Hero Banner --- */
+    .hero-banner {
+      background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 60%, #311042 100%);
+      color: #fff;
+      padding: 55px 5%;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-banner h1 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .hero-banner p {
+      color: #cbd5e1;
+      font-size: 1rem;
+      max-width: 650px;
+      margin: 0 auto 20px;
+    }
+
+    /* Quick Filter Chips */
+    .filter-chips {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .chip {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      backdrop-filter: blur(6px);
+      transition: all 0.25s ease;
+    }
+
+    .chip:hover, .chip.active {
+      background: #ffffff;
+      color: var(--dark);
+    }
+
+    /* --- Products Grid --- */
+    .container {
+      max-width: 1250px;
+      margin: 40px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .products-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+
+    .products-header h2 {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 25px;
+    }
+
+    /* Shirt Card */
+    .product-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(79, 70, 229, 0.15);
+      border-color: rgba(99, 102, 241, 0.35);
+    }
+
+    .image-box {
+      width: 100%;
+      height: 290px;
+      background: #f1f5f9;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.45s ease;
+    }
+
+    .product-card:hover .image-box img {
+      transform: scale(1.06);
+    }
+
+    .badge-discount {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--badge-bg);
+      color: var(--badge-text);
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid #a7f3d0;
+    }
+
+    .card-info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .card-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .product-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 10px;
+      line-height: 1.35;
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: auto;
+    }
+
+    .current-price {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .original-price {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 8px;
+    }
+
+    .btn-add-cart {
+      background: #f1f5f9;
+      color: var(--dark);
+      border: 1px solid var(--border-color);
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-add-cart:hover {
+      background: #e2e8f0;
+      color: var(--primary);
+    }
+
+    .btn-buy-now {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.2);
+    }
+
+    .btn-buy-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(79, 70, 229, 0.35);
+    }
+
+    /* Cart Toast Alert */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 30px 5% 20px;
+      border-top: 1px solid #1e293b;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html" class="brand"><i class="fa-solid fa-gem"></i> RESUM</a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="shirt.html" class="active">Shirts</a></li>
+      <li><a href="saari.html">Ethnic</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li>
+        <a href="cart.html" class="cart-btn">
+          <i class="fa-solid fa-cart-shopping"></i> Cart (<span id="cartCount">0</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Header -->
+  <section class="hero-banner">
+    <h1>Premium Men's & Casual Shirts</h1>
+    <p>Breathable fabrics, formal office cuts, printed summer trends, aur executive check designs.</p>
+    
+    <div class="filter-chips">
+      <span class="chip active" onclick="filterItems('all')">All Shirts (10)</span>
+      <span class="chip" onclick="filterItems('formal')">Formal & Office</span>
+      <span class="chip" onclick="filterItems('casual')">Casual & Printed</span>
+      <span class="chip" onclick="filterItems('checks')">Checks & Classics</span>
+    </div>
+  </section>
+
+  <!-- Product Showcase Grid -->
+  <main class="container">
+    <div class="products-header">
+      <h2>Available Shirts In Stock</h2>
+      <a href="search.html" style="font-size: 0.88rem; color: var(--primary); text-decoration: none; font-weight: 600;">
+        <i class="fa-solid fa-magnifying-glass"></i> Filter & Search
+      </a>
+    </div>
+
+    <div class="grid" id="shirtsGrid">
+
+      <!-- Shirt 1 -->
+      <div class="product-card" data-category="formal">
+        <div class="image-box">
+          <span class="badge-discount">35% OFF</span>
+          <img src="https://imgs.search.brave.com/fLXxNwyH-ghDjNTGbR6V31A5jbW_aHyAO7flfDmERpM/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/b3R0b3N0b3JlLmNv/bS9jZG4vc2hvcC9m/aWxlcy80XzFhZjNj/NWIwLTA5MjgtNGM2/OC1hZjEzLTA1OTk4/NDNmYzUwMl81MDB4/LmpwZz92PTE3ODQw/OTk3ODk" alt="Executive Formal Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Formal Wear</span>
+          <h3 class="product-title">Executive Classic Cotton Shirt</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 1,199</span>
+            <span class="original-price">₹ 1,849</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Executive Classic Cotton Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shirt 2 -->
+      <div class="product-card" data-category="formal">
+        <div class="image-box">
+          <span class="badge-discount">40% OFF</span>
+          <img src="https://imgs.search.brave.com/wrUTpiYdQmHhz8ciURige3b0Jidqfo9ZuI9KMltsfXk/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvMTMz/OTQ1NDU0MS9waG90/by9zaG9ydC1zbGVl/dmUtY29sbGFyZWQt/c2hpcnQtb3V0Zml0/LWZvci10aGUtb2Zm/aWNlLWluLWZyb250/LXNpZGUtYW5kLWJs/YWNrLXZpZXdzLmpw/Zz9zPTYxMng2MTIm/dz0wJms9MjAmYz1a/RjBta3R1dXZPRzl4/SDRNa2ZXYkdsZ1FV/c3JUX1ZjQ1MtMVph/S3ZBSWNnPQ" alt="Short Sleeve Office Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Formal & Office</span>
+          <h3 class="product-title">Short Sleeve Collared Office Fit</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 899</span>
+            <span class="original-price">₹ 1,499</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Short Sleeve Collared Office Fit')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shirt 3 -->
+      <div class="product-card" data-category="checks">
+        <div class="image-box">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/MFqvrrL3P-V935CUyLDSg09Fp5z9EmX2TuZSoui5eHE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/YXJpc3RvYnJhdC5p/bi9jZG4vc2hvcC9m/aWxlcy9BT0JEcmVz/c1NoaXJ0X1BlYXJs/V2hpdGVDaGVja3Nf/NS5qcGc_dj0xNzgy/OTA0NTk5JndpZHRo/PTEwODA" alt="Pearl White Checks Dress Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Checks & Classic</span>
+          <h3 class="product-title">Pearl White Textured Checks Shirt</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 1,499</span>
+            <span class="original-price">₹ 2,149</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Pearl White Textured Checks Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shirt 4 -->
+      <div class="product-card" data-category="casual">
+        <div class="image-box">
+          <span class="badge-discount">45% OFF</span>
+          <img src="https://imgs.search.brave.com/5j9c2-gzWrY6fh2T-ZIUSVImKs4-PQmVgkSxuZAHNyU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/amFja2pvbmVzLmlu/L2Nkbi9zaG9wL2Zp/bGVzLzkwMjQ5ODgw/Ml9nM182NzIzZmVi/Ni0yNDY4LTQ0ZTQt/YmFkNi01OGY4ODI3/ZjM0MzguanBnP3Y9/MTc4NDYwNzQ4MiZ3/aWR0aD0xMDgw" alt="Modern Urban Casual Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Casual Wear</span>
+          <h3 class="product-title">Jack Urban Slim Fit Casual Shirt</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 1,299</span>
+            <span class="original-price">₹ 2,399</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Jack Urban Slim Fit Casual Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shirt 5 -->
+      <div class="product-card" data-category="casual">
+        <div class="image-box">
+          <span class="badge-discount">50% OFF</span>
+          <img src="https://imgs.search.brave.com/ScbYg8Kmb41y20frrhfPT-OE0bsRaeK9RGYkKwL70nU/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/NzFnTjdXNjJpMkwu/anBn" alt="Everyday Spread Collar Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Daily Essentials</span>
+          <h3 class="product-title">Everyday Spread Collar Oxford Shirt</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 799</span>
+            <span class="original-price">₹ 1,599</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Everyday Spread Collar Oxford Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shirt 6 -->
+      <div class="product-card" data-category="formal">
+        <div class="image-box">
+          <span class="badge-discount">35% OFF</span>
+          <img src="https://imgs.search.brave.com/Y4uOSArFEn3uae626uGcjPpZ4kavWX4TjoaS44TtLq4/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tLm1l/ZGlhLWFtYXpvbi5j/b20vaW1hZ2VzL0kv/OTFZWUtpQkd4S0wu/anBn" alt="Formal Striped Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Office Striped</span>
+          <h3 class="product-title">Premium Micro Stripe Formal Shirt</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 1,099</span>
+            <span class="original-price">₹ 1,699</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Premium Micro Stripe Formal Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shirt 7 -->
+      <div class="product-card" data-category="casual">
+        <div class="image-box">
+          <span class="badge-discount">25% OFF</span>
+          <img src="https://imgs.search.brave.com/P9JUBZkt0Qlxl_vM94MP6Sk9fzPQj_IZDCR2l6N5WvY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9tZWRp/YXMudXRzYXZmYXNo/aW9uLmNvbS9tZWRp/YS9jYXRhbG9nL3By/b2R1Y3QvY2FjaGUv/MS9zbWFsbF9pbWFn/ZS8yOTV4LzA0MGVj/MDliMWUzNWRmMTM5/NDMzODg3YTk3ZGFh/NjZmL3cvby93b3Zl/bi1jb3R0b24tc2hp/cnQtaW4tZnVjaHNp/YS12MS1tdGU4Mzcu/anBn" alt="Woven Cotton Fuchsia Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Festive Casual</span>
+          <h3 class="product-title">Handwoven Vibrant Cotton Shirt</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 949</span>
+            <span class="original-price">₹ 1,299</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Handwoven Vibrant Cotton Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shirt 8 -->
+      <div class="product-card" data-category="formal">
+        <div class="image-box">
+          <span class="badge-discount">30% OFF</span>
+          <img src="https://imgs.search.brave.com/wZpjgGsFG-70zjuMW4KIFFAtRswQaGKDSfsCWUh9QrY/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9yYW1y/YWpjb3R0b24uaW4v/Y2RuL3Nob3AvZmls/ZXMvMV9kODg0ZjAy/OC01MDkyLTQ0MmQt/OTdhYi05ZGM3MTM0/YmNlOTkuanBnP3Y9/MTc3OTQzODQ1NCZ3/aWR0aD0xMDgw" alt="Pure White Linen Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Pure Cotton</span>
+          <h3 class="product-title">Pure White Traditional Linen Shirt</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 1,350</span>
+            <span class="original-price">₹ 1,950</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Pure White Traditional Linen Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shirt 9 -->
+      <div class="product-card" data-category="casual">
+        <div class="image-box">
+          <span class="badge-discount">40% OFF</span>
+          <img src="https://imgs.search.brave.com/vLKGbdWT7xsOCa7txYcxjgfHoODDM10hrvgC7UaczVI/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93d3cu/b3R0b3N0b3JlLmNv/bS9jZG4vc2hvcC9m/aWxlcy8wOTlfNTAw/eC5qcGc_dj0xNzg0/MTg1NjAy" alt="Modern Relaxed Casual Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Resort Casual</span>
+          <h3 class="product-title">Otto Relaxed Fit Weekend Shirt</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 999</span>
+            <span class="original-price">₹ 1,699</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Otto Relaxed Fit Weekend Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Shirt 10 -->
+      <div class="product-card" data-category="casual">
+        <div class="image-box">
+          <span class="badge-discount">35% OFF</span>
+          <img src="https://imgs.search.brave.com/tS6dl3XEOKe6HZq6DGWKVKp6Rgf6I1QY_CCYMRM0ZMg/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9jZG4u/c2hvcGlmeS5jb20v/cy9maWxlcy8xLzAx/MjEvODM3Ni81MDg4/L2ZpbGVzL0Nsb3Ro/aW5nX0JyYW5kc19m/b3JfV29tZW5faW5f/SW5kaWFfNDgweDQ4/MC5qcGc_dj0xNzI0/MTgxNzkw" alt="Contemporary Trend Shirt" />
+        </div>
+        <div class="card-info">
+          <span class="card-category">Modern Trend</span>
+          <h3 class="product-title">Contemporary Flow Casual Shirt</h3>
+          <div class="price-strip">
+            <span class="current-price">₹ 1,149</span>
+            <span class="original-price">₹ 1,799</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-add-cart" onclick="addToCart('Contemporary Flow Casual Shirt')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Toast Notification -->
+  <div id="cartToast" class="toast">
+    <i class="fa-solid fa-circle-check" style="color: #10b981; font-size: 1.1rem;"></i>
+    <span id="toastMsg">Item added to cart!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Designed with clean UI.</p>
+    <div style="margin-top: 8px;">
+      <a href="index.html">Home</a> |
+      <a href="cart.html">View Cart</a> |
+      <a href="dashboard.html">Admin Dashboard</a> |
+      <a href="product cancelation.html">Cancellation Policy</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let cartTotalItems = 0;
+
+    function addToCart(title) {
+      cartTotalItems++;
+      document.getElementById('cartCount').innerText = cartTotalItems;
+
+      const toast = document.getElementById('cartToast');
+      document.getElementById('toastMsg').innerText = `"${title}" added to your cart!`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function filterItems(category) {
+      const cards = document.querySelectorAll('.product-card');
+      const chips = document.querySelectorAll('.chip');
+
+      // Update active chip
+      chips.forEach(c => c.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

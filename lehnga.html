@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bridal & Designer Lehenga Collection — RESUM Couture</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #be185d;
+      --primary-hover: #9d174d;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
+      --dark: #0f172a;
+      --card-bg: #ffffff;
+      --border-color: rgba(226, 232, 240, 0.85);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-royal: radial-gradient(circle at 50% 20%, #35081f 0%, #15050f 60%, #080206 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #fdfbfb;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #be185d, #d97706);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .cart-indicator {
+      background: #fdf2f8;
+      color: #be185d;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1px solid #fbcfe8;
+    }
+
+    .cart-indicator:hover {
+      background: #be185d;
+      color: #fff;
+    }
+
+    /* --- Royal Hero Section --- */
+    .hero-lehenga {
+      background: var(--bg-royal);
+      color: #ffffff;
+      padding: 70px 5% 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-ruby {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(190, 24, 93, 0.28) 0%, transparent 70%);
+      top: -100px;
+      left: 10%;
+      filter: blur(65px);
+      border-radius: 50%;
+    }
+
+    .glow-gold {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(217, 119, 6, 0.22) 0%, transparent 70%);
+      bottom: -100px;
+      right: 10%;
+      filter: blur(65px);
+      border-radius: 50%;
+    }
+
+    .hero-container {
+      max-width: 1250px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 5;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #fbcfe8;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.3rem;
+      font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 40%, #fbcfe8 80%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .hero-badges-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-badges-row {
+        justify-content: center;
+      }
+    }
+
+    .pill-info {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(8px);
+      padding: 7px 15px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-info i {
+      color: #f59e0b;
+    }
+
+    /* Hero Visuals */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      position: relative;
+    }
+
+    .hero-card-1 {
+      width: 250px;
+      height: 340px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: rotate(-3deg);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-card-1:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+
+    .hero-card-2 {
+      width: 230px;
+      height: 310px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: rotate(4deg) translateY(30px);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-card-2:hover {
+      transform: rotate(0deg) scale(1.03) translateY(10px);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- Filter Bar --- */
+    .filter-wrapper {
+      max-width: 1250px;
+      margin: 40px auto 10px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-main);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(190, 24, 93, 0.3);
+    }
+
+    /* --- Products Grid --- */
+    .container {
+      max-width: 1250px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 25px;
+    }
+
+    .lehenga-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .lehenga-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(190, 24, 93, 0.18);
+      border-color: rgba(190, 24, 93, 0.35);
+    }
+
+    .img-box {
+      width: 100%;
+      height: 330px;
+      background: #f8fafc;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+      transition: transform 0.45s ease;
+    }
+
+    .lehenga-card:hover .img-box img {
+      transform: scale(1.06);
+    }
+
+    .tag-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #fdf2f8;
+      color: #be185d;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid #fbcfe8;
+    }
+
+    .card-info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .lehenga-cat {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .lehenga-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: auto;
+    }
+
+    .price-main {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .price-cut {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 8px;
+    }
+
+    .btn-cart {
+      background: #fdf2f8;
+      color: #be185d;
+      border: 1px solid #fbcfe8;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-cart:hover {
+      background: #fce7f3;
+      color: #9d174d;
+    }
+
+    .btn-buy-now {
+      background: linear-gradient(135deg, var(--primary), var(--gold));
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(190, 24, 93, 0.25);
+    }
+
+    .btn-buy-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(190, 24, 93, 0.4);
+    }
+
+    /* Floating Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 30px 5% 20px;
+      border-top: 1px solid #1e293b;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html" class="brand">
+      <i class="fa-solid fa-gem"></i> RESUM COUTURE
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">होम</a></li>
+      <li><a href="lehnga.html" class="active">लहंगा</a></li>
+      <li><a href="saari.html">साड़ी</a></li>
+      <li><a href="shirt.html">शर्ट्स</a></li>
+      <li><a href="dashboard.html">डैशबोर्ड</a></li>
+      <li>
+        <a href="cart.html" class="cart-indicator">
+          <i class="fa-solid fa-bag-shopping"></i> कार्ट (<span id="cartCount">0</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-lehenga">
+    <div class="glow-ruby"></div>
+    <div class="glow-gold"></div>
+
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> रॉयल ब्राइडल और फेस्टिव लहंगा कलेक्शन
+        </div>
+        <h1>रॉयल ब्राइडल और डिज़ाइनर लहंगे का अनोखा संगम</h1>
+        <p>हस्तनिर्मित ज़री, प्रीमियम वेलवेट, बनारसी सिल्क और आधुनिक पेस्टल फ्लोरल लहंगे जो हर उत्सव और शादी को यादगार बनाते हैं।</p>
+        
+        <div class="hero-badges-row">
+          <div class="pill-info"><i class="fa-solid fa-crown"></i> 100% ओरिजिनल क्राफ्ट्समैनशिप</div>
+          <div class="pill-info"><i class="fa-solid fa-gem"></i> प्रीमियम हेवी ज़री और मिरर वर्क</div>
+          <div class="pill-info"><i class="fa-solid fa-truck-fast"></i> सुरक्षित और एक्सप्रेस डिलीवरी</div>
+        </div>
+
+        <div>
+          <a href="book now.html" class="btn-buy-now" style="display: inline-flex; padding: 12px 28px; font-size: 0.95rem; border-radius: 999px;">
+            <i class="fa-solid fa-bolt"></i> तुरंत लहंगा बुक करें
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Visuals -->
+      <div class="hero-visual">
+        <div class="hero-card-1">
+          <img src="https://us.anitadongre.com/dw/image/v2/BGCX_PRD/on/demandware.static/-/Sites-masterCatalog_AD_India/default/dw9b1c1c66/images/hires/FS26/F26A8_Yellow_3.jpg?sw=850&sh=1275&sm=fit&strip=false" alt="Anita Dongre Royal Yellow Lehenga" class="hero-img" />
+        </div>
+        <div class="hero-card-2">
+          <img src="https://media-api.xogrp.com/images/17f0b1d3-944a-46f8-8a9b-3311bc26211f~rs_768.h-cr_0.91.800.1158" alt="Royal Wedding Bridal Lehenga" class="hero-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Strip -->
+  <div class="filter-wrapper">
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterLehengas('all')">सभी लहंगे</button>
+      <button class="filter-btn" onclick="filterLehengas('bridal')">ब्राइडल हेवी</button>
+      <button class="filter-btn" onclick="filterLehengas('festive')">फ्लोरल और फेस्टिव</button>
+      <button class="filter-btn" onclick="filterLehengas('fusion')">मॉडर्न फ्यूज़न</button>
+    </div>
+
+    <a href="search.html" style="font-size: 0.88rem; color: var(--primary); text-decoration: none; font-weight: 700;">
+      <i class="fa-solid fa-magnifying-glass"></i> और डिज़ाइन खोजें
+    </a>
+  </div>
+
+  <!-- Lehenga Products Grid -->
+  <main class="container">
+    <div class="grid" id="lehengaGrid">
+
+      <!-- Item 1: Anita Dongre Yellow -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">हल्दी स्पेशल</span>
+          <img src="https://us.anitadongre.com/dw/image/v2/BGCX_PRD/on/demandware.static/-/Sites-masterCatalog_AD_India/default/dw9b1c1c66/images/hires/FS26/F26A8_Yellow_3.jpg?sw=850&sh=1275&sm=fit&strip=false" alt="Anita Dongre Yellow Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">डिज़ाइनर फेस्टिव</span>
+          <h3 class="lehenga-title">अनीता डोंगरे सनशाइन येलो सिल्क लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 14,999</span>
+            <span class="price-cut">₹ 22,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('अनीता डोंगरे सनशाइन येलो सिल्क लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: Bottle Green Printed Tussar -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">ट्रेंडिंग</span>
+          <img src="https://www.ethnicplus.in/cdn/shop/files/mesmerizing-bottle-green-printed-tussar-silk-crop-top-lehenga-with-jacket-9936851.jpg?v=1780660641&width=2250" alt="Bottle Green Printed Tussar Silk Crop Top" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">टसर सिल्क जैकेट</span>
+          <h3 class="lehenga-title">बॉटल ग्रीन टसर सिल्क क्रॉप टॉप व जैकेट लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 5,899</span>
+            <span class="price-cut">₹ 8,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('बॉटल ग्रीन टसर सिल्क लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Elegant Red Bridal -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">रॉयल ब्राइडल</span>
+          <img src="https://marketplace.canva.com/616j4/MAG9oP616j4/1/tl/canva-elegant-red-bridal-lehenga-with-embroidery-MAG9oP616j4.jpg" alt="Elegant Red Bridal Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">हेवी ब्राइडल वेयर</span>
+          <h3 class="lehenga-title">एलिगेंट रेड ब्राइडल एम्ब्रॉयडरी लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 18,500</span>
+            <span class="price-cut">₹ 28,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('एलिगेंट रेड ब्राइडल लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4: Tarangg Exclusive -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">एक्सक्लूसिव</span>
+          <img src="https://tarangg.in/cdn/shop/files/335857A3-09E5-4737-A88C-C7035814CFBA.jpg?v=1790578172&width=1984" alt="Tarangg Festive Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">फेस्टिव स्पेशल</span>
+          <h3 class="lehenga-title">तरंग हेरिटेज फ्लोरल एम्ब्रॉयडरी लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 7,499</span>
+            <span class="price-cut">₹ 11,200</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('तरंग हेरिटेज फ्लोरल लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5: Black Multicolor Floral Lashkaraa -->
+      <div class="lehenga-card" data-category="fusion">
+        <div class="img-box">
+          <span class="tag-badge">पार्टी वेयर</span>
+          <img src="https://www.lashkaraa.com/cdn/shop/files/black-multicolor-floral-printed-lehenga-5045751.jpg?v=1773720558&width=1091" alt="Black Multicolor Floral Printed Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">लश्कारा डिज़ाइन्स</span>
+          <h3 class="lehenga-title">मिडनाइट ब्लैक मल्टीकलर फ्लोरल प्रिंटेड लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 6,800</span>
+            <span class="price-cut">₹ 9,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('ब्लैक मल्टीकलर फ्लोरल लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6: Meesho Budget Ethnic -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">बजट फ्रेंडली</span>
+          <img src="https://images.meesho.com/images/products/486323033/lxvxz_512.webp?width=360" alt="Ethnic Daily Wear Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">फेस्टिव ड्रेप</span>
+          <h3 class="lehenga-title">क्लासिक फ्लोरल जॉर्जेट पार्टी लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 2,499</span>
+            <span class="price-cut">₹ 4,500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('क्लासिक फ्लोरल जॉर्जेट लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 7: Pinterest Classic -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">हेरिटेज</span>
+          <img src="https://i.pinimg.com/originals/10/b5/66/10b566fe3481d1b09891f6e7d0c78314.jpg" alt="Traditional Heritage Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">रॉयल कलेक्शन</span>
+          <h3 class="lehenga-title">ट्रेडिशनल हेवी जरी वर्क ब्राइडल लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 12,999</span>
+            <span class="price-cut">₹ 19,500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('ट्रेडिशनल हेवी जरी वर्क लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 8: FabAlley Contemporary -->
+      <div class="lehenga-card" data-category="fusion">
+        <div class="img-box">
+          <span class="tag-badge">मॉडर्न</span>
+          <img src="https://img.faballey.com/images/Product/XLH60719Z/d3.jpg" alt="FabAlley Crop Top Skirt" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">इंडो-वेस्टर्न</span>
+          <h3 class="lehenga-title">फैबएली कंटेम्पररी सिल्क स्कर्ट लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 3,999</span>
+            <span class="price-cut">₹ 6,200</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('फैबएली कंटेम्पररी लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 9: Anita Dongre Forest Green -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">रॉयल ग्रीन</span>
+          <img src="https://us.anitadongre.com/dw/image/v2/BGCX_PRD/on/demandware.static/-/Sites-masterCatalog_AD_India/default/dw2320bb96/images/hires/FS26/F26R8_Forest%20Green_3.jpg?sw=850&sh=1275&sm=fit&strip=false" alt="Anita Dongre Forest Green Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">अनीता डोंगरे लग्ज़री</span>
+          <h3 class="lehenga-title">फॉरेस्ट ग्रीन हैंड-एम्ब्रॉयडर्ड रॉयल लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 16,500</span>
+            <span class="price-cut">₹ 24,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('फॉरेस्ट ग्रीन हैंड-एम्ब्रॉयडर्ड लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 10: Lavanya The Label Pink -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">पेस्टल पिंक</span>
+          <img src="https://www.lavanyathelabel.com/cdn/shop/files/1_bb4003ed-2f7f-468c-aed2-5d909a6e612b_400x.jpg?v=1755063693" alt="Lavanya The Label Festive" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">लावण्या लेबल</span>
+          <h3 class="lehenga-title">सॉफ्ट ब्लश पिंक गोटा पट्टी फेस्टिव लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 4,899</span>
+            <span class="price-cut">₹ 7,499</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('ब्लश पिंक गोटा पट्टी लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 11: ClothsVilla Traditional -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">ब्राइडल चॉइस</span>
+          <img src="https://clothsvilla.com/cdn/shop/products/779_500x500.jpg?v=1646661079" alt="ClothsVilla Bridal" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">शादी स्पेशल</span>
+          <h3 class="lehenga-title">हैवी जरदोजी वर्क वेलवेट ब्राइडल लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 9,999</span>
+            <span class="price-cut">₹ 15,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('हैवी जरदोजी वेलवेट लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 12: Anita Dongre Blush -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">डिज़ाइनर</span>
+          <img src="https://us.anitadongre.com/dw/image/v2/BGCX_PRD/on/demandware.static/-/Sites-masterCatalog_AD_India/default/dwe5a6744f/images/hires/FS26/F26R25_Blush_1.jpg?sw=850&sh=1275&sm=fit&strip=false" alt="Anita Dongre Blush Pink" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">लग्ज़री फेस्टिव</span>
+          <h3 class="lehenga-title">अनीता डोंगरे ब्लश रोज़ सिल्क लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 15,200</span>
+            <span class="price-cut">₹ 23,500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('अनीता डोंगरे ब्लश रोज़ सिल्क लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 13: ZaikStore Minimal -->
+      <div class="lehenga-card" data-category="fusion">
+        <div class="img-box">
+          <span class="tag-badge">लाइटवेट</span>
+          <img src="https://zaikstore.com/cdn/shop/files/3EFBDC82-9EC8-48B2-A7A7-34CAF6D02694.jpg?v=1779396255&width=533" alt="ZaikStore Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">पार्टी वेयर</span>
+          <h3 class="lehenga-title">ज़ैक फ्लोरल प्रिंटेड पार्टी स्कर्ट लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 3,450</span>
+            <span class="price-cut">₹ 5,200</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('ज़ैक फ्लोरल प्रिंटेड लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 14: Purple Brocade Bridesmaid -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">ब्राइड्समेड</span>
+          <img src="https://ik.imagekit.io/4sjmoqtje/tr:w-370,c-at_max/cdn/shop/files/Purple_Brocade_Silk_Bridesmaid_Lehenga_With_Leheriya_Dupatta_And_Zardosi_Work-sg308815-1_2.jpg?v=1758541793" alt="Purple Brocade Silk Bridesmaid Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">बनारसी ब्रॉकेड</span>
+          <h3 class="lehenga-title">पर्पल ब्रॉकेड सिल्क लहंगा व लहरिया दुपट्टा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 7,999</span>
+            <span class="price-cut">₹ 12,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('पर्पल ब्रॉकेड सिल्क लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 15: Lavanya Ethnic 2 -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">फेस्टिव लुक</span>
+          <img src="https://www.lavanyathelabel.com/cdn/shop/files/0T3A7560_400x.jpg?v=1755063637" alt="Lavanya Yellow Festive Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">मेहंदी स्पेशल</span>
+          <h3 class="lehenga-title">ब्राइट मस्टर्ड टियरर्ड जॉर्जेट लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 4,200</span>
+            <span class="price-cut">₹ 6,400</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('मस्टर्ड टियरर्ड जॉर्जेट लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 16: Aachho Emerald -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">पॉपुलर</span>
+          <img src="https://www.aachho.com/cdn/shop/files/0H8A1055.jpg?v=1768795809&width=1080" alt="Aachho Designer Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">आच्छो एक्सक्लूसिव</span>
+          <h3 class="lehenga-title">आच्छो रीगल सिल्क फेस्टिव लहंगा सेट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 5,600</span>
+            <span class="price-cut">₹ 8,500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('आच्छो रीगल सिल्क लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 17: Manish Malhotra Couture -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">मनीष मल्होत्रा</span>
+          <img src="https://manishmalhotra.in/cdn/shop/files/MM-PR-LH-102100_C-XS-1.jpg?v=1788790282&width=533" alt="Manish Malhotra Bridal" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">हाउते कॉट्यूर</span>
+          <h3 class="lehenga-title">मनीष मल्होत्रा ल्यूमिनस सीक्विन्ड ब्राइडल लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 21,999</span>
+            <span class="price-cut">₹ 35,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('मनीष मल्होत्रा सीक्विन्ड लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 18: Lavanya Red Festive -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">वेडिंग स्पेशल</span>
+          <img src="https://www.lavanyathelabel.com/cdn/shop/files/1_7bd5e957-4809-4d85-95f0-6bd055ebc47e_400x.jpg?v=1755063697" alt="Lavanya Wedding Wear" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">ब्राइडल रेड</span>
+          <h3 class="lehenga-title">क्रिमसन सिल्क गोटा वर्क लहंगा सेट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 6,299</span>
+            <span class="price-cut">₹ 9,500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('क्रिमसन सिल्क गोटा वर्क लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 19: Tapee Sky Blue -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">पेस्टल चॉइस</span>
+          <img src="https://tapee.in/cdn/shop/products/C1039-1_2.png?v=1659097626&width=3840" alt="Tapee Pastel Blue Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">टेपी कलेक्शन</span>
+          <h3 class="lehenga-title">स्काई ब्लू एम्ब्रॉयडर्ड नेट फ्लेयर्ड लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 5,199</span>
+            <span class="price-cut">₹ 7,800</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('स्काई ब्लू एम्ब्रॉयडर्ड नेट लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 20: Green Heavy Embroidered Velvet Lashkaraa -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">हेवी वेलवेट</span>
+          <img src="https://www.lashkaraa.com/cdn/shop/products/green-heavy-embroidered-velvet-lehenga-1965036.jpg?v=1773721031&width=800" alt="Green Heavy Embroidered Velvet Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">लश्कारा ब्राइडल</span>
+          <h3 class="lehenga-title">रॉयल एमराल्ड हेवी एम्ब्रॉयडर्ड वेलवेट लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 14,500</span>
+            <span class="price-cut">₹ 21,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('एमराल्ड हेवी वेलवेट लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 21: Torani Heritage -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">तोराणी लग्ज़री</span>
+          <img src="https://www.torani.in/cdn/shop/files/HIGH-RES-resized-_1__0032_watermark-torani-fin_-copy-130.png?v=1786191203&width=1100" alt="Torani Luxury Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">आर्टिसन क्राफ्ट</span>
+          <h3 class="lehenga-title">तोराणी सिल्क ऑर्गेन्ज़ा रॉयल ड्रेप लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 13,800</span>
+            <span class="price-cut">₹ 19,900</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('तोराणी सिल्क ऑर्गेन्ज़ा लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 22: Aachho Floral Pink -->
+      <div class="lehenga-card" data-category="fusion">
+        <div class="img-box">
+          <span class="tag-badge">फ्लोरल समर</span>
+          <img src="https://www.aachho.com/cdn/shop/files/1_dcb5609c-8399-46f2-a550-d3392bbed4b1.jpg?v=1783335923&width=1080" alt="Aachho Floral Print Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">आच्छो समर</span>
+          <h3 class="lehenga-title">आच्छो रोजेट प्रिंटेड कॉटन सिल्क लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 4,799</span>
+            <span class="price-cut">₹ 6,999</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('आच्छो रोजेट प्रिंटेड लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 23: Peach Foil Lashkaraa -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">शाइन नेट</span>
+          <img src="https://www.lashkaraa.com/cdn/shop/products/peach-foil-embroidered-net-lehenga-6453977.jpg?v=1773720973&width=800" alt="Peach Foil Embroidered Net Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">लश्कारा फेस्टिव</span>
+          <h3 class="lehenga-title">पीच फॉयल एम्ब्रॉयडर्ड शिमर नेट लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 8,999</span>
+            <span class="price-cut">₹ 13,500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('पीच फॉयल एम्ब्रॉयडर्ड नेट लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 24: Wine Pink Velvet Lashkaraa -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">रिच वेलवेट</span>
+          <img src="https://www.lashkaraa.com/cdn/shop/products/wine-and-light-pink-velvet-lehenga-2189949.jpg?v=1773721029&width=800" alt="Wine and Light Pink Velvet Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">विंटर ब्राइडल</span>
+          <h3 class="lehenga-title">वाइन एंड लाइट पिंक डुअल टोन वेलवेट लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 11,200</span>
+            <span class="price-cut">₹ 16,800</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('वाइन डुअल टोन वेलवेट लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 25: Kalki Yellow Ombre -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">कल्कि फैशन</span>
+          <img src="https://ik.imagekit.io/4sjmoqtje/kalki-usa/tr:w-370,c-at_max/cdn/shop/files/yellow-ombre-embroidered-lehenga-with-dupatta-sg395561-3_ccbf796f-2a6a-46a7-9cb0-ca4a000e87cb.jpg?v=1774608430" alt="Kalki Yellow Ombre Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">कल्कि एक्सक्लूसिव</span>
+          <h3 class="lehenga-title">येलो ओम्ब्रे एम्ब्रॉयडर्ड सनसेट लहंगा सेट</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 9,500</span>
+            <span class="price-cut">₹ 14,000</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('येलो ओम्ब्रे एम्ब्रॉयडर्ड लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 26: Lavanya Ethnic Teal -->
+      <div class="lehenga-card" data-category="festive">
+        <div class="img-box">
+          <span class="tag-badge">पार्टी ग्लैम</span>
+          <img src="https://www.lavanyathelabel.com/cdn/shop/files/Lavanya61006_400x.jpg?v=1765171292" alt="Lavanya Teal Lehenga" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">लावण्या डिज़ाइन्स</span>
+          <h3 class="lehenga-title">टील ब्लू सिल्क गोटा वर्क फेस्टिव लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 5,499</span>
+            <span class="price-cut">₹ 8,100</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('टील ब्लू सिल्क लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 27: Tapee Dark Bridal -->
+      <div class="lehenga-card" data-category="bridal">
+        <div class="img-box">
+          <span class="tag-badge">रॉयल ब्राइडल</span>
+          <img src="https://tapee.in/cdn/shop/files/bk0504.jpg?v=1742616197&width=3840" alt="Tapee Heavy Bridal Maroon" />
+        </div>
+        <div class="card-info">
+          <span class="lehenga-cat">टेपी ब्राइडल</span>
+          <h3 class="lehenga-title">डीप मैरून हेवी डोरी व सीक्वेंस ब्राइडल लहंगा</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 10,800</span>
+            <span class="price-cut">₹ 16,500</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('डीप मैरून ब्राइडल लहंगा')"><i class="fa-solid fa-cart-plus"></i> कार्ट</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> ऑर्डर करें</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Floating Cart Alert -->
+  <div id="cartToast" class="toast">
+    <i class="fa-solid fa-circle-check" style="color: #be185d; font-size: 1.15rem;"></i>
+    <span id="toastMsg">लहंगा आपके कार्ट में जोड़ दिया गया है!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Designed with Royal Elegance.</p>
+    <div style="margin-top: 8px;">
+      <a href="index.html">होम</a> | 
+      <a href="saari.html">साड़ी</a> | 
+      <a href="shirt.html">शर्ट्स</a> | 
+      <a href="cart.html">कार्ट</a> | 
+      <a href="dashboard.html">डैशबोर्ड</a> | 
+      <a href="product cancelation.html">कैंसिलेशन</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let cartTotal = 0;
+
+    function addToCart(title) {
+      cartTotal++;
+      document.getElementById('cartCount').innerText = cartTotal;
+
+      const toast = document.getElementById('cartToast');
+      document.getElementById('toastMsg').innerText = `"${title}" कार्ट में जुड़ गया!`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function filterLehengas(category) {
+      const cards = document.querySelectorAll('.lehenga-card');
+      const btns = document.querySelectorAll('.filter-btn');
+
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

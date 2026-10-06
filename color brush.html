@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fine Art Brushes & Painting Studio — RESUM Art Supplies</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,700;1,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #ec4899;
+      --primary-hover: #db2777;
+      --secondary: #8b5cf6;
+      --accent: #f59e0b;
+      --dark: #0f172a;
+      --card-bg: rgba(255, 255, 255, 0.95);
+      --border-color: rgba(226, 232, 240, 0.85);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-studio: radial-gradient(circle at 10% 20%, #2e0854 0%, #0f172a 60%, #170d2b 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      background-color: #fbfbfe;
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    /* --- Glowing Navigation Bar --- */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      padding: 14px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      font-size: 1.55rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #ec4899, #8b5cf6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+    }
+
+    .cart-indicator {
+      background: #fdf2f8;
+      color: #be185d;
+      padding: 7px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      border: 1px solid #fbcfe8;
+    }
+
+    .cart-indicator:hover {
+      background: #ec4899;
+      color: #fff;
+    }
+
+    /* --- Artistic Hero Section --- */
+    .hero-studio {
+      background: var(--bg-studio);
+      color: #ffffff;
+      padding: 65px 5% 85px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .glow-magenta {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.25) 0%, transparent 70%);
+      top: -120px;
+      left: 10%;
+      filter: blur(60px);
+      border-radius: 50%;
+    }
+
+    .glow-violet {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.25) 0%, transparent 70%);
+      bottom: -120px;
+      right: 10%;
+      filter: blur(65px);
+      border-radius: 50%;
+    }
+
+    .hero-container {
+      max-width: 1250px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 40px;
+      position: relative;
+      z-index: 5;
+    }
+
+    @media (max-width: 900px) {
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #fbcfe8;
+      margin-bottom: 18px;
+      backdrop-filter: blur(8px);
+    }
+
+    .hero-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.1rem;
+      font-weight: 700;
+      line-height: 1.18;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #ffffff 40%, #fbcfe8 80%, #f472b6 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      color: #cbd5e1;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 26px;
+    }
+
+    .hero-badges-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 900px) {
+      .hero-badges-row {
+        justify-content: center;
+      }
+    }
+
+    .pill-info {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      padding: 7px 15px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .pill-info i {
+      color: var(--primary);
+    }
+
+    /* Hero Art Visuals */
+    .hero-visual {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      position: relative;
+    }
+
+    .hero-card-1 {
+      width: 250px;
+      height: 330px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      transform: rotate(-3deg);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-card-1:hover {
+      transform: rotate(0deg) scale(1.03);
+    }
+
+    .hero-card-2 {
+      width: 230px;
+      height: 300px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
+      transform: rotate(4deg) translateY(30px);
+      transition: transform 0.4s ease;
+    }
+
+    .hero-card-2:hover {
+      transform: rotate(0deg) scale(1.03) translateY(10px);
+    }
+
+    .hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* --- Interactive Filter Bar --- */
+    .filter-wrapper {
+      max-width: 1250px;
+      margin: 40px auto 10px;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-tabs {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      border: 1.5px solid var(--border-color);
+      color: var(--text-main);
+      padding: 9px 18px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(236, 72, 153, 0.3);
+    }
+
+    /* --- Product Grid --- */
+    .container {
+      max-width: 1250px;
+      margin: 20px auto 60px;
+      padding: 0 20px;
+      flex: 1;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(265px, 1fr));
+      gap: 25px;
+    }
+
+    .brush-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      position: relative;
+    }
+
+    .brush-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 30px -6px rgba(236, 72, 153, 0.16);
+      border-color: rgba(236, 72, 153, 0.35);
+    }
+
+    .img-box {
+      width: 100%;
+      height: 270px;
+      background: #f8fafc;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s ease;
+    }
+
+    .brush-card:hover .img-box img {
+      transform: scale(1.06);
+    }
+
+    .tag-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: #fdf2f8;
+      color: #be185d;
+      font-size: 0.74rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid #fbcfe8;
+    }
+
+    .card-info {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .brush-cat {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--primary);
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+
+    .brush-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 12px;
+      line-height: 1.35;
+    }
+
+    .price-strip {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin-bottom: 18px;
+      margin-top: auto;
+    }
+
+    .price-main {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--dark);
+    }
+
+    .price-cut {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+
+    .card-actions {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 8px;
+    }
+
+    .btn-cart {
+      background: #fdf2f8;
+      color: #be185d;
+      border: 1px solid #fbcfe8;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-cart:hover {
+      background: #fce7f3;
+      color: #9d174d;
+    }
+
+    .btn-buy-now {
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 10px rgba(236, 72, 153, 0.25);
+    }
+
+    .btn-buy-now:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(236, 72, 153, 0.4);
+    }
+
+    /* Floating Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #fff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      z-index: 2000;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Footer */
+    footer {
+      background: #0f172a;
+      color: #94a3b8;
+      padding: 30px 5% 20px;
+      border-top: 1px solid #1e293b;
+      margin-top: auto;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    footer a {
+      color: #cbd5e1;
+      text-decoration: none;
+      margin: 0 8px;
+    }
+
+    footer a:hover {
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <nav>
+    <a href="index.html" class="brand">
+      <i class="fa-solid fa-palette"></i> RESUM ART
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="color brush.html" class="active">Color Brushes</a></li>
+      <li><a href="pen.html">Pens</a></li>
+      <li><a href="notbook.html">Notebooks</a></li>
+      <li><a href="books.html">Books</a></li>
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li>
+        <a href="cart.html" class="cart-indicator">
+          <i class="fa-solid fa-basket-shopping"></i> Art Cart (<span id="cartCount">0</span>)
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-studio">
+    <div class="glow-magenta"></div>
+    <div class="glow-violet"></div>
+
+    <div class="hero-container">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <i class="fa-solid fa-paintbrush"></i> Master Artist Brushes & Sets
+        </div>
+        <h1>Bring Your Canvas to Life With Flawless Strokes</h1>
+        <p>Ultra-soft synthetic taklon bristles, natural hog bristle blenders, miniature detailers, and complete acrylic watercolor starter sets designed for passionate artists.</p>
+        
+        <div class="hero-badges-row">
+          <div class="pill-info"><i class="fa-solid fa-droplet"></i> High Color Retention</div>
+          <div class="pill-info"><i class="fa-solid fa-feather-pointed"></i> Zero Shedding Bristles</div>
+          <div class="pill-info"><i class="fa-solid fa-hand-holding"></i> Ergonomic Birchwood Grip</div>
+        </div>
+
+        <div>
+          <a href="book now.html" class="btn-buy-now" style="display: inline-flex; padding: 12px 28px; font-size: 0.95rem; border-radius: 999px;">
+            <i class="fa-solid fa-bolt"></i> Order Complete Art Studio Kit
+          </a>
+        </div>
+      </div>
+
+      <!-- Hero Visuals -->
+      <div class="hero-visual">
+        <div class="hero-card-1">
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&auto=format&fit=crop&q=80" alt="Artist Brushes & Palette" class="hero-img" />
+        </div>
+        <div class="hero-card-2">
+          <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=600&auto=format&fit=crop&q=80" alt="Watercolor Painting Setup" class="hero-img" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Filter Strip -->
+  <div class="filter-wrapper">
+    <div class="filter-tabs">
+      <button class="filter-btn active" onclick="filterBrushes('all')">All Brushes (8)</button>
+      <button class="filter-btn" onclick="filterBrushes('acrylic')">Acrylic & Oil</button>
+      <button class="filter-btn" onclick="filterBrushes('watercolor')">Watercolor Mops</button>
+      <button class="filter-btn" onclick="filterBrushes('detail')">Fine Detailers</button>
+      <button class="filter-btn" onclick="filterBrushes('set')">Master Sets</button>
+    </div>
+
+    <a href="search.html" style="font-size: 0.88rem; color: var(--primary); text-decoration: none; font-weight: 700;">
+      <i class="fa-solid fa-magnifying-glass"></i> Search Supplies
+    </a>
+  </div>
+
+  <!-- Brushes Catalog Grid -->
+  <main class="container">
+    <div class="grid" id="brushGrid">
+
+      <!-- Item 1: Professional Acrylic Paintbrush Set -->
+      <div class="brush-card" data-category="set">
+        <div class="img-box">
+          <span class="tag-badge">BESTSELLER</span>
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b675?w=500&auto=format&fit=crop&q=80" alt="Professional Acrylic Brush Set" />
+        </div>
+        <div class="card-info">
+          <span class="brush-cat">Complete Set (12 Pcs)</span>
+          <h3 class="brush-title">Master Stroke Acrylic & Oil 12-Piece Set</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 699</span>
+            <span class="price-cut">₹ 1,199</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Master Stroke Acrylic Set')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: Fine Detail Miniature Brushes -->
+      <div class="brush-card" data-category="detail">
+        <div class="img-box">
+          <span class="tag-badge">PRECISION</span>
+          <img src="https://images.unsplash.com/photo-1580136579312-94651dfd596d?w=500&auto=format&fit=crop&q=80" alt="Micro Detail Paint Brushes" />
+        </div>
+        <div class="card-info">
+          <span class="brush-cat">Fine Detail (000, 0, 1)</span>
+          <h3 class="brush-title">Micro Needle Tip Detailer Set for Figurines</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 349</span>
+            <span class="price-cut">₹ 550</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Micro Needle Tip Detailers')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Soft Watercolor Mop Brush -->
+      <div class="brush-card" data-category="watercolor">
+        <div class="img-box">
+          <span class="tag-badge">NATURAL HAIR</span>
+          <img src="https://images.unsplash.com/photo-1582201942988-13e60e4556ee?w=500&auto=format&fit=crop&q=80" alt="Watercolor Mop Quill Brush" />
+        </div>
+        <div class="card-info">
+          <span class="brush-cat">Watercolor Wash</span>
+          <h3 class="brush-title">Pure Squirrel Hair Quill Mop Brush #4</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 499</span>
+            <span class="price-cut">₹ 800</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Quill Mop Brush #4')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4: Flat Wash & Background Brush -->
+      <div class="brush-card" data-category="acrylic">
+        <div class="img-box">
+          <span class="tag-badge">WIDE COVERAGE</span>
+          <img src="https://images.unsplash.com/photo-1579783900882-c0d3dad7b119?w=500&auto=format&fit=crop&q=80" alt="Flat Wash Hake Brush" />
+        </div>
+        <div class="card-info">
+          <span class="brush-cat">Flat Wash (2 Inch)</span>
+          <h3 class="brush-title">Broad Canvas Primer & Hake Wash Brush</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 280</span>
+            <span class="price-cut">₹ 450</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Broad Primer Hake Brush')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5: Filbert Curved Blending Brushes -->
+      <div class="brush-card" data-category="acrylic">
+        <div class="img-box">
+          <span class="tag-badge">BLENDING HERO</span>
+          <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=500&auto=format&fit=crop&q=80" alt="Filbert Blending Brushes" />
+        </div>
+        <div class="card-info">
+          <span class="brush-cat">Filbert Profile (6 Pcs)</span>
+          <h3 class="brush-title">Curved Filbert Synthetic Blenders Collection</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 420</span>
+            <span class="price-cut">₹ 650</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Filbert Blenders Collection')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6: Round Watercolor Pointed Tips -->
+      <div class="brush-card" data-category="watercolor">
+        <div class="img-box">
+          <span class="tag-badge">WATER HOLD</span>
+          <img src="https://images.unsplash.com/photo-1541701494587-cb58502866ab?w=500&auto=format&fit=crop&q=80" alt="Pointed Round Watercolor Brushes" />
+        </div>
+        <div class="card-info">
+          <span class="brush-cat">Pointed Round (Set of 5)</span>
+          <h3 class="brush-title">AquaFlow Round Watercolor Precision Brushes</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 375</span>
+            <span class="price-cut">₹ 590</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('AquaFlow Round Watercolor Brushes')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 7: Fan Brushes for Texture & Foliage -->
+      <div class="brush-card" data-category="detail">
+        <div class="img-box">
+          <span class="tag-badge">SPECIAL EFFECT</span>
+          <img src="https://images.unsplash.com/photo-1596548438137-d51ea5c83ca5?w=500&auto=format&fit=crop&q=80" alt="Fan Texture Brushes" />
+        </div>
+        <div class="card-info">
+          <span class="brush-cat">Fan Bristle (3 Sizes)</span>
+          <h3 class="brush-title">Landscape Texture Fan Brush Trio</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 249</span>
+            <span class="price-cut">₹ 399</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Landscape Fan Brush Trio')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 8: Deluxe Wooden Case Studio Kit -->
+      <div class="brush-card" data-category="set">
+        <div class="img-box">
+          <span class="tag-badge">PREMIUM GIFT</span>
+          <img src="https://images.unsplash.com/photo-1569172122301-bc500f30913c?w=500&auto=format&fit=crop&q=80" alt="Deluxe Paint Brush Carrying Case" />
+        </div>
+        <div class="card-info">
+          <span class="brush-cat">Collector Case (24 Pcs)</span>
+          <h3 class="brush-title">Artist Deluxe 24-Piece Studio Set in Roll-Up Canvas</h3>
+          <div class="price-strip">
+            <span class="price-main">₹ 1,199</span>
+            <span class="price-cut">₹ 1,899</span>
+          </div>
+          <div class="card-actions">
+            <button class="btn-cart" onclick="addToCart('Artist Deluxe 24-Piece Studio Set')"><i class="fa-solid fa-cart-plus"></i> Cart</button>
+            <a href="book now.html" class="btn-buy-now"><i class="fa-solid fa-bolt"></i> Buy Now</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Interactive Floating Cart Alert -->
+  <div id="cartToast" class="toast">
+    <i class="fa-solid fa-circle-check" style="color: #ec4899; font-size: 1.15rem;"></i>
+    <span id="toastMsg">Art brush added to your cart!</span>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 RESUM Web Project. Designed for Creative Minds & Artists.</p>
+    <div style="margin-top: 8px;">
+      <a href="index.html">Home</a> | 
+      <a href="pen.html">Pens</a> | 
+      <a href="notbook.html">Notebooks</a> | 
+      <a href="cart.html">Cart</a> | 
+      <a href="dashboard.html">Dashboard</a> | 
+      <a href="product cancelation.html">Cancellation</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    let cartTotal = 0;
+
+    function addToCart(title) {
+      cartTotal++;
+      document.getElementById('cartCount').innerText = cartTotal;
+
+      const toast = document.getElementById('cartToast');
+      document.getElementById('toastMsg').innerText = `"${title}" added to art cart!`;
+      toast.classList.add('show');
+
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2500);
+    }
+
+    function filterBrushes(category) {
+      const cards = document.querySelectorAll('.brush-card');
+      const btns = document.querySelectorAll('.filter-btn');
+
+      btns.forEach(b => b.classList.remove('active'));
+      event.target.classList.add('active');
+
+      cards.forEach(card => {
+        if (category === 'all' || card.getAttribute('data-category') === category) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

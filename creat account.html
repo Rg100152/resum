@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Account — RESUM Member Registration</title>
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-hover: #4338ca;
+      --secondary: #06b6d4;
+      --dark: #0f172a;
+      --card-bg: rgba(255, 255, 255, 0.96);
+      --border-color: rgba(226, 232, 240, 0.9);
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-gradient: linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #311042 100%);
+      --success: #10b981;
+      --danger: #ef4444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--bg-gradient);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      overflow-x: hidden;
+      color: var(--text-main);
+    }
+
+    /* Ambient Lighting */
+    .glow-sphere-1 {
+      position: absolute;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(99, 102, 241, 0.28) 0%, transparent 70%);
+      top: -120px;
+      left: -90px;
+      border-radius: 50%;
+      filter: blur(55px);
+      animation: float 9s ease-in-out infinite alternate;
+    }
+
+    .glow-sphere-2 {
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(6, 182, 212, 0.25) 0%, transparent 70%);
+      bottom: -120px;
+      right: -90px;
+      border-radius: 50%;
+      filter: blur(65px);
+      animation: float 11s ease-in-out infinite alternate-reverse;
+    }
+
+    @keyframes float {
+      0% { transform: translate(0, 0) scale(1); }
+      100% { transform: translate(30px, -30px) scale(1.08); }
+    }
+
+    /* Header */
+    header {
+      padding: 20px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    .brand {
+      font-size: 1.5rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #818cf8, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-decoration: none;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-back-home {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      transition: all 0.25s ease;
+    }
+
+    .btn-back-home:hover {
+      background: rgba(255, 255, 255, 0.2);
+      color: #fff;
+      transform: translateX(-3px);
+    }
+
+    /* Account Setup Container */
+    .account-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 35px 20px;
+      position: relative;
+      z-index: 10;
+      flex: 1;
+    }
+
+    .account-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+      width: 100%;
+      max-width: 520px;
+      padding: 38px 36px;
+      backdrop-filter: blur(16px);
+      animation: cardEnter 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    @keyframes cardEnter {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(0.97);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    .account-header {
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .header-icon-badge {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(79, 70, 229, 0.15), rgba(6, 182, 212, 0.15));
+      color: var(--primary);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.55rem;
+      margin-bottom: 12px;
+      border: 1px solid rgba(79, 70, 229, 0.2);
+    }
+
+    .account-header h2 {
+      font-size: 1.65rem;
+      font-weight: 800;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+    }
+
+    .account-header p {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-top: 4px;
+    }
+
+    /* Form Fields Grid */
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    @media (max-width: 500px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .input-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-box i.input-icon {
+      position: absolute;
+      left: 14px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      transition: color 0.25s ease;
+    }
+
+    .input-box input, 
+    .input-box select {
+      width: 100%;
+      padding: 11px 14px 11px 40px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: #f8fafc;
+      font-size: 0.9rem;
+      outline: none;
+      transition: all 0.25s ease;
+      color: var(--text-main);
+    }
+
+    .input-box input:focus,
+    .input-box select:focus {
+      background: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
+    }
+
+    .input-box input:focus + i.input-icon {
+      color: var(--primary);
+    }
+
+    .toggle-password {
+      position: absolute;
+      right: 14px;
+      cursor: pointer;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      padding: 4px;
+      transition: color 0.2s;
+    }
+
+    .toggle-password:hover {
+      color: var(--dark);
+    }
+
+    /* Agreement Checkbox */
+    .agreement-check {
+      display: flex;
+      align-items: flex-start;
+      gap: 9px;
+      margin: 16px 0 22px;
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.45;
+    }
+
+    .agreement-check input {
+      margin-top: 3px;
+      cursor: pointer;
+      accent-color: var(--primary);
+    }
+
+    .agreement-check a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .agreement-check a:hover {
+      text-decoration: underline;
+    }
+
+    /* Submit Button */
+    .btn-create {
+      width: 100%;
+      padding: 13px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #ffffff;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .btn-create:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(79, 70, 229, 0.4);
+    }
+
+    /* Feedback Box */
+    .auth-alert {
+      display: none;
+      padding: 12px 14px;
+      border-radius: 10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 18px;
+      text-align: center;
+    }
+
+    .alert-success {
+      background: #ecfdf5;
+      color: #065f46;
+      border: 1px solid #a7f3d0;
+    }
+
+    .alert-danger {
+      background: #fef2f2;
+      color: #991b1b;
+      border: 1px solid #fecaca;
+    }
+
+    /* Footer & Quick Navigation */
+    .account-footer {
+      text-align: center;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--border-color);
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .account-footer a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    .account-footer a:hover {
+      text-decoration: underline;
+    }
+
+    .alt-links {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 12px;
+      font-size: 0.8rem;
+    }
+
+    .alt-links a {
+      color: #94a3b8;
+      text-decoration: none;
+    }
+
+    .alt-links a:hover {
+      color: var(--primary);
+    }
+
+    /* Minimal Page Footer */
+    footer {
+      padding: 16px;
+      text-align: center;
+      color: #64748b;
+      font-size: 0.8rem;
+      position: relative;
+      z-index: 10;
+    }
+
+    footer a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin: 0 6px;
+    }
+
+    footer a:hover {
+      color: #cbd5e1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Lights -->
+  <div class="glow-sphere-1"></div>
+  <div class="glow-sphere-2"></div>
+
+  <!-- Header -->
+  <header>
+    <a href="index.html" class="brand">
+      <i class="fa-solid fa-gem" style="color: #818cf8;"></i> RESUM
+    </a>
+    <a href="index.html" class="btn-back-home">
+      <i class="fa-solid fa-arrow-left"></i> Back to Store
+    </a>
+  </header>
+
+  <!-- Create Account Box -->
+  <main class="account-container">
+    <div class="account-card">
+
+      <div class="account-header">
+        <div class="header-icon-badge">
+          <i class="fa-solid fa-address-card"></i>
+        </div>
+        <h2>Create RESUM Account</h2>
+        <p>Register as a member for customized orders and instant checkout</p>
+      </div>
+
+      <!-- Live Feedback Box -->
+      <div id="statusAlert" class="auth-alert"></div>
+
+      <!-- Registration Form -->
+      <form id="createAccountForm" onsubmit="handleAccountCreation(event)">
+
+        <!-- Full Name -->
+        <div class="form-group">
+          <label class="form-label" for="accFullName">Full Name</label>
+          <div class="input-box">
+            <input type="text" id="accFullName" placeholder="e.g. Raj Gautam" required />
+            <i class="fa-solid fa-user input-icon"></i>
+          </div>
+        </div>
+
+        <!-- Row: Email & Phone -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="accEmail">Email Address</label>
+            <div class="input-box">
+              <input type="email" id="accEmail" placeholder="name@domain.com" required />
+              <i class="fa-solid fa-envelope input-icon"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="accPhone">Phone Number</label>
+            <div class="input-box">
+              <input type="tel" id="accPhone" placeholder="+91 9876543210" required />
+              <i class="fa-solid fa-phone input-icon"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Account Profile Type -->
+        <div class="form-group">
+          <label class="form-label" for="accRole">Account Type</label>
+          <div class="input-box">
+            <select id="accRole">
+              <option value="customer">Shopper / Customer Account</option>
+              <option value="student">Student / Academic Member</option>
+              <option value="wholesale">Wholesale & Merchant</option>
+            </select>
+            <i class="fa-solid fa-user-tag input-icon"></i>
+          </div>
+        </div>
+
+        <!-- Row: Password & Confirm -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="accPassword">Password</label>
+            <div class="input-box">
+              <input type="password" id="accPassword" placeholder="••••••••" required />
+              <i class="fa-solid fa-lock input-icon"></i>
+              <i class="fa-solid fa-eye toggle-password" id="toggleP1" onclick="togglePass('accPassword', 'toggleP1')"></i>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="accConfirm">Confirm Password</label>
+            <div class="input-box">
+              <input type="password" id="accConfirm" placeholder="••••••••" required />
+              <i class="fa-solid fa-shield-check input-icon"></i>
+              <i class="fa-solid fa-eye toggle-password" id="toggleP2" onclick="togglePass('accConfirm', 'toggleP2')"></i>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terms Agreement -->
+        <label class="agreement-check">
+          <input type="checkbox" id="termsCheck" required />
+          <span>I accept the <a href="contactme.html">Membership Agreement</a> and acknowledge the <a href="product cancelation.html">Cancellation Terms</a></span>
+        </label>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-create">
+          <i class="fa-solid fa-user-check"></i>
+          <span>Complete Registration</span>
+        </button>
+      </form>
+
+      <!-- Already Registered Links -->
+      <div class="account-footer">
+        Already registered?
+        <a href="login.html">Login</a> or <a href="singn in.html">Sign In</a>
+
+        <div class="alt-links">
+          <a href="singnup.html"><i class="fa-solid fa-user-plus"></i> Simple Signup</a>
+          <span>•</span>
+          <a href="dashboard.html"><i class="fa-solid fa-gauge"></i> Admin Panel</a>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    &copy; 2026 RESUM Web Project. Designed with clean UI.
+    <div>
+      <a href="index.html">Store</a> |
+      <a href="cart.html">Cart</a> |
+      <a href="contactme.html">Contact Us</a>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Toggle Password Visibility
+    function togglePass(inputId, iconId) {
+      const field = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+
+      if (field.type === 'password') {
+        field.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+      } else {
+        field.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+      }
+    }
+
+    // Handle Form Submit
+    function handleAccountCreation(e) {
+      e.preventDefault();
+
+      const pass = document.getElementById('accPassword').value;
+      const confirm = document.getElementById('accConfirm').value;
+      const alertBox = document.getElementById('statusAlert');
+
+      // Validation
+      if (pass !== confirm) {
+        alertBox.className = 'auth-alert alert-danger';
+        alertBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Passwords do not match!';
+        alertBox.style.display = 'block';
+        return;
+      }
+
+      if (pass.length < 6) {
+        alertBox.className = 'auth-alert alert-danger';
+        alertBox.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> Password must be at least 6 characters.';
+        alertBox.style.display = 'block';
+        return;
+      }
+
+      // Success
+      alertBox.className = 'auth-alert alert-success';
+      alertBox.innerHTML = '<i class="fa-solid fa-circle-check"></i> Account registered successfully! Redirecting to login...';
+      alertBox.style.display = 'block';
+
+      // Redirect after 1.2s
+      setTimeout(() => {
+        window.location.href = 'login.html';
+      }, 1200);
+    }
+  </script>
+</body>
+</html>
